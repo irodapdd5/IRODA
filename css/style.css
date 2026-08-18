@@ -33,61 +33,73 @@ body {
 
     background: rgba(0, 0, 0, 0.35);
 
-    /* PENTING:
-       navbar tidak boleh membuat halaman melebar */
+    /* Navbar tetap di tempat */
     overflow: hidden;
 }
 
 
-/* BAGIAN YANG BISA DI-SCROLL */
+/* =========================================
+   NAVBAR SCROLL
+   HANYA BAGIAN INI YANG BISA DIGESER
+========================================= */
 
-.nav-menu {
+.navbar-scroll {
     width: 100%;
     height: 65px;
 
-    display: flex;
-    align-items: center;
-
-    /* WAJIB SATU BARIS */
-    flex-wrap: nowrap;
-
-    /* Jangan sampai item turun */
-    white-space: nowrap;
-
-    gap: 25px;
-
-    padding: 0 30px;
-
-    /* HANYA BAGIAN INI YANG SCROLL */
     overflow-x: auto;
     overflow-y: hidden;
 
-    /* Supaya isi tidak memaksa halaman melebar */
-    min-width: 0;
+    white-space: nowrap;
 
-    /* Scroll halus di HP */
-    -webkit-overflow-scrolling: touch;
-
-    /* Hilangkan scrollbar Firefox */
     scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
 }
 
-
-/* Hilangkan scrollbar Chrome / Edge / Safari */
-
-.nav-menu::-webkit-scrollbar {
+.navbar-scroll::-webkit-scrollbar {
     display: none;
     width: 0;
     height: 0;
 }
 
 
-/* SETIAP MENU TETAP TERPISAH */
+/* =========================================
+   MENU NAVBAR
+========================================= */
+
+.nav-menu {
+    display: inline-flex;
+
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    gap: 25px;
+
+    height: 65px;
+
+    /*
+       PENTING:
+       Lebar mengikuti seluruh isi menu,
+       bukan dipaksa 100%.
+    */
+    width: max-content;
+
+    min-width: 100%;
+
+    padding: 0 30px;
+}
+
+
+/* =========================================
+   LINK NAVBAR
+========================================= */
 
 .nav-menu a {
-    flex: 0 0 auto;
-
     display: block;
+
+    flex: 0 0 auto;
 
     color: white;
 
@@ -408,6 +420,10 @@ body {
 
 @media (max-width: 900px) {
 
+    .navbar-scroll {
+        height: 65px;
+    }
+
     .nav-menu {
         gap: 22px;
 
@@ -454,12 +470,35 @@ body {
         overflow: hidden;
     }
 
-    .nav-menu {
+    /*
+       INI SATU-SATUNYA BAGIAN
+       YANG BISA DI-SWIPE
+    */
+
+    .navbar-scroll {
         width: 100%;
 
         height: 60px;
 
-        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        white-space: nowrap;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    /* Isi navbar */
+
+    .nav-menu {
+        display: inline-flex;
 
         align-items: center;
 
@@ -467,23 +506,13 @@ body {
 
         gap: 20px;
 
+        height: 60px;
+
+        width: max-content;
+
+        min-width: 100%;
+
         padding: 0 18px;
-
-        /* HANYA NAVBAR YANG SCROLL */
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        white-space: nowrap;
-
-        min-width: 0;
-
-        scrollbar-width: none;
-
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-menu::-webkit-scrollbar {
-        display: none;
     }
 
     .nav-menu a {
@@ -587,4 +616,4 @@ body {
     .slogan {
         font-size: 14px;
     }
-       }
+}
