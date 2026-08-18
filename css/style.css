@@ -1,3 +1,7 @@
+/* =========================================
+   RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,15 +16,29 @@ html {
 body {
     background: #000;
     color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     overflow-x: hidden;
+
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
+
+
+/* =========================================
+   MAIN
+========================================= */
+
 main {
     flex: 1;
 }
+
 
 /* =========================================
    NAVBAR
@@ -28,6 +46,7 @@ main {
 
 .navbar {
     position: absolute;
+
     top: 0;
     left: 0;
 
@@ -38,14 +57,13 @@ main {
 
     background: rgba(0, 0, 0, 0.35);
 
-    /* Navbar tetap di tempat */
     overflow: hidden;
 }
 
 
 /* =========================================
    NAVBAR SCROLL
-   HANYA BAGIAN INI YANG BISA DIGESER
+   HANYA BAGIAN INI YANG BISA DI-SWIPE
 ========================================= */
 
 .navbar-scroll {
@@ -64,6 +82,7 @@ main {
 
 .navbar-scroll::-webkit-scrollbar {
     display: none;
+
     width: 0;
     height: 0;
 }
@@ -84,11 +103,6 @@ main {
 
     height: 65px;
 
-    /*
-       PENTING:
-       Lebar mengikuti seluruh isi menu,
-       bukan dipaksa 100%.
-    */
     width: max-content;
 
     min-width: 100%;
@@ -106,7 +120,7 @@ main {
 
     flex: 0 0 auto;
 
-    color: white;
+    color: #fff;
 
     text-decoration: none;
 
@@ -124,7 +138,7 @@ main {
 }
 
 .nav-menu a.active {
-    color: white;
+    color: #fff;
 }
 
 
@@ -137,20 +151,26 @@ main {
 
     height: 430px;
 
-    background-image: url("../assets/images/foto.jpg");
+    background-image:
+        url("../assets/images/foto.jpg");
 
     background-size: cover;
+
     background-position: center;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     overflow: hidden;
 }
 
 
-/* Lapisan gelap */
+/* =========================================
+   HERO OVERLAY
+========================================= */
 
 .hero-overlay {
     position: absolute;
@@ -192,7 +212,9 @@ main {
 }
 
 
-/* Logo */
+/* =========================================
+   LOGO
+========================================= */
 
 .logo {
     width: 130px;
@@ -206,7 +228,7 @@ main {
 
 
 /* =========================================
-   JUDUL IRODA
+   HERO TITLE
 ========================================= */
 
 .hero-title {
@@ -224,11 +246,12 @@ main {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: clamp(70px, 9vw, 120px);
+    font-size:
+        clamp(70px, 9vw, 120px);
 
     line-height: 0.85;
 
-    color: white;
+    color: #fff;
 
     letter-spacing: 2px;
 
@@ -246,9 +269,10 @@ main {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: clamp(20px, 2.8vw, 38px);
+    font-size:
+        clamp(20px, 2.8vw, 38px);
 
-    color: white;
+    color: #fff;
 
     letter-spacing: 1px;
 }
@@ -334,282 +358,6 @@ main {
 ========================================= */
 
 .footer {
-    min-height: 180px;
-
-    background: #8b1518;
-
-    border-bottom: 5px solid #ffc400;
-
-    text-align: center;
-
-    padding: 28px 20px;
-}
-
-.footer h2 {
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
-
-    font-size: 34px;
-
-    margin-bottom: 15px;
-}
-
-.slogan {
-    font-family: Arial, sans-serif;
-
-    font-weight: bold;
-
-    font-size: 16px;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================================
-   SOCIAL MEDIA
-========================================= */
-
-.social {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 15px;
-}
-
-.social-link {
-    color: white;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 16px;
-}
-
-.social-link span {
-    margin-left: 8px;
-}
-
-.social-link:hover {
-    color: #ffc400;
-}
-
-.instagram {
-    color: white;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 34px;
-
-    line-height: 1;
-
-    transition: 0.3s;
-}
-
-.instagram:hover {
-    color: #ffc400;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 900px) {
-
-    .navbar-scroll {
-        height: 65px;
-    }
-
-    .nav-menu {
-        gap: 22px;
-
-        padding: 0 20px;
-    }
-
-    .nav-menu a {
-        font-size: 15px;
-    }
-
-    .hero-content {
-        width: 90%;
-    }
-
-    .logo {
-        width: 110px;
-    }
-
-    .about {
-        width: 82%;
-    }
-
-    .about p {
-        font-size: 19px;
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    .navbar {
-        height: 60px;
-
-        width: 100%;
-
-        overflow: hidden;
-    }
-
-    /*
-       INI SATU-SATUNYA BAGIAN
-       YANG BISA DI-SWIPE
-    */
-
-    .navbar-scroll {
-        width: 100%;
-
-        height: 60px;
-
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        white-space: nowrap;
-
-        scrollbar-width: none;
-
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .navbar-scroll::-webkit-scrollbar {
-        display: none;
-    }
-
-
-    /* Isi navbar */
-
-    .nav-menu {
-        display: inline-flex;
-
-        align-items: center;
-
-        flex-wrap: nowrap;
-
-        gap: 20px;
-
-        height: 60px;
-
-        width: max-content;
-
-        min-width: 100%;
-
-        padding: 0 18px;
-    }
-
-    .nav-menu a {
-        flex: 0 0 auto;
-
-        display: block;
-
-        font-size: 14px;
-
-        white-space: nowrap;
-    }
-
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-        height: 360px;
-    }
-
-    .hero-content {
-        width: 95%;
-
-        gap: 10px;
-
-        margin-top: 50px;
-    }
-
-    .logo {
-        width: 85px;
-    }
-
-    .hero-title h1 {
-        font-size: 58px;
-    }
-
-    .hero-title h2 {
-        font-size: 18px;
-
-        margin-top: 8px;
-    }
-
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-        width: 85%;
-
-        padding-top: 35px;
-
-        padding-bottom: 100px;
-    }
-
-    .about p {
-        font-size: 17px;
-
-        line-height: 1.55;
-
-        text-align: justify;
-
-        margin-bottom: 30px;
-    }
-
-
-    /* =========================
-       BUTTON
-    ========================= */
-
-    .about-buttons {
-        gap: 15px;
-
-        margin-top: 30px;
-    }
-
-    .btn {
-        min-width: 120px;
-
-        height: 48px;
-
-        padding: 0 20px;
-
-        font-size: 17px;
-    }
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer {
     width: 100%;
 
     min-height: 230px;
@@ -631,6 +379,11 @@ main {
     flex-shrink: 0;
 }
 
+
+/* =========================================
+   FOOTER TITLE
+========================================= */
+
 .footer h2 {
     font-family:
         Impact,
@@ -642,6 +395,11 @@ main {
 
     margin: 0 0 15px 0;
 }
+
+
+/* =========================================
+   SLOGAN
+========================================= */
 
 .slogan {
     font-family: Arial, sans-serif;
@@ -677,7 +435,7 @@ main {
 
     gap: 10px;
 
-    color: white;
+    color: #fff;
 
     text-decoration: none;
 
@@ -707,6 +465,7 @@ main {
 
 /* =========================================
    COPYRIGHT
+   FULL WIDTH BAR KUNING
 ========================================= */
 
 .copyright {
@@ -741,10 +500,197 @@ main {
 
 
 /* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    /* NAVBAR */
+
+    .navbar-scroll {
+        height: 65px;
+    }
+
+    .nav-menu {
+        gap: 22px;
+
+        padding: 0 20px;
+    }
+
+    .nav-menu a {
+        font-size: 15px;
+    }
+
+
+    /* HERO */
+
+    .hero-content {
+        width: 90%;
+    }
+
+    .logo {
+        width: 110px;
+    }
+
+
+    /* ABOUT */
+
+    .about {
+        width: 82%;
+    }
+
+    .about p {
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================
    MOBILE
 ========================================= */
 
 @media (max-width: 600px) {
+
+
+    /* =====================================
+       NAVBAR MOBILE
+    ===================================== */
+
+    .navbar {
+        height: 60px;
+
+        width: 100%;
+
+        overflow: hidden;
+    }
+
+    .navbar-scroll {
+        width: 100%;
+
+        height: 60px;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        white-space: nowrap;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-menu {
+        display: inline-flex;
+
+        align-items: center;
+
+        flex-wrap: nowrap;
+
+        gap: 20px;
+
+        height: 60px;
+
+        width: max-content;
+
+        min-width: 100%;
+
+        padding: 0 18px;
+    }
+
+    .nav-menu a {
+        flex: 0 0 auto;
+
+        display: block;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================
+       HERO MOBILE
+    ===================================== */
+
+    .hero {
+        height: 360px;
+    }
+
+    .hero-content {
+        width: 95%;
+
+        gap: 10px;
+
+        margin-top: 50px;
+    }
+
+    .logo {
+        width: 85px;
+    }
+
+    .hero-title h1 {
+        font-size: 58px;
+    }
+
+    .hero-title h2 {
+        font-size: 18px;
+
+        margin-top: 8px;
+    }
+
+
+    /* =====================================
+       ABOUT MOBILE
+    ===================================== */
+
+    .about {
+        width: 85%;
+
+        padding-top: 35px;
+
+        padding-bottom: 100px;
+    }
+
+    .about p {
+        font-size: 17px;
+
+        line-height: 1.55;
+
+        text-align: justify;
+
+        margin-bottom: 30px;
+    }
+
+
+    /* =====================================
+       BUTTON MOBILE
+    ===================================== */
+
+    .about-buttons {
+        gap: 15px;
+
+        margin-top: 30px;
+    }
+
+    .btn {
+        min-width: 120px;
+
+        height: 48px;
+
+        padding: 0 20px;
+
+        font-size: 17px;
+    }
+
+
+    /* =====================================
+       FOOTER MOBILE
+    ===================================== */
 
     .footer {
         width: 100%;
@@ -758,10 +704,14 @@ main {
 
     .footer h2 {
         font-size: 28px;
+
+        margin-bottom: 15px;
     }
 
     .slogan {
         font-size: 14px;
+
+        margin-bottom: 20px;
     }
 
     .social {
@@ -776,6 +726,11 @@ main {
         font-size: 21px;
     }
 
+
+    /* =====================================
+       COPYRIGHT MOBILE
+    ===================================== */
+
     .copyright {
         width: 100%;
 
@@ -784,8 +739,13 @@ main {
         margin-top: 25px;
 
         padding: 0;
+
+        background: #ffc400;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
     }
-}
-
-
-    
+    }
