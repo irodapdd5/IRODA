@@ -19,9 +19,10 @@ body {
 }
 
 
-/* =========================================
+
+/* =========================
    NAVBAR
-========================================= */
+========================= */
 
 .navbar {
     position: absolute;
@@ -29,73 +30,65 @@ body {
     left: 0;
 
     width: 100%;
-    height: 75px;
+    height: 65px;
 
-    z-index: 10;
+    z-index: 100;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.65),
-        rgba(0, 0, 0, 0)
-    );
+    background: rgba(0, 0, 0, 0.35);
 }
 
-.navbar nav {
-    height: 100%;
+/* Baris menu tidak boleh turun */
+.nav-menu {
+    width: 100%;
+
+    height: 65px;
 
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+
+    justify-content: flex-end;
 
     gap: 25px;
 
-    padding: 0 7%;
+    padding: 0 30px;
+
+    /* kalau tidak muat, geser ke samping */
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
 }
 
-.navbar a {
-    position: relative;
+/* Hilangkan scrollbar di Chrome/Edge */
+.nav-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Link navbar */
+.nav-menu a {
+    flex: 0 0 auto;
 
     color: white;
+
     text-decoration: none;
 
-    font-size: 18px;
+    font-size: 17px;
+
+    white-space: nowrap;
 
     transition: 0.3s;
 }
 
-.navbar a:hover {
+.nav-menu a:hover {
     color: #ffc400;
 }
 
-.navbar a.active {
+/* Halaman yang sedang dibuka */
+.nav-menu a.active {
     color: white;
 }
-
-
-/* garis halaman aktif */
-
-.navbar a.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: -10px;
-
-    height: 2px;
-
-    background: #ffc400;
-
-    transform: scaleX(0);
-
-    transition: 0.3s;
-}
-
-.navbar a.active:hover::after {
-    transform: scaleX(1);
-}
-
 
 /* =========================================
    HERO
