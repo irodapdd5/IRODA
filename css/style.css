@@ -601,19 +601,103 @@ body {
     }
 
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* =========================================
+   FOOTER
+========================================= */
 
-    .footer {
-        padding: 25px 15px;
-    }
+.footer {
+    min-height: 220px;
 
-    .footer h2 {
-        font-size: 28px;
-    }
+    background: #8b1518;
 
-    .slogan {
-        font-size: 14px;
-    }
+    text-align: center;
+
+    padding: 28px 20px 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.footer h2 {
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 34px;
+
+    margin-bottom: 15px;
+}
+
+.slogan {
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+.social {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.social-link {
+    color: white;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.social-link span {
+    margin-left: 8px;
+}
+
+.social-link:hover {
+    color: #ffc400;
+}
+
+
+/* =========================================
+   GARIS KUNING + COPYRIGHT
+========================================= */
+
+.copyright {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 12px 0;
+
+    background: #ffc400;
+
+    color: #000;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
 }
