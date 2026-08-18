@@ -16,16 +16,9 @@ html {
 body {
     background: #000;
     color: #fff;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
-
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
 }
@@ -41,7 +34,6 @@ main {
 
 .navbar {
     position: absolute;
-
     top: 0;
     left: 0;
 
@@ -76,7 +68,6 @@ main {
 
 .navbar-scroll::-webkit-scrollbar {
     display: none;
-
     width: 0;
     height: 0;
 }
@@ -114,7 +105,7 @@ main {
 
     flex: 0 0 auto;
 
-    color: #fff;
+    color: white;
 
     text-decoration: none;
 
@@ -132,7 +123,7 @@ main {
 }
 
 .nav-menu a.active {
-    color: #fff;
+    color: white;
 }
 
 
@@ -145,17 +136,13 @@ main {
 
     height: 430px;
 
-    background-image:
-        url("../assets/images/foto.jpg");
+    background-image: url("../assets/images/foto.jpg");
 
     background-size: cover;
-
     background-position: center;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     overflow: hidden;
@@ -240,12 +227,11 @@ main {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size:
-        clamp(70px, 9vw, 120px);
+    font-size: clamp(70px, 9vw, 120px);
 
     line-height: 0.85;
 
-    color: #fff;
+    color: white;
 
     letter-spacing: 2px;
 
@@ -263,10 +249,9 @@ main {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size:
-        clamp(20px, 2.8vw, 38px);
+    font-size: clamp(20px, 2.8vw, 38px);
 
-    color: #fff;
+    color: white;
 
     letter-spacing: 1px;
 }
@@ -354,7 +339,7 @@ main {
 .footer {
     width: 100%;
 
-    min-height: 230px;
+    min-height: 180px;
 
     background: #8b1518;
 
@@ -371,8 +356,6 @@ main {
     margin-top: auto;
 
     flex-shrink: 0;
-
-    overflow: hidden;
 }
 
 
@@ -389,13 +372,8 @@ main {
 
     font-size: 34px;
 
-    margin: 0 0 15px 0;
+    margin-bottom: 15px;
 }
-
-
-/* =========================================
-   SLOGAN
-========================================= */
 
 .slogan {
     font-family: Arial, sans-serif;
@@ -404,7 +382,7 @@ main {
 
     font-size: 16px;
 
-    margin: 0 0 22px 0;
+    margin-bottom: 22px;
 }
 
 
@@ -431,7 +409,7 @@ main {
 
     gap: 10px;
 
-    color: #fff;
+    color: white;
 
     text-decoration: none;
 
@@ -439,7 +417,7 @@ main {
 
     font-size: 16px;
 
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
 .social-link i {
@@ -461,7 +439,7 @@ main {
 
 /* =========================================
    COPYRIGHT
-   FULL BAR KUNING
+   BAR KUNING
 ========================================= */
 
 .copyright {
@@ -501,8 +479,6 @@ main {
 
 @media (max-width: 900px) {
 
-    /* NAVBAR */
-
     .navbar-scroll {
         height: 65px;
     }
@@ -517,9 +493,6 @@ main {
         font-size: 15px;
     }
 
-
-    /* HERO */
-
     .hero-content {
         width: 90%;
     }
@@ -528,22 +501,12 @@ main {
         width: 110px;
     }
 
-
-    /* ABOUT */
-
     .about {
         width: 82%;
     }
 
     .about p {
         font-size: 19px;
-    }
-
-
-    /* FOOTER */
-
-    .footer {
-        width: 100%;
     }
 
     .copyright {
@@ -558,9 +521,9 @@ main {
 
 @media (max-width: 600px) {
 
-    /* =====================================
+    /* =========================
        NAVBAR
-    ===================================== */
+    ========================= */
 
     .navbar {
         height: 60px;
@@ -576,7 +539,6 @@ main {
         height: 60px;
 
         overflow-x: auto;
-
         overflow-y: hidden;
 
         white-space: nowrap;
@@ -619,9 +581,9 @@ main {
     }
 
 
-    /* =====================================
+    /* =========================
        HERO
-    ===================================== */
+    ========================= */
 
     .hero {
         height: 360px;
@@ -650,9 +612,9 @@ main {
     }
 
 
-    /* =====================================
+    /* =========================
        ABOUT
-    ===================================== */
+    ========================= */
 
     .about {
         width: 85%;
@@ -673,9 +635,9 @@ main {
     }
 
 
-    /* =====================================
+    /* =========================
        BUTTON
-    ===================================== */
+    ========================= */
 
     .about-buttons {
         gap: 15px;
@@ -694,9 +656,9 @@ main {
     }
 
 
-    /* =====================================
+    /* =========================
        FOOTER
-    ===================================== */
+    ========================= */
 
     .footer {
         width: 100%;
@@ -733,9 +695,9 @@ main {
     }
 
 
-    /* =====================================
+    /* =========================
        COPYRIGHT
-    ===================================== */
+    ========================= */
 
     .copyright {
         width: 100vw;
@@ -754,4 +716,4 @@ main {
 
         justify-content: center;
     }
-   }
+       }
