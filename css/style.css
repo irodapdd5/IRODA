@@ -14,8 +14,13 @@ body {
     color: #fff;
     font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-
+main {
+    flex: 1;
+}
 
 /* =========================================
    NAVBAR
@@ -623,6 +628,30 @@ body {
 
 .footer h2 {
     font-family:
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    width: 100%;
+    min-height: 230px;
+
+    background: #8b1518;
+
+    text-align: center;
+
+    padding: 28px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Footer tetap menjadi bagian terakhir halaman */
+    margin-top: auto;
+}
+
+.footer h2 {
+    font-family:
         Impact,
         Haettenschweiler,
         "Arial Narrow Bold",
@@ -697,7 +726,7 @@ body {
 
 /* =========================================
    COPYRIGHT
-   FULL WIDTH KUNING
+   BAR KUNING FULL
 ========================================= */
 
 .copyright {
@@ -721,7 +750,6 @@ body {
 
     flex-shrink: 0;
 }
-
 
 /* =========================================
    MOBILE
