@@ -1,719 +1,764 @@
 /* =========================================
-   RESET
+RESET
 ========================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
+
 html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+scroll-behavior: smooth;
+overflow-x: hidden;
 }
 
 body {
-    background: #000;
-    color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+background: #000;
+color: #fff;
 
-main {
-    flex: 1;
-}
+font-family:  
+    Georgia,  
+    "Times New Roman",  
+    serif;  
 
+overflow-x: hidden;  
+
+min-height: 100vh;  
+
+display: flex;  
+flex-direction: column;
+
+}
 
 /* =========================================
-   NAVBAR
+MAIN
+========================================= */
+
+main {
+flex: 1;
+}
+
+/* =========================================
+NAVBAR
 ========================================= */
 
 .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
+position: absolute;
 
-    width: 100%;
-    height: 65px;
+top: 0;  
+left: 0;  
 
-    z-index: 100;
+width: 100%;  
+height: 65px;  
 
-    background: rgba(0, 0, 0, 0.35);
+z-index: 100;  
 
-    overflow: hidden;
+background: rgba(0, 0, 0, 0.35);  
+
+overflow: hidden;
+
 }
 
-
 /* =========================================
-   NAVBAR SCROLL
+NAVBAR SCROLL
+HANYA BAGIAN INI YANG BISA DI-SWIPE
 ========================================= */
 
 .navbar-scroll {
-    width: 100%;
-    height: 65px;
+width: 100%;
+height: 65px;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+overflow-x: auto;  
+overflow-y: hidden;  
 
-    white-space: nowrap;
+white-space: nowrap;  
 
-    scrollbar-width: none;
+scrollbar-width: none;  
 
-    -webkit-overflow-scrolling: touch;
+-webkit-overflow-scrolling: touch;
+
 }
 
 .navbar-scroll::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+display: none;
+
+width: 0;  
+height: 0;
+
 }
 
-
 /* =========================================
-   MENU NAVBAR
+MENU NAVBAR
 ========================================= */
 
 .nav-menu {
-    display: inline-flex;
+display: inline-flex;
 
-    align-items: center;
+align-items: center;  
 
-    flex-wrap: nowrap;
+flex-wrap: nowrap;  
 
-    gap: 25px;
+gap: 25px;  
 
-    height: 65px;
+height: 65px;  
 
-    width: max-content;
+width: max-content;  
 
-    min-width: 100%;
+min-width: 100%;  
 
-    padding: 0 30px;
+padding: 0 30px;
+
 }
 
-
 /* =========================================
-   LINK NAVBAR
+LINK NAVBAR
 ========================================= */
 
 .nav-menu a {
-    display: block;
+display: block;
 
-    flex: 0 0 auto;
+flex: 0 0 auto;  
 
-    color: white;
+color: #fff;  
 
-    text-decoration: none;
+text-decoration: none;  
 
-    font-size: 17px;
+font-size: 17px;  
 
-    white-space: nowrap;
+white-space: nowrap;  
 
-    padding: 5px 0;
+padding: 5px 0;  
 
-    transition: color 0.3s ease;
+transition: color 0.3s ease;
+
 }
 
 .nav-menu a:hover {
-    color: #ffc400;
+color: #ffc400;
 }
 
 .nav-menu a.active {
-    color: white;
+color: #fff;
 }
 
-
 /* =========================================
-   HERO
+HERO
 ========================================= */
 
 .hero {
-    position: relative;
+position: relative;
 
-    height: 430px;
+height: 430px;  
 
-    background-image: url("../assets/images/foto.jpg");
+background-image:  
+    url("../assets/images/foto.jpg");  
 
-    background-size: cover;
-    background-position: center;
+background-size: cover;  
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+background-position: center;  
 
-    overflow: hidden;
+display: flex;  
+
+align-items: center;  
+
+justify-content: center;  
+
+overflow: hidden;
+
 }
 
-
 /* =========================================
-   HERO OVERLAY
+HERO OVERLAY
 ========================================= */
 
 .hero-overlay {
-    position: absolute;
+position: absolute;
 
-    inset: 0;
+inset: 0;  
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.25) 45%,
-            rgba(0, 0, 0, 0.95) 100%
-        );
+background:  
+    linear-gradient(  
+        to bottom,  
+        rgba(0, 0, 0, 0.15) 0%,  
+        rgba(0, 0, 0, 0.25) 45%,  
+        rgba(0, 0, 0, 0.95) 100%  
+    );
+
 }
 
-
 /* =========================================
-   HERO CONTENT
+HERO CONTENT
 ========================================= */
 
 .hero-content {
-    position: relative;
+position: relative;
 
-    z-index: 2;
+z-index: 2;  
 
-    width: 75%;
+width: 75%;  
 
-    display: flex;
+display: flex;  
 
-    align-items: center;
+align-items: center;  
 
-    justify-content: center;
+justify-content: center;  
 
-    gap: 25px;
+gap: 25px;  
 
-    margin-top: 40px;
+margin-top: 40px;  
 
-    min-width: 0;
+min-width: 0;
+
 }
 
-
 /* =========================================
-   LOGO
+LOGO
 ========================================= */
 
 .logo {
-    width: 130px;
+width: 130px;
 
-    height: auto;
+height: auto;  
 
-    object-fit: contain;
+object-fit: contain;  
 
-    flex-shrink: 0;
+flex-shrink: 0;
+
 }
 
-
 /* =========================================
-   HERO TITLE
+HERO TITLE
 ========================================= */
 
 .hero-title {
-    text-align: left;
+text-align: left;
 
-    min-width: 0;
+min-width: 0;
+
 }
 
 .hero-title h1 {
-    margin: 0;
+margin: 0;
 
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+font-family:  
+    Impact,  
+    Haettenschweiler,  
+    "Arial Narrow Bold",  
+    sans-serif;  
 
-    font-size: clamp(70px, 9vw, 120px);
+font-size:  
+    clamp(70px, 9vw, 120px);  
 
-    line-height: 0.85;
+line-height: 0.85;  
 
-    color: white;
+color: #fff;  
 
-    letter-spacing: 2px;
+letter-spacing: 2px;  
 
-    text-shadow:
-        3px 3px 0 #222,
-        -1px -1px 0 #222;
+text-shadow:  
+    3px 3px 0 #222,  
+    -1px -1px 0 #222;
+
 }
 
 .hero-title h2 {
-    margin-top: 15px;
+margin-top: 15px;
 
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+font-family:  
+    Impact,  
+    Haettenschweiler,  
+    "Arial Narrow Bold",  
+    sans-serif;  
 
-    font-size: clamp(20px, 2.8vw, 38px);
+font-size:  
+    clamp(20px, 2.8vw, 38px);  
 
-    color: white;
+color: #fff;  
 
-    letter-spacing: 1px;
+letter-spacing: 1px;
+
 }
 
-
 /* =========================================
-   ABOUT
+ABOUT
 ========================================= */
 
 .about {
-    width: min(80%, 1100px);
+width: min(80%, 1100px);
 
-    margin: 0 auto;
+margin: 0 auto;  
 
-    padding-top: 50px;
+padding-top: 50px;  
 
-    padding-bottom: 150px;
+padding-bottom: 150px;
+
 }
 
 .about p {
-    font-size: 22px;
+font-size: 22px;
 
-    line-height: 1.55;
+line-height: 1.55;  
 
-    text-align: justify;
+text-align: justify;  
 
-    margin-bottom: 35px;
+margin-bottom: 35px;  
 
-    letter-spacing: 0.5px;
+letter-spacing: 0.5px;
+
 }
 
-
 /* =========================================
-   BUTTON
+BUTTON
 ========================================= */
 
 .about-buttons {
-    display: flex;
+display: flex;
 
-    gap: 35px;
+gap: 35px;  
 
-    margin-top: 45px;
+margin-top: 45px;
+
 }
 
 .btn {
-    display: inline-flex;
+display: inline-flex;
 
-    align-items: center;
+align-items: center;  
 
-    justify-content: center;
+justify-content: center;  
 
-    min-width: 145px;
+min-width: 145px;  
 
-    height: 58px;
+height: 58px;  
 
-    padding: 0 28px;
+padding: 0 28px;  
 
-    background: #ffc400;
+background: #ffc400;  
 
-    color: #000;
+color: #000;  
 
-    text-decoration: none;
+text-decoration: none;  
 
-    border-radius: 35px;
+border-radius: 35px;  
 
-    font-size: 22px;
+font-size: 22px;  
 
-    transition: 0.3s;
+transition: 0.3s;
+
 }
 
 .btn:hover {
-    background: #fff;
+background: #fff;
 
-    transform: translateY(-4px);
+transform: translateY(-4px);  
 
-    box-shadow:
-        0 8px 20px rgba(255, 196, 0, 0.3);
+box-shadow:  
+    0 8px 20px rgba(255, 196, 0, 0.3);
+
 }
 
-
 /* =========================================
-   FOOTER
+FOOTER
 ========================================= */
 
 .footer {
-    width: 100%;
+width: 100%;
+min-height: 230px;
 
-    min-height: 180px;
+background: #8b1518;  
 
-    background: #8b1518;
+text-align: center;  
 
-    text-align: center;
+padding: 28px 0 0;  
 
-    padding: 28px 0 0;
+display: flex;  
+flex-direction: column;  
+align-items: center;  
 
-    display: flex;
+margin-top: auto;  
 
-    flex-direction: column;
+flex-shrink: 0;  
 
-    align-items: center;
+overflow: hidden;
 
-    margin-top: auto;
-
-    flex-shrink: 0;
 }
 
-
 /* =========================================
-   FOOTER TITLE
+FOOTER TITLE
 ========================================= */
 
 .footer h2 {
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+font-family:
+Impact,
+Haettenschweiler,
+"Arial Narrow Bold",
+sans-serif;
 
-    font-size: 34px;
+font-size: 34px;  
 
-    margin-bottom: 15px;
+margin: 0 0 15px 0;
+
 }
 
 .slogan {
-    font-family: Arial, sans-serif;
+font-family: Arial, sans-serif;
 
-    font-weight: bold;
+font-weight: bold;  
 
-    font-size: 16px;
+font-size: 16px;  
 
-    margin-bottom: 22px;
+margin: 0 0 22px 0;
+
 }
 
+/* =========================================
+SLOGAN
+========================================= */
+
+.slogan {
+font-family: Arial, sans-serif;
+
+font-weight: bold;  
+
+font-size: 16px;  
+
+margin: 0 0 22px 0;
+
+}
 
 /* =========================================
-   SOCIAL MEDIA
+
+SOCIAL MEDIA
 ========================================= */
 
 .social {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 14px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 14px;
 }
 
 .social-link {
-    display: flex;
+display: flex;
+align-items: center;
+justify-content: center;
 
-    align-items: center;
+gap: 10px;  
 
-    justify-content: center;
+color: #fff;  
 
-    gap: 10px;
+text-decoration: none;  
 
-    color: white;
+font-family: Arial, sans-serif;  
 
-    text-decoration: none;
+font-size: 16px;
 
-    font-family: Arial, sans-serif;
-
-    font-size: 16px;
-
-    transition: 0.3s;
 }
 
 .social-link i {
-    width: 25px;
+width: 25px;
 
-    font-size: 22px;
+font-size: 22px;  
 
-    text-align: center;
+text-align: center;
+
 }
 
 .social-link span {
-    margin: 0;
+margin: 0;
 }
 
 .social-link:hover {
-    color: #ffc400;
+color: #ffc400;
 }
 
-
 /* =========================================
-   COPYRIGHT
-   BAR KUNING
+COPYRIGHT
+BAR KUNING
 ========================================= */
 
 .copyright {
-    width: 100vw;
+display: flex;
 
-    height: 50px;
+width: 100%;  
+height: 50px;  
 
-    margin-top: 28px;
+margin-top: 28px;  
+padding: 0;  
 
-    padding: 0;
+background: #ffc400 !important;  
 
-    background: #ffc400;
+color: #000;  
 
-    color: #000;
+align-items: center;  
+justify-content: center;  
 
-    display: flex;
+font-family: Arial, sans-serif;  
 
-    align-items: center;
+font-size: 15px;  
 
-    justify-content: center;
+font-weight: bold;  
 
-    font-family: Arial, sans-serif;
+text-align: center;  
 
-    font-size: 15px;
+flex-shrink: 0;  
 
-    font-weight: bold;
+position: relative;  
 
-    text-align: center;
+left: 0;
 
-    flex-shrink: 0;
 }
 
-
 /* =========================================
-   TABLET
+TABLET
 ========================================= */
 
 @media (max-width: 900px) {
 
-    .navbar-scroll {
-        height: 65px;
-    }
+/* NAVBAR */  
 
-    .nav-menu {
-        gap: 22px;
+.navbar-scroll {  
+    height: 65px;  
+}  
 
-        padding: 0 20px;
-    }
+.nav-menu {  
+    gap: 22px;  
 
-    .nav-menu a {
-        font-size: 15px;
-    }
+    padding: 0 20px;  
+}  
 
-    .hero-content {
-        width: 90%;
-    }
+.nav-menu a {  
+    font-size: 15px;  
+}  
 
-    .logo {
-        width: 110px;
-    }
 
-    .about {
-        width: 82%;
-    }
+/* HERO */  
 
-    .about p {
-        font-size: 19px;
-    }
+.hero-content {  
+    width: 90%;  
+}  
 
-    .copyright {
-        width: 100vw;
-    }
+.logo {  
+    width: 110px;  
+}  
+
+
+/* ABOUT */  
+
+.about {  
+    width: 82%;  
+}  
+
+.about p {  
+    font-size: 19px;  
 }
 
+}
 
 /* =========================================
-   MOBILE
+MOBILE
 ========================================= */
 
 @media (max-width: 600px) {
 
-    /* =========================
-       NAVBAR
-    ========================= */
+/* =====================================  
+   NAVBAR MOBILE  
+===================================== */  
 
-    .navbar {
-        height: 60px;
+.navbar {  
+    height: 60px;  
 
-        width: 100%;
+    width: 100%;  
 
-        overflow: hidden;
-    }
+    overflow: hidden;  
+}  
 
-    .navbar-scroll {
-        width: 100%;
+.navbar-scroll {  
+    width: 100%;  
 
-        height: 60px;
+    height: 60px;  
 
-        overflow-x: auto;
-        overflow-y: hidden;
+    overflow-x: auto;  
 
-        white-space: nowrap;
+    overflow-y: hidden;  
 
-        scrollbar-width: none;
+    white-space: nowrap;  
 
-        -webkit-overflow-scrolling: touch;
-    }
+    scrollbar-width: none;  
 
-    .navbar-scroll::-webkit-scrollbar {
-        display: none;
-    }
+    -webkit-overflow-scrolling: touch;  
+}  
 
-    .nav-menu {
-        display: inline-flex;
+.navbar-scroll::-webkit-scrollbar {  
+    display: none;  
+}  
 
-        align-items: center;
+.nav-menu {  
+    display: inline-flex;  
 
-        flex-wrap: nowrap;
+    align-items: center;  
 
-        gap: 20px;
+    flex-wrap: nowrap;  
 
-        height: 60px;
+    gap: 20px;  
 
-        width: max-content;
+    height: 60px;  
 
-        min-width: 100%;
+    width: max-content;  
 
-        padding: 0 18px;
-    }
+    min-width: 100%;  
 
-    .nav-menu a {
-        flex: 0 0 auto;
+    padding: 0 18px;  
+}  
 
-        display: block;
+.nav-menu a {  
+    flex: 0 0 auto;  
 
-        font-size: 14px;
+    display: block;  
 
-        white-space: nowrap;
-    }
+    font-size: 14px;  
 
+    white-space: nowrap;  
+}  
 
-    /* =========================
-       HERO
-    ========================= */
 
-    .hero {
-        height: 360px;
-    }
+/* =====================================  
+   HERO MOBILE  
+===================================== */  
 
-    .hero-content {
-        width: 95%;
+.hero {  
+    height: 360px;  
+}  
 
-        gap: 10px;
+.hero-content {  
+    width: 95%;  
 
-        margin-top: 50px;
-    }
+    gap: 10px;  
 
-    .logo {
-        width: 85px;
-    }
+    margin-top: 50px;  
+}  
 
-    .hero-title h1 {
-        font-size: 58px;
-    }
+.logo {  
+    width: 85px;  
+}  
 
-    .hero-title h2 {
-        font-size: 18px;
+.hero-title h1 {  
+    font-size: 58px;  
+}  
 
-        margin-top: 8px;
-    }
+.hero-title h2 {  
+    font-size: 18px;  
 
+    margin-top: 8px;  
+}  
 
-    /* =========================
-       ABOUT
-    ========================= */
 
-    .about {
-        width: 85%;
+/* =====================================  
+   ABOUT MOBILE  
+===================================== */  
 
-        padding-top: 35px;
+.about {  
+    width: 85%;  
 
-        padding-bottom: 100px;
-    }
+    padding-top: 35px;  
 
-    .about p {
-        font-size: 17px;
+    padding-bottom: 100px;  
+}  
 
-        line-height: 1.55;
+.about p {  
+    font-size: 17px;  
 
-        text-align: justify;
+    line-height: 1.55;  
 
-        margin-bottom: 30px;
-    }
+    text-align: justify;  
 
+    margin-bottom: 30px;  
+}  
 
-    /* =========================
-       BUTTON
-    ========================= */
 
-    .about-buttons {
-        gap: 15px;
+/* =====================================  
+   BUTTON MOBILE  
+===================================== */  
 
-        margin-top: 30px;
-    }
+.about-buttons {  
+    gap: 15px;  
 
-    .btn {
-        min-width: 120px;
+    margin-top: 30px;  
+}  
 
-        height: 48px;
+.btn {  
+    min-width: 120px;  
 
-        padding: 0 20px;
+    height: 48px;  
 
-        font-size: 17px;
-    }
+    padding: 0 20px;  
 
+    font-size: 17px;  
+}  
 
-    /* =========================
-       FOOTER
-    ========================= */
 
-    .footer {
-        width: 100%;
+/* =====================================  
+   FOOTER MOBILE  
+===================================== */  
 
-        min-height: 230px;
+.footer {  
+    width: 100%;  
 
-        padding: 25px 0 0;
+    min-height: 230px;  
 
-        margin-top: auto;
-    }
+    padding: 25px 0 0;  
 
-    .footer h2 {
-        font-size: 28px;
+    margin-top: auto;  
+}  
 
-        margin-bottom: 15px;
-    }
+.footer h2 {  
+    font-size: 28px;  
 
-    .slogan {
-        font-size: 14px;
+    margin-bottom: 15px;  
+}  
 
-        margin-bottom: 20px;
-    }
+.slogan {  
+    font-size: 14px;  
 
-    .social {
-        gap: 14px;
-    }
+    margin-bottom: 20px;  
+}  
 
-    .social-link {
-        font-size: 15px;
-    }
+.social {  
+    gap: 14px;  
+}  
 
-    .social-link i {
-        font-size: 21px;
-    }
+.social-link {  
+    font-size: 15px;  
+}  
 
+.social-link i {  
+    font-size: 21px;  
+}  
 
-    /* =========================
-       COPYRIGHT
-    ========================= */
 
-    .copyright {
-        width: 100vw;
+/* =====================================  
+   COPYRIGHT MOBILE  
+===================================== */  
 
-        height: 50px;
+.copyright {  
+    width: 100%;  
 
-        margin-top: 25px;
+    height: 50px;  
 
-        padding: 0;
+    margin-top: 25px;  
 
-        background: #ffc400;
+    padding: 0;  
 
-        display: flex;
+    background: #ffc400;  
 
-        align-items: center;
+    display: flex;  
 
-        justify-content: center;
-    }
-       }
+    align-items: center;  
+
+    justify-content: center;  
+}  
+}
+
+gini?
