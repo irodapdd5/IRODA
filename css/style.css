@@ -1,7 +1,3 @@
-/* =========================================
-   RESET
-========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +6,14 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     background: #000;
     color: #fff;
     font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
 }
 
 
@@ -34,7 +32,14 @@ body {
     z-index: 100;
 
     background: rgba(0, 0, 0, 0.35);
+
+    /* PENTING:
+       navbar tidak boleh membuat halaman melebar */
+    overflow: hidden;
 }
+
+
+/* BAGIAN YANG BISA DI-SCROLL */
 
 .nav-menu {
     width: 100%;
@@ -46,33 +51,43 @@ body {
     /* WAJIB SATU BARIS */
     flex-wrap: nowrap;
 
-    justify-content: flex-end;
+    /* Jangan sampai item turun */
+    white-space: nowrap;
 
     gap: 25px;
 
     padding: 0 30px;
 
-    /* Kalau tidak muat, bisa digeser */
+    /* HANYA BAGIAN INI YANG SCROLL */
     overflow-x: auto;
     overflow-y: hidden;
 
-    /* Tidak boleh turun baris */
-    white-space: nowrap;
+    /* Supaya isi tidak memaksa halaman melebar */
+    min-width: 0;
 
-    /* Hilangkan scrollbar */
-    scrollbar-width: none;
-
+    /* Scroll halus di HP */
     -webkit-overflow-scrolling: touch;
+
+    /* Hilangkan scrollbar Firefox */
+    scrollbar-width: none;
 }
+
+
+/* Hilangkan scrollbar Chrome / Edge / Safari */
 
 .nav-menu::-webkit-scrollbar {
     display: none;
+    width: 0;
+    height: 0;
 }
+
+
+/* SETIAP MENU TETAP TERPISAH */
 
 .nav-menu a {
     flex: 0 0 auto;
 
-    display: inline-block;
+    display: block;
 
     color: white;
 
@@ -118,7 +133,7 @@ body {
 }
 
 
-/* Lapisan gelap di atas foto */
+/* Lapisan gelap */
 
 .hero-overlay {
     position: absolute;
@@ -155,6 +170,8 @@ body {
     gap: 25px;
 
     margin-top: 40px;
+
+    min-width: 0;
 }
 
 
@@ -166,6 +183,8 @@ body {
     height: auto;
 
     object-fit: contain;
+
+    flex-shrink: 0;
 }
 
 
@@ -175,6 +194,8 @@ body {
 
 .hero-title {
     text-align: left;
+
+    min-width: 0;
 }
 
 .hero-title h1 {
@@ -217,7 +238,7 @@ body {
 
 
 /* =========================================
-   ABOUT / ISI HALAMAN
+   ABOUT
 ========================================= */
 
 .about {
@@ -388,8 +409,6 @@ body {
 @media (max-width: 900px) {
 
     .nav-menu {
-        justify-content: flex-start;
-
         gap: 22px;
 
         padding: 0 20px;
@@ -423,14 +442,16 @@ body {
 
 @media (max-width: 600px) {
 
-    /*
-       PENTING:
-       Navbar tetap SATU BARIS.
-       Jangan menggunakan flex-wrap: wrap.
-    */
+    /* =========================
+       NAVBAR
+    ========================= */
 
     .navbar {
         height: 60px;
+
+        width: 100%;
+
+        overflow: hidden;
     }
 
     .nav-menu {
@@ -438,23 +459,37 @@ body {
 
         height: 60px;
 
-        flex-wrap: nowrap;
+        display: flex;
 
-        justify-content: flex-start;
+        align-items: center;
+
+        flex-wrap: nowrap;
 
         gap: 20px;
 
         padding: 0 18px;
 
+        /* HANYA NAVBAR YANG SCROLL */
         overflow-x: auto;
-
         overflow-y: hidden;
 
         white-space: nowrap;
+
+        min-width: 0;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-menu a {
         flex: 0 0 auto;
+
+        display: block;
 
         font-size: 14px;
 
@@ -552,4 +587,4 @@ body {
     .slogan {
         font-size: 14px;
     }
-}
+       }
