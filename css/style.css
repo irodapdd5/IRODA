@@ -19,10 +19,9 @@ body {
 }
 
 
-
-/* =========================
+/* =========================================
    NAVBAR
-========================= */
+========================================= */
 
 .navbar {
     position: absolute;
@@ -37,14 +36,15 @@ body {
     background: rgba(0, 0, 0, 0.35);
 }
 
-/* Baris menu tidak boleh turun */
 .nav-menu {
     width: 100%;
-
     height: 65px;
 
     display: flex;
     align-items: center;
+
+    /* WAJIB SATU BARIS */
+    flex-wrap: nowrap;
 
     justify-content: flex-end;
 
@@ -52,23 +52,27 @@ body {
 
     padding: 0 30px;
 
-    /* kalau tidak muat, geser ke samping */
+    /* Kalau tidak muat, bisa digeser */
     overflow-x: auto;
     overflow-y: hidden;
 
+    /* Tidak boleh turun baris */
     white-space: nowrap;
 
+    /* Hilangkan scrollbar */
     scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Hilangkan scrollbar di Chrome/Edge */
 .nav-menu::-webkit-scrollbar {
     display: none;
 }
 
-/* Link navbar */
 .nav-menu a {
     flex: 0 0 auto;
+
+    display: inline-block;
 
     color: white;
 
@@ -78,17 +82,19 @@ body {
 
     white-space: nowrap;
 
-    transition: 0.3s;
+    padding: 5px 0;
+
+    transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
     color: #ffc400;
 }
 
-/* Halaman yang sedang dibuka */
 .nav-menu a.active {
     color: white;
 }
+
 
 /* =========================================
    HERO
@@ -112,7 +118,7 @@ body {
 }
 
 
-/* overlay gelap */
+/* Lapisan gelap di atas foto */
 
 .hero-overlay {
     position: absolute;
@@ -123,7 +129,7 @@ body {
         linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.20) 40%,
+            rgba(0, 0, 0, 0.25) 45%,
             rgba(0, 0, 0, 0.95) 100%
         );
 }
@@ -135,12 +141,15 @@ body {
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     width: 75%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 25px;
@@ -149,10 +158,11 @@ body {
 }
 
 
-/* logo */
+/* Logo */
 
 .logo {
     width: 130px;
+
     height: auto;
 
     object-fit: contain;
@@ -170,7 +180,11 @@ body {
 .hero-title h1 {
     margin: 0;
 
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
     font-size: clamp(70px, 9vw, 120px);
 
@@ -188,7 +202,11 @@ body {
 .hero-title h2 {
     margin-top: 15px;
 
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
     font-size: clamp(20px, 2.8vw, 38px);
 
@@ -199,7 +217,7 @@ body {
 
 
 /* =========================================
-   ABOUT
+   ABOUT / ISI HALAMAN
 ========================================= */
 
 .about {
@@ -208,6 +226,7 @@ body {
     margin: 0 auto;
 
     padding-top: 50px;
+
     padding-bottom: 150px;
 }
 
@@ -240,9 +259,11 @@ body {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 145px;
+
     height: 58px;
 
     padding: 0 28px;
@@ -287,7 +308,11 @@ body {
 }
 
 .footer h2 {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
     font-size: 34px;
 
@@ -306,7 +331,7 @@ body {
 
 
 /* =========================================
-   SOCIAL
+   SOCIAL MEDIA
 ========================================= */
 
 .social {
@@ -362,15 +387,15 @@ body {
 
 @media (max-width: 900px) {
 
-    .navbar nav {
-        justify-content: center;
+    .nav-menu {
+        justify-content: flex-start;
 
-        gap: 18px;
+        gap: 22px;
 
         padding: 0 20px;
     }
 
-    .navbar a {
+    .nav-menu a {
         font-size: 15px;
     }
 
@@ -398,26 +423,48 @@ body {
 
 @media (max-width: 600px) {
 
+    /*
+       PENTING:
+       Navbar tetap SATU BARIS.
+       Jangan menggunakan flex-wrap: wrap.
+    */
+
     .navbar {
-        height: auto;
-
-        padding: 18px 10px;
+        height: 60px;
     }
 
-    .navbar nav {
-        flex-wrap: wrap;
+    .nav-menu {
+        width: 100%;
 
-        justify-content: center;
+        height: 60px;
 
-        gap: 12px 18px;
+        flex-wrap: nowrap;
+
+        justify-content: flex-start;
+
+        gap: 20px;
+
+        padding: 0 18px;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        white-space: nowrap;
     }
 
-    .navbar a {
-        font-size: 13px;
+    .nav-menu a {
+        flex: 0 0 auto;
+
+        font-size: 14px;
+
+        white-space: nowrap;
     }
 
 
-    /* hero */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
         height: 360px;
@@ -446,7 +493,9 @@ body {
     }
 
 
-    /* about */
+    /* =========================
+       ABOUT
+    ========================= */
 
     .about {
         width: 85%;
@@ -467,7 +516,9 @@ body {
     }
 
 
-    /* buttons */
+    /* =========================
+       BUTTON
+    ========================= */
 
     .about-buttons {
         gap: 15px;
@@ -486,7 +537,9 @@ body {
     }
 
 
-    /* footer */
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
         padding: 25px 15px;
