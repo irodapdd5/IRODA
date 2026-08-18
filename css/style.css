@@ -358,8 +358,12 @@ main {
 ========================================= */
 
 .footer {
-    width: 100%;
+/* =========================================
+   FOOTER
+========================================= */
 
+.footer {
+    width: 100%;
     min-height: 230px;
 
     background: #8b1518;
@@ -369,14 +373,14 @@ main {
     padding: 28px 0 0;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 
     margin-top: auto;
 
     flex-shrink: 0;
+
+    overflow: hidden;
 }
 
 
@@ -396,6 +400,15 @@ main {
     margin: 0 0 15px 0;
 }
 
+.slogan {
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    margin: 0 0 22px 0;
+}
 
 /* =========================================
    SLOGAN
@@ -412,25 +425,22 @@ main {
 }
 
 
-/* =========================================
+
+
+    /* =========================================
    SOCIAL MEDIA
 ========================================= */
 
 .social {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     gap: 14px;
 }
 
 .social-link {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 10px;
@@ -442,8 +452,6 @@ main {
     font-family: Arial, sans-serif;
 
     font-size: 16px;
-
-    transition: color 0.3s ease;
 }
 
 .social-link i {
@@ -465,26 +473,23 @@ main {
 
 /* =========================================
    COPYRIGHT
-   FULL WIDTH BAR KUNING
+   BAR KUNING
 ========================================= */
 
 .copyright {
-    width: 100%;
+    display: flex;
 
+    width: 100%;
     height: 50px;
 
     margin-top: 28px;
-
     padding: 0;
 
-    background: #ffc400;
+    background: #ffc400 !important;
 
     color: #000;
 
-    display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     font-family: Arial, sans-serif;
@@ -496,8 +501,11 @@ main {
     text-align: center;
 
     flex-shrink: 0;
-}
 
+    position: relative;
+
+    left: 0;
+}
 
 /* =========================================
    TABLET
