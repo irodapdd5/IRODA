@@ -655,10 +655,18 @@ body {
 
     align-items: center;
 
-    gap: 12px;
+    gap: 14px;
 }
 
 .social-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
     color: white;
 
     text-decoration: none;
@@ -670,8 +678,16 @@ body {
     transition: 0.3s;
 }
 
+.social-link i {
+    font-size: 22px;
+
+    width: 25px;
+
+    text-align: center;
+}
+
 .social-link span {
-    margin-left: 8px;
+    margin: 0;
 }
 
 .social-link:hover {
@@ -680,15 +696,15 @@ body {
 
 
 /* =========================================
-   GARIS KUNING + COPYRIGHT
+   COPYRIGHT - BAR KUNING
 ========================================= */
 
 .copyright {
     width: 100%;
 
-    margin-top: 25px;
+    margin-top: 28px;
 
-    padding: 12px 0;
+    padding: 16px 10px;
 
     background: #ffc400;
 
@@ -696,8 +712,9 @@ body {
 
     font-family: Arial, sans-serif;
 
-    font-size: 14px;
+    font-size: 15px;
 
     font-weight: bold;
 
+    text-align: center;
 }
