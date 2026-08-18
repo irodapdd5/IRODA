@@ -601,23 +601,23 @@ body {
     }
 
 
+
     /* =========================================
    FOOTER
 ========================================= */
 
 .footer {
-    min-height: 220px;
+    width: 100%;
+    min-height: 230px;
 
     background: #8b1518;
 
     text-align: center;
 
-    padding: 28px 20px 0;
+    padding: 28px 0 0;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
@@ -640,7 +640,7 @@ body {
 
     font-size: 16px;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 
@@ -696,7 +696,8 @@ body {
 
 
 /* =========================================
-   COPYRIGHT - BAR KUNING
+   COPYRIGHT
+   FULL WIDTH KUNING
 ========================================= */
 
 .copyright {
@@ -717,4 +718,44 @@ body {
     font-weight: bold;
 
     text-align: center;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .footer {
+        min-height: 230px;
+
+        padding: 25px 0 0;
+    }
+
+    .footer h2 {
+        font-size: 28px;
+    }
+
+    .slogan {
+        font-size: 14px;
+    }
+
+    .social-link {
+        font-size: 15px;
+    }
+
+    .social-link i {
+        font-size: 21px;
+    }
+
+    .copyright {
+        width: 100%;
+
+        padding: 16px 10px;
+
+        margin-top: 25px;
+    }
 }
