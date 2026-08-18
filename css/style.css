@@ -725,18 +725,21 @@ main {
 
 
 /* =========================================
-   COPYRIGHT
-   BAR KUNING FULL
+   COPYRIGHT - BAR KUNING
 ========================================= */
 
 .copyright {
-    width: 100%;
+    display: block;
+
+    width: 100% !important;
+
+    height: 50px;
 
     margin-top: 28px;
 
     padding: 16px 10px;
 
-    background: #ffc400;
+    background-color: #ffc400 !important;
 
     color: #000;
 
@@ -748,9 +751,10 @@ main {
 
     text-align: center;
 
+    box-sizing: border-box;
+
     flex-shrink: 0;
 }
-
 /* =========================================
    MOBILE
 ========================================= */
