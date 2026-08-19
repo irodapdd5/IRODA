@@ -29,6 +29,9 @@ const eventDescription =
 const dateList =
     document.getElementById("dateList");
 
+const imageContainer =
+    document.getElementById("eventImageContainer");
+
 
 // ==========================
 // VALIDASI ID
@@ -91,6 +94,31 @@ async function loadEvent() {
 
         const dates =
             data.dates || [];
+
+
+        // ==========================
+        // FOTO EVENT
+        // ==========================
+
+        if (imageContainer) {
+
+            if (event.image) {
+
+                imageContainer.innerHTML = `
+                    <img
+                        src="${event.image}"
+                        alt="${escapeHTML(event.name)}"
+                        class="event-main-image"
+                    >
+                `;
+
+            } else {
+
+                imageContainer.innerHTML = "";
+
+            }
+
+        }
 
 
         // ==========================
@@ -308,22 +336,4 @@ function escapeHTML(value) {
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
 
-}
-
-const imageContainer =
-    document.getElementById("eventImageContainer");
-
-if (data.event.image) {
-
-    imageContainer.innerHTML = `
-        <img
-            src="${data.event.image}"
-            alt="${escapeHTML(data.event.name)}"
-            class="event-main-image"
-        >
-    `;
-
-} else {
-
-    imageContainer.innerHTML = "";
-}
+                                 }
