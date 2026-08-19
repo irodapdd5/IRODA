@@ -1,10 +1,35 @@
 /* =========================================
    RESET
 ========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+
+/* =========================================
+   ROOT
+========================================= */
+
+:root {
+    --black: #000;
+    --black-soft: #111;
+    --black-card: #151515;
+
+    --yellow: #ffc400;
+    --yellow-soft: #fff4c2;
+
+    --maroon: #8b1518;
+    --maroon-hover: #a91c20;
+
+    --white: #fff;
+    --text: #222;
+    --muted: #777;
+    --border: #e8e8e8;
+
+    --background: #f5f5f5;
 }
 
 
@@ -17,14 +42,24 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    background: #f4f5f6;
+    background: var(--background);
 
-    color: #222;
+    color: var(--text);
 
     min-height: 100vh;
+
+    overflow-x: hidden;
 }
+
+
+/* =========================================
+   LINK & BUTTON
+========================================= */
 
 a {
     text-decoration: none;
@@ -56,11 +91,11 @@ button {
 
     min-height: 100vh;
 
+    background: var(--black);
+
+    color: var(--white);
+
     padding: 25px 18px;
-
-    background: #173b32;
-
-    color: #fff;
 
     display: flex;
 
@@ -87,15 +122,25 @@ button {
 }
 
 .brand img {
-    width: 45px;
+    width: 48px;
 
-    height: 45px;
+    height: 48px;
 
     object-fit: contain;
+
+    flex-shrink: 0;
 }
 
-.brand h2 {
-    font-size: 21px;
+.brand-text h2 {
+    color: var(--white);
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 23px;
 
     line-height: 1;
 }
@@ -105,9 +150,11 @@ button {
 
     margin-top: 5px;
 
+    color: #aaa;
+
     font-size: 8px;
 
-    opacity: .7;
+    letter-spacing: .5px;
 }
 
 
@@ -120,40 +167,55 @@ button {
 
     flex-direction: column;
 
-    gap: 6px;
+    gap: 7px;
 }
 
 .sidebar nav a {
+    color: #cfcfcf;
+
     display: flex;
 
     align-items: center;
 
-    gap: 13px;
+    gap: 12px;
 
     padding: 13px 15px;
 
     border-radius: 10px;
 
-    color: #dce8e4;
-
     font-size: 14px;
 
-    transition: .2s;
+    transition:
+        background .2s ease,
+        color .2s ease;
 }
 
-.sidebar nav a i {
-    width: 20px;
+.sidebar nav a span {
+    width: 22px;
 
     text-align: center;
 
-    font-size: 15px;
+    font-size: 17px;
 }
 
-.sidebar nav a:hover,
-.sidebar nav a.active {
-    background: #2b594c;
 
-    color: #fff;
+/* HOVER */
+
+.sidebar nav a:hover {
+    background: #1d1d1d;
+
+    color: var(--yellow);
+}
+
+
+/* ACTIVE */
+
+.sidebar nav a.active {
+    background: var(--yellow);
+
+    color: var(--black);
+
+    font-weight: bold;
 }
 
 
@@ -162,19 +224,19 @@ button {
 ========================================= */
 
 .logout {
-    width: 100%;
-
     margin-top: auto;
 
-    padding: 13px 15px;
+    width: 100%;
 
-    border: 0;
+    border: 1px solid #333;
 
-    border-radius: 10px;
-
-    background: #2b594c;
+    background: #151515;
 
     color: #fff;
+
+    padding: 13px;
+
+    border-radius: 10px;
 
     display: flex;
 
@@ -190,7 +252,15 @@ button {
 }
 
 .logout:hover {
-    background: #376b5c;
+    background: var(--maroon);
+
+    border-color: var(--maroon);
+
+    color: #fff;
+}
+
+.logout span {
+    font-size: 17px;
 }
 
 
@@ -201,11 +271,9 @@ button {
 .content {
     flex: 1;
 
-    width: calc(100% - 250px);
+    min-width: 0;
 
     padding: 35px;
-
-    max-width: 1400px;
 }
 
 
@@ -220,19 +288,31 @@ button {
 
     justify-content: space-between;
 
-    margin-bottom: 28px;
+    gap: 25px;
+
+    margin-bottom: 30px;
 }
 
 .topbar h1 {
-    font-size: 30px;
+    color: #111;
 
-    line-height: 1.1;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 34px;
+
+    font-weight: normal;
+
+    letter-spacing: .5px;
 }
 
 .topbar p {
-    margin-top: 6px;
+    color: var(--muted);
 
-    color: #777;
+    margin-top: 7px;
 
     font-size: 14px;
 }
@@ -251,15 +331,15 @@ button {
 }
 
 .avatar {
-    width: 42px;
+    width: 44px;
 
-    height: 42px;
+    height: 44px;
 
     border-radius: 50%;
 
-    background: #d9a441;
+    background: var(--yellow);
 
-    color: #fff;
+    color: var(--black);
 
     display: flex;
 
@@ -268,6 +348,8 @@ button {
     justify-content: center;
 
     font-weight: bold;
+
+    font-size: 16px;
 }
 
 .admin strong,
@@ -276,15 +358,17 @@ button {
 }
 
 .admin strong {
+    color: #222;
+
     font-size: 14px;
 }
 
 .admin span {
-    margin-top: 3px;
-
-    color: #777;
+    color: var(--muted);
 
     font-size: 11px;
+
+    margin-top: 4px;
 }
 
 
@@ -293,33 +377,72 @@ button {
 ========================================= */
 
 .welcome {
-    padding: 25px 28px;
+    position: relative;
 
-    margin-bottom: 20px;
+    overflow: hidden;
 
-    border-radius: 15px;
+    background: var(--black);
 
-    background: #28594b;
+    color: var(--white);
 
-    color: #fff;
+    border-radius: 16px;
+
+    padding: 30px;
+
+    margin-bottom: 22px;
+
+    border-left: 5px solid var(--yellow);
 }
 
-.welcome span {
+
+/* dekorasi kuning */
+
+.welcome::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    right: -65px;
+
+    top: -65px;
+
+    border-radius: 50%;
+
+    border: 25px solid rgba(255, 196, 0, .12);
+}
+
+.welcome-label {
+    color: var(--yellow);
+
     font-size: 10px;
 
-    letter-spacing: 2px;
+    font-weight: bold;
 
-    opacity: .7;
+    letter-spacing: 1.5px;
 }
 
 .welcome h2 {
-    margin-top: 6px;
+    color: #fff;
 
-    font-size: 23px;
+    font-size: 25px;
+
+    margin-top: 8px;
 }
 
-.welcome b {
-    color: #ffc400;
+.welcome h2 span {
+    color: var(--yellow);
+}
+
+.welcome p {
+    color: #bbb;
+
+    margin-top: 8px;
+
+    font-size: 13px;
 }
 
 
@@ -330,19 +453,20 @@ button {
 .stats {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
     gap: 18px;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .stat-card {
-    padding: 20px;
+    background: #fff;
 
     border-radius: 14px;
 
-    background: #fff;
+    padding: 20px;
 
     display: flex;
 
@@ -350,20 +474,40 @@ button {
 
     gap: 15px;
 
+    border: 1px solid var(--border);
+
     box-shadow:
-        0 3px 12px rgba(0, 0, 0, .04);
+        0 4px 15px rgba(0, 0, 0, .04);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .08);
+}
+
+
+/* =========================================
+   STAT ICON
+========================================= */
+
 .stat-icon {
-    width: 48px;
+    width: 50px;
 
-    height: 48px;
+    height: 50px;
 
-    border-radius: 11px;
+    flex-shrink: 0;
 
-    background: #edf4f1;
+    background: var(--yellow);
 
-    color: #28594b;
+    color: var(--black);
+
+    border-radius: 12px;
 
     display: flex;
 
@@ -371,23 +515,33 @@ button {
 
     justify-content: center;
 
-    font-size: 19px;
+    font-size: 22px;
 }
 
 .stat-card span {
     display: block;
 
-    color: #777;
+    color: var(--muted);
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .stat-card strong {
     display: block;
 
-    margin-top: 3px;
+    color: #111;
 
-    font-size: 25px;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 28px;
+
+    font-weight: normal;
+
+    margin-top: 3px;
 }
 
 
@@ -396,15 +550,22 @@ button {
 ========================================= */
 
 .documentation {
-    padding: 25px;
+    background: #fff;
 
     border-radius: 14px;
 
-    background: #fff;
+    padding: 25px;
+
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 3px 12px rgba(0, 0, 0, .04);
+        0 4px 15px rgba(0, 0, 0, .04);
 }
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
 
 .section-header {
     display: flex;
@@ -415,24 +576,34 @@ button {
 
     gap: 20px;
 
-    margin-bottom: 22px;
+    margin-bottom: 25px;
 }
 
 .section-header h2 {
-    font-size: 20px;
+    color: #111;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 23px;
+
+    font-weight: normal;
 }
 
 .section-header p {
+    color: var(--muted);
+
+    font-size: 13px;
+
     margin-top: 5px;
-
-    color: #777;
-
-    font-size: 12px;
 }
 
 
 /* =========================================
-   BUTTON
+   PRIMARY BUTTON
 ========================================= */
 
 .primary-button {
@@ -440,17 +611,19 @@ button {
 
     align-items: center;
 
-    gap: 8px;
+    justify-content: center;
 
-    padding: 10px 14px;
+    min-height: 42px;
+
+    padding: 0 17px;
 
     border-radius: 9px;
 
-    background: #28594b;
+    background: var(--maroon);
 
     color: #fff;
 
-    font-size: 12px;
+    font-size: 13px;
 
     font-weight: bold;
 
@@ -460,25 +633,45 @@ button {
 }
 
 .primary-button:hover {
-    background: #1f493d;
+    background: var(--maroon-hover);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(139, 21, 24, .18);
 }
 
 
 /* =========================================
-   LOADING
+   RECENT
+========================================= */
+
+.recent h3 {
+    color: #222;
+
+    font-size: 17px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   LOADING / EMPTY
 ========================================= */
 
 .loading,
 .empty {
+    background: #f7f7f7;
+
+    border: 1px solid #eee;
+
     padding: 25px;
 
     border-radius: 10px;
 
-    background: #f7f8f9;
+    text-align: center;
 
     color: #777;
-
-    text-align: center;
 
     font-size: 13px;
 }
@@ -499,66 +692,53 @@ button {
 
     padding: 15px;
 
-    margin-bottom: 8px;
+    background: #fff;
 
     border: 1px solid #eee;
 
     border-radius: 10px;
 
-    transition: .2s;
+    margin-bottom: 8px;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease;
 }
 
 .recent-event:hover {
-    border-color: #d7e2de;
+    border-color: var(--yellow);
 
-    background: #fafcfc;
+    background: #fffdf3;
 }
 
 .recent-event h4 {
-    font-size: 14px;
+    color: #222;
+
+    font-size: 15px;
 }
 
 .recent-event p {
-    margin-top: 4px;
-
     color: #777;
 
-    font-size: 11px;
+    font-size: 12px;
+
+    margin-top: 4px;
 }
 
 .recent-event .year {
-    padding: 5px 8px;
+    background: var(--yellow);
+
+    color: #000;
+
+    padding: 5px 9px;
 
     border-radius: 6px;
 
-    background: #edf4f1;
-
-    color: #28594b;
-
-    font-size: 10px;
+    font-size: 11px;
 
     font-weight: bold;
 
-    white-space: nowrap;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 900px) {
-
-    .sidebar {
-        width: 220px;
-    }
-
-    .content {
-        width: calc(100% - 220px);
-
-        padding: 25px;
-    }
-
+    flex-shrink: 0;
 }
 
 
@@ -568,18 +748,46 @@ button {
 
 @media (max-width: 700px) {
 
+    /* ==========================
+       LAYOUT
+    ========================== */
+
+    .layout {
+        min-height: 100vh;
+    }
+
+
+    /* ==========================
+       SIDEBAR
+    ========================== */
+
     .sidebar {
-        width: 65px;
+        width: 68px;
 
         padding: 20px 9px;
+
+        position: fixed;
+
+        left: 0;
+
+        top: 0;
+
+        bottom: 0;
+
+        z-index: 100;
     }
+
+
+    /* ==========================
+       BRAND
+    ========================== */
 
     .brand {
         justify-content: center;
 
-        padding: 0;
-
         margin-bottom: 35px;
+
+        padding: 0;
     }
 
     .brand img {
@@ -593,106 +801,211 @@ button {
     }
 
 
+    /* ==========================
+       NAV
+    ========================== */
+
     .sidebar nav {
         gap: 8px;
     }
 
     .sidebar nav a {
+        width: 50px;
+
+        height: 48px;
+
+        padding: 0;
+
         justify-content: center;
 
-        padding: 13px 8px;
-    }
+        border-radius: 10px;
 
-    .sidebar nav a i {
-        width: auto;
-
-        font-size: 17px;
+        font-size: 0;
     }
 
     .sidebar nav a span {
-        display: none;
+        width: auto;
+
+        font-size: 19px;
     }
 
 
+    /* ==========================
+       LOGOUT
+    ========================== */
+
     .logout {
-        padding: 13px 8px;
+        width: 50px;
+
+        height: 48px;
+
+        padding: 0;
+
+        font-size: 0;
     }
 
     .logout span {
-        display: none;
+        font-size: 19px;
     }
 
+
+    /* ==========================
+       CONTENT
+    ========================== */
 
     .content {
-        width: calc(100% - 65px);
+        width: calc(100% - 68px);
 
-        padding: 20px 15px;
+        margin-left: 68px;
+
+        padding: 22px 16px;
     }
 
 
+    /* ==========================
+       TOPBAR
+    ========================== */
+
     .topbar {
-        margin-bottom: 20px;
+        margin-bottom: 22px;
     }
 
     .topbar h1 {
-        font-size: 25px;
+        font-size: 28px;
     }
 
     .topbar p {
         font-size: 12px;
-    }
 
+        line-height: 1.5;
+    }
 
     .admin {
         display: none;
     }
 
 
+    /* ==========================
+       WELCOME
+    ========================== */
+
     .welcome {
-        padding: 21px;
+        padding: 23px 20px;
 
         border-radius: 13px;
+
+        margin-bottom: 18px;
     }
 
     .welcome h2 {
-        font-size: 19px;
+        font-size: 20px;
+
+        line-height: 1.3;
     }
 
+    .welcome p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+    /* ==========================
+       STATS
+    ========================== */
 
     .stats {
         grid-template-columns: 1fr;
 
         gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-icon {
+        width: 46px;
+
+        height: 46px;
+
+        font-size: 20px;
+    }
+
+    .stat-card strong {
+        font-size: 25px;
     }
 
 
+    /* ==========================
+       DOCUMENTATION
+    ========================== */
+
     .documentation {
-        padding: 18px;
+        padding: 20px;
 
         border-radius: 13px;
     }
-
 
     .section-header {
         align-items: flex-start;
 
         flex-direction: column;
 
-        gap: 12px;
+        gap: 13px;
+
+        margin-bottom: 20px;
     }
 
+    .section-header h2 {
+        font-size: 21px;
+    }
+
+    .section-header p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
 
     .primary-button {
         width: 100%;
 
-        justify-content: center;
+        min-height: 42px;
     }
 
+
+    /* ==========================
+       RECENT
+    ========================== */
+
+    .recent h3 {
+        font-size: 16px;
+    }
 
     .recent-event {
         align-items: flex-start;
 
-        flex-direction: column;
+        padding: 13px;
+
+        gap: 10px;
+    }
+
+    .recent-event h4 {
+        font-size: 14px;
+
+        line-height: 1.4;
+    }
+
+    .recent-event p {
+        font-size: 11px;
+    }
+
+    .recent-event .year {
+        font-size: 10px;
+
+        padding: 5px 7px;
     }
 
 }
@@ -705,25 +1018,44 @@ button {
 @media (max-width: 400px) {
 
     .sidebar {
-        width: 58px;
+        width: 62px;
 
         padding-left: 7px;
 
         padding-right: 7px;
     }
 
+    .sidebar nav a,
+    .logout {
+        width: 48px;
+    }
+
     .content {
-        width: calc(100% - 58px);
+        width: calc(100% - 62px);
+
+        margin-left: 62px;
 
         padding: 18px 12px;
     }
 
     .topbar h1 {
-        font-size: 23px;
+        font-size: 25px;
+    }
+
+    .welcome {
+        padding: 20px 17px;
     }
 
     .welcome h2 {
         font-size: 18px;
     }
 
+    .documentation {
+        padding: 17px;
     }
+
+    .recent-event {
+        padding: 12px;
+    }
+
+}
