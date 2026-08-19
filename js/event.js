@@ -144,119 +144,142 @@ if (eventImage) {
 
 function compressImage(file) {
 
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-            const reader =
-                new FileReader();
+        if (!file) {
+            reject(new Error("File foto tidak ditemukan"));
+            return;
+        }
 
+        if (!file.type.startsWith("image/")) {
+            reject(new Error("File bukan gambar"));
+            return;
+        }
 
-            reader.onload =
-                function (event) {
+        const reader = new FileReader();
 
-                    const img =
-                        new Image();
+        reader.onload = function (event) {
 
+            const img = new Image();
 
-                    img.onload =
-                        function () {
+            img.onload = function () {
 
-                            const canvas =
-                                document.createElement(
-                                    "canvas"
-                                );
+                const canvas =
+                    document.createElement("canvas");
 
+                const maxWidth = 1200;
 
-                            const maxWidth =
-                                1200;
+                let width = img.width;
+                let height = img.height;
 
+                if (width > maxWidth) {
 
-                            let width =
-                                img.width;
+                    height =
+                        height * maxWidth / width;
 
-                            let height =
-                                img.height;
+                    width = maxWidth;
 
+                }
 
-                            // ==================
-                            // RESIZE
-                            // ==================
+                canvas.width = width;
+                canvas.height = height;
 
-                            if (
-                                width >
-                                maxWidth
-                            ) {
+                const ctx =
+                    canvas.getContext("2d");
 
-                                height =
-                                    height *
-                                    maxWidth /
-                                    width;
+                if (!ctx) {
+                    reject(
+                        new Error(
+                            "Canvas tidak dapat dibuat"
+                        )
+                    );
+                    return;
+                }
 
-                                width =
-                                    maxWidth;
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    width,
+                    height
+                );
 
-                            }
+                canvas.toBlob(
+                    function (blob) {
 
+                        if (!blob) {
 
-                            canvas.width =
-                                width;
-
-                            canvas.height =
-                                height;
-
-
-                            const ctx =
-                                canvas.getContext(
-                                    "2d"
-                                );
-
-
-                            ctx.drawImage(
-                                img,
-                                0,
-                                0,
-                                width,
-                                height
+                            reject(
+                                new Error(
+                                    "Foto gagal dikompres"
+                                )
                             );
 
+                            return;
+                        }
 
-                            // ==================
-                            // JPEG
-                            // ==================
+                        const readerBlob =
+                            new FileReader();
 
-                            const image =
-                                canvas.toDataURL(
-                                    "image/jpeg",
-                                    0.70
+                        readerBlob.onload =
+                            function () {
+
+                                resolve(
+                                    readerBlob.result
                                 );
 
+                            };
 
-                            resolve(image);
+                        readerBlob.onerror =
+                            function () {
 
-                        };
+                                reject(
+                                    new Error(
+                                        "Foto gagal dibaca"
+                                    )
+                                );
 
+                            };
 
-                    img.onerror =
-                        reject;
+                        readerBlob.readAsDataURL(
+                            blob
+                        );
 
+                    },
+                    "image/jpeg",
+                    0.70
+                );
 
-                    img.src =
-                        event.target.result;
+            };
 
-                };
+            img.onerror = function () {
 
+                reject(
+                    new Error(
+                        "File gambar tidak dapat dibaca"
+                    )
+                );
 
-            reader.onerror =
-                reject;
+            };
 
+            img.src = event.target.result;
 
-            reader.readAsDataURL(file);
+        };
 
-        }
-    );
+        reader.onerror = function () {
 
-}
+            reject(
+                new Error(
+                    "File tidak dapat dibaca"
+                )
+            );
 
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+                        }
 
 // ==========================
 // LOAD EVENTS
