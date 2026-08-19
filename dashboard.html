@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - IRODA</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="assets/images/logo.png" alt="Logo IRODA">
+
+            <div class="brand-text">
+                <h2>IRODA</h2>
+                <span>IKATAN REMAJA RT02</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html" class="active">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="event.html">
+                <span>📁</span>
+                Dokumentasi
+            </a>
+
+        </nav>
+
+        <button id="logoutButton" class="logout">
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p>Selamat datang kembali di panel admin IRODA.</p>
+            </div>
+
+            <div class="admin">
+
+                <div class="avatar" id="avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong id="adminName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+        <section class="welcome">
+
+            <div>
+                <span class="welcome-label">
+                    PANEL ADMIN
+                </span>
+
+                <h2>
+                    Selamat Datang, <span id="welcomeName">Admin</span> 👋
+                </h2>
+
+                <p>
+                    Kelola dokumentasi dan kegiatan IRODA
+                    melalui dashboard ini.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📁
+                </div>
+
+                <div>
+                    <span>Total Event</span>
+                    <strong id="totalEvents">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📅
+                </div>
+
+                <div>
+                    <span>Tahun Dokumentasi</span>
+                    <strong id="totalYears">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DOCUMENTATION -->
+        <section class="documentation">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Dokumentasi</h2>
+
+                    <p>
+                        Kelola dokumentasi kegiatan IRODA.
+                    </p>
+                </div>
+
+                <a
+                    href="event.html"
+                    class="primary-button"
+                >
+                    Kelola Dokumentasi
+                </a>
+
+            </div>
+
+
+            <!-- RECENT EVENTS -->
+
+            <div class="recent">
+
+                <h3>
+                    Event Terbaru
+                </h3>
+
+                <div id="recentEvents">
+
+                    <div class="loading">
+                        Memuat event...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
