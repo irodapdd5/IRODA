@@ -785,23 +785,30 @@ TABLET
     ===================================== */
 
     .copyright {
-        width: 100%;
+    width: 100vw;
+    height: 50px;
 
-        height: 50px;
+    margin-top: 25px;
+    margin-left: calc(50% - 50vw);
 
-        margin-top: 25px;
+    padding: 0;
 
-        padding: 0;
+    background: #ffc400 !important;
+    color: #000;
 
-        background: #ffc400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        display: flex;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
 
-        align-items: center;
+    text-align: center;
+    flex-shrink: 0;
 
-        justify-content: center;
-
-        font-size: 14px;
+    position: relative;
+    left: 0;
     }
 
 }
