@@ -89,8 +89,8 @@ async function loadYears() {
             card.innerHTML = `
 
                 <div class="year-icon">
-                    📅
-                </div>
+    <i class="fa-regular fa-calendar"></i>
+</div>
 
                 <span>
                     Dokumentasi Tahun
@@ -107,11 +107,12 @@ async function loadYears() {
                 <br>
 
                 <a
-                    href="dokumentasi-event.html?year=${encodeURIComponent(year)}"
-                    class="year-button"
-                >
-                    Lihat Kegiatan →
-                </a>
+    href="dokumentasi-event.html?year=${encodeURIComponent(year)}"
+    class="year-button"
+>
+    Lihat Kegiatan
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
 
             `;
 
