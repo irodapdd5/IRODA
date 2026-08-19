@@ -309,3 +309,21 @@ function escapeHTML(value) {
         .replaceAll("'", "&#039;");
 
 }
+
+const imageContainer =
+    document.getElementById("eventImageContainer");
+
+if (data.event.image) {
+
+    imageContainer.innerHTML = `
+        <img
+            src="${data.event.image}"
+            alt="${escapeHTML(data.event.name)}"
+            class="event-main-image"
+        >
+    `;
+
+} else {
+
+    imageContainer.innerHTML = "";
+}
