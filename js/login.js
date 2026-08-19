@@ -3,7 +3,7 @@ const message = document.getElementById("message");
 
 
 // URL API CLOUDFLARE WORKER
-const API_URL = "MASUKKAN_URL_WORKER_KAMU";
+const API_URL = "https://iroda-backend.irodapdd5.workers.dev/login";
 
 
 loginForm.addEventListener("submit", async function (event) {
