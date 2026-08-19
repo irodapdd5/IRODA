@@ -1023,5 +1023,3 @@ localStorage.removeItem(
 // ==========================
 
 loadEvents();
-
-mending kamu updatein sesuai yg kamu suruh itu aku bingung
