@@ -2,134 +2,43 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dokumentasi Kegiatan - IRODA</title>
 
-    <link
-        rel="stylesheet"
-        href="css/dokumentasi-event.css"
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
+    <link rel="stylesheet" href="css/dokumentasi-event.css">
 </head>
-
 
 <body>
 
-
-<!-- =========================================
-     NAVBAR
-========================================= -->
-
-<header class="navbar">
-
-    <div class="navbar-scroll">
-
-        <nav class="nav-menu">
-
-            <!-- LOGIN -->
-            <a
-                href="login.html"
-                id="loginNav"
-            >
-                Login
-            </a>
-
-
-            <!-- DASHBOARD -->
-            <a
-                href="dashboard.html"
-                id="dashboardNav"
-                style="display: none;"
-            >
-                Dashboard
-            </a>
-
-
-            <!-- HALAMAN UTAMA -->
-            <a href="index.html">
-                Halaman Utama
-            </a>
-
-
-            <!-- JADWAL EVENT -->
-            <a href="event.html">
-                Jadwal Event
-            </a>
-
-
-            <!-- JADWAL KEGIATAN -->
-            <a href="kegiatan.html">
-                Jadwal kegiatan
-            </a>
-
-
-            <!-- HASIL DOKUMENTASI -->
-            <a href="dokumentasi.html">
-                Hasil dokumentasi
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================
-     MAIN
-========================================= -->
-
 <main>
 
-
-    <!-- =====================================
+    <!-- =========================
          HERO
-    ====================================== -->
+    ========================== -->
 
     <section class="hero">
-
-        <div class="hero-overlay"></div>
-
 
         <div class="hero-content">
 
             <a
                 href="dokumentasi.html"
-                class="back-button"
+                class="back"
             >
-                <i class="fa-solid fa-arrow-left"></i>
-
-                Kembali ke Dokumentasi
+                ← Kembali ke Dokumentasi
             </a>
 
-
             <span class="hero-label">
-                HASIL DOKUMENTASI
+                HASIL DOKUMENTASI IRODA
             </span>
-
 
             <h1 id="yearTitle">
                 Dokumentasi Tahun
             </h1>
 
-
             <p>
-                Daftar kegiatan IRODA
-                pada tahun tersebut.
+                Daftar kegiatan IRODA pada tahun tersebut.
             </p>
 
         </div>
@@ -137,25 +46,21 @@
     </section>
 
 
-
-    <!-- =====================================
+    <!-- =========================
          EVENTS
-    ====================================== -->
+    ========================== -->
 
     <section class="events">
-
 
         <div class="section-title">
 
             <span class="section-label">
-                DOKUMENTASI IRODA
+                DOKUMENTASI KEGIATAN
             </span>
-
 
             <h2>
                 Kegiatan
             </h2>
-
 
             <p id="eventCount">
                 Memuat kegiatan...
@@ -164,61 +69,36 @@
         </div>
 
 
-
-        <!-- EVENT LIST -->
-
         <div
             id="eventList"
             class="event-list"
         >
 
             <div class="loading">
-
-                <i class="fa-solid fa-spinner"></i>
-
                 Memuat kegiatan...
-
             </div>
 
         </div>
 
-
     </section>
-
 
 </main>
 
 
-
-<!-- =========================================
+<!-- =========================
      FOOTER
-========================================= -->
+========================== -->
 
 <footer>
 
-    <div class="footer-main">
-
-        IRODA — Ikatan Remaja RT02
-
-    </div>
-
-
-    <div class="footer-copyright">
-
-        © 2026 IRODA
-
+    <div class="copyright">
+        © 2026 IRODA — Ikatan Remaja RT02
     </div>
 
 </footer>
 
 
-
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
-
 <script src="js/dokumentasi-event.js"></script>
-
 
 </body>
 
