@@ -558,207 +558,250 @@ TABLET
 }
 
 /* =========================================
-MOBILE
+   MOBILE
 ========================================= */
 
 @media (max-width: 600px) {
 
-/* =====================================  
-   NAVBAR MOBILE  
-===================================== */  
+    /* =====================================
+       NAVBAR
+    ===================================== */
 
-.navbar {  
-    height: 60px;  
+    .navbar {
+        height: 60px;
+        width: 100%;
+        overflow: hidden;
+    }
 
-    width: 100%;  
+    .navbar-scroll {
+        width: 100%;
+        height: 60px;
 
-    overflow: hidden;  
-}  
+        overflow-x: auto;
+        overflow-y: hidden;
 
-.navbar-scroll {  
-    width: 100%;  
+        white-space: nowrap;
 
-    height: 60px;  
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
 
-    overflow-x: auto;  
+    .navbar-scroll::-webkit-scrollbar {
+        display: none;
+    }
 
-    overflow-y: hidden;  
+    .nav-menu {
+        display: inline-flex;
 
-    white-space: nowrap;  
+        align-items: center;
+        flex-wrap: nowrap;
 
-    scrollbar-width: none;  
+        gap: 20px;
 
-    -webkit-overflow-scrolling: touch;  
-}  
+        height: 60px;
 
-.navbar-scroll::-webkit-scrollbar {  
-    display: none;  
-}  
+        width: max-content;
+        min-width: 100%;
 
-.nav-menu {  
-    display: inline-flex;  
+        padding: 0 18px;
+    }
 
-    align-items: center;  
+    .nav-menu a {
+        flex: 0 0 auto;
 
-    flex-wrap: nowrap;  
+        display: block;
 
-    gap: 20px;  
+        font-size: 14px;
 
-    height: 60px;  
+        white-space: nowrap;
 
-    width: max-content;  
+        padding: 5px 0;
+    }
 
-    min-width: 100%;  
 
-    padding: 0 18px;  
-}  
+    /* =====================================
+       HERO
+    ===================================== */
 
-.nav-menu a {  
-    flex: 0 0 auto;  
+    .hero {
+        height: 360px;
+    }
 
-    display: block;  
+    .hero-content {
+        width: 92%;
 
-    font-size: 14px;  
+        gap: 12px;
 
-    white-space: nowrap;  
-}  
+        margin-top: 45px;
+    }
 
+    .logo {
+        width: 85px;
+    }
 
-/* =====================================  
-   HERO MOBILE  
-===================================== */  
+    .hero-title h1 {
+        font-size: 58px;
 
-.hero {  
-    height: 360px;  
-}  
+        line-height: 0.9;
 
-.hero-content {  
-    width: 95%;  
+        letter-spacing: 1px;
+    }
 
-    gap: 10px;  
+    .hero-title h2 {
+        font-size: 17px;
 
-    margin-top: 50px;  
-}  
+        line-height: 1.2;
 
-.logo {  
-    width: 85px;  
-}  
+        margin-top: 9px;
 
-.hero-title h1 {  
-    font-size: 58px;  
-}  
+        letter-spacing: 0.5px;
+    }
 
-.hero-title h2 {  
-    font-size: 18px;  
 
-    margin-top: 8px;  
-}  
+    /* =====================================
+       ABOUT / DESKRIPSI
+    ===================================== */
 
+    .about {
+        width: 88%;
 
-/* =====================================  
-   ABOUT MOBILE  
-===================================== */  
+        max-width: 600px;
 
-.about {  
-    width: 85%;  
+        margin: 0 auto;
 
-    padding-top: 35px;  
+        padding-top: 38px;
 
-    padding-bottom: 100px;  
-}  
+        padding-bottom: 90px;
+    }
 
-.about p {  
-    font-size: 17px;  
 
-    line-height: 1.55;  
+    .about p {
+        font-size: 16px;
 
-    text-align: justify;  
+        line-height: 1.75;
 
-    margin-bottom: 30px;  
-}  
+        text-align: left;
 
+        letter-spacing: 0.15px;
 
-/* =====================================  
-   BUTTON MOBILE  
-===================================== */  
+        margin: 0 0 26px 0;
 
-.about-buttons {  
-    gap: 15px;  
+        color: #f5f5f5;
 
-    margin-top: 30px;  
-}  
+        word-break: normal;
 
-.btn {  
-    min-width: 120px;  
+        overflow-wrap: break-word;
+    }
 
-    height: 48px;  
 
-    padding: 0 20px;  
+    /* Paragraf terakhir */
 
-    font-size: 17px;  
-}  
+    .about p:last-of-type {
+        margin-bottom: 0;
+    }
 
 
-/* =====================================  
-   FOOTER MOBILE  
-===================================== */  
+    /* =====================================
+       BUTTON
+    ===================================== */
 
-.footer {  
-    width: 100%;  
+    .about-buttons {
+        display: flex;
 
-    min-height: 230px;  
+        justify-content: center;
 
-    padding: 25px 0 0;  
+        gap: 14px;
 
-    margin-top: auto;  
-}  
+        margin-top: 35px;
 
-.footer h2 {  
-    font-size: 28px;  
+        flex-wrap: wrap;
+    }
 
-    margin-bottom: 15px;  
-}  
+    .btn {
+        min-width: 120px;
 
-.slogan {  
-    font-size: 14px;  
+        height: 48px;
 
-    margin-bottom: 20px;  
-}  
+        padding: 0 20px;
 
-.social {  
-    gap: 14px;  
-}  
+        font-size: 16px;
 
-.social-link {  
-    font-size: 15px;  
-}  
+        border-radius: 30px;
+    }
 
-.social-link i {  
-    font-size: 21px;  
-}  
 
+    /* =====================================
+       FOOTER
+    ===================================== */
 
-/* =====================================  
-   COPYRIGHT MOBILE  
-===================================== */  
+    .footer {
+        width: 100%;
 
-.copyright {  
-    width: 100%;  
+        min-height: 230px;
 
-    height: 50px;  
+        padding: 25px 15px 0;
 
-    margin-top: 25px;  
+        margin-top: auto;
+    }
 
-    padding: 0;  
+    .footer h2 {
+        font-size: 28px;
 
-    background: #ffc400;  
+        margin-bottom: 14px;
+    }
 
-    display: flex;  
+    .slogan {
+        font-size: 14px;
 
-    align-items: center;  
+        line-height: 1.5;
 
-    justify-content: center;  
-}  
+        margin-bottom: 20px;
+    }
+
+
+    /* =====================================
+       SOCIAL MEDIA
+    ===================================== */
+
+    .social {
+        gap: 14px;
+    }
+
+    .social-link {
+        font-size: 15px;
+
+        line-height: 1.4;
+    }
+
+    .social-link i {
+        width: 24px;
+
+        font-size: 21px;
+    }
+
+
+    /* =====================================
+       COPYRIGHT
+    ===================================== */
+
+    .copyright {
+        width: 100%;
+
+        height: 50px;
+
+        margin-top: 25px;
+
+        padding: 0;
+
+        background: #ffc400;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 14px;
+    }
+
 }
-
-gini?
