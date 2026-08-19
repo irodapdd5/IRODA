@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dokumentasi Event - IRODA</title>
+
+    <link rel="stylesheet" href="css/event.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="assets/images/logo.png" alt="Logo IRODA">
+
+            <div>
+                <h2>IRODA</h2>
+                <span>IKATAN REMAJA RT02</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="event.html" class="active">
+                📅 Dokumentasi
+            </a>
+
+        </nav>
+
+        <button id="logoutButton" class="logout">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dokumentasi Event</h1>
+                <p>Kelola dokumentasi kegiatan IRODA.</p>
+            </div>
+
+            <div class="admin">
+                <div class="avatar" id="avatar">A</div>
+
+                <div>
+                    <strong id="adminName">Admin</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- EVENT HEADER -->
+
+        <section class="page-header">
+
+            <div>
+                <h2>Daftar Event</h2>
+                <p>
+                    Event akan otomatis diurutkan berdasarkan tanggal kegiatan.
+                </p>
+            </div>
+
+            <button id="addEventButton" class="primary-button">
+                + Tambah Event
+            </button>
+
+        </section>
+
+
+        <!-- EVENT LIST -->
+
+        <section id="eventList" class="event-list">
+
+            <div class="loading">
+                Memuat event...
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div id="eventModal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Tambah Event</h2>
+                <p>Buat dokumentasi kegiatan baru.</p>
+            </div>
+
+            <button id="closeModal" class="close-button">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="eventForm">
+
+            <div class="form-group">
+
+                <label for="year">
+                    Tahun
+                </label>
+
+                <input
+                    type="number"
+                    id="year"
+                    min="2000"
+                    max="2100"
+                    value="2026"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Nama Kegiatan
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Contoh: HUT Kemerdekaan"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="description">
+                    Deskripsi
+                </label>
+
+                <textarea
+                    id="description"
+                    rows="4"
+                    placeholder="Deskripsi kegiatan..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <div class="date-title">
+
+                    <label>
+                        Tanggal & Link Google Drive
+                    </label>
+
+                    <button
+                        type="button"
+                        id="addDateButton"
+                        class="small-button"
+                    >
+                        + Tambah Tanggal
+                    </button>
+
+                </div>
+
+
+                <div id="dateList">
+
+                    <div class="date-row">
+
+                        <input
+                            type="date"
+                            class="event-date"
+                            required
+                        >
+
+                        <input
+                            type="url"
+                            class="drive-link"
+                            placeholder="https://drive.google.com/..."
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="remove-date"
+                            title="Hapus tanggal"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p id="formMessage"></p>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="cancel-button"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Simpan Event
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="js/event.js"></script>
+
+</body>
+</html>
