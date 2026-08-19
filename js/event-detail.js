@@ -322,7 +322,7 @@ async function loadEvent() {
 
 
                 driveButton.textContent =
-                    "📁 Buka Google Drive";
+                    "Buka Google Drive";
 
 
                 if (
