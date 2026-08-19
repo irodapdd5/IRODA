@@ -64,7 +64,78 @@ main {
 ========================================= */
 
 .event-header {
+    position: relative;
+
+    min-height: 330px;
+
     margin-bottom: 40px;
+
+    padding:
+        80px 25px
+        70px;
+
+    border-radius: 0 0 20px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, .25),
+            rgba(0, 0, 0, .92)
+        );
+
+    background-color: #111;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   EVENT BACKGROUND IMAGE
+========================================= */
+
+.event-header.has-image {
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, .25),
+            rgba(0, 0, 0, .92)
+        ),
+        var(--event-image);
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================
+   EVENT HEADER CONTENT
+========================================= */
+
+.event-header .section-label,
+.event-header h1,
+.event-header #eventYear {
+    position: relative;
+
+    z-index: 2;
 }
 
 
@@ -73,36 +144,49 @@ main {
 ========================================= */
 
 .back-button {
-    display: inline-flex;
+    position: absolute;
 
-    align-items: center;
-    justify-content: center;
+    top: 25px;
+    right: 25px;
 
     width: 42px;
     height: 42px;
 
-    margin-bottom: 32px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
 
-    background: #ffc400;
+    background: rgba(0, 0, 0, .55);
 
-    color: #000;
+    border: 1px solid rgba(255, 255, 255, .35);
+
+    color: #fff;
 
     text-decoration: none;
 
     font-family: Arial, sans-serif;
 
-    font-size: 21px;
-    font-weight: bold;
+    font-size: 27px;
 
-    transition: 0.25s;
+    font-weight: 300;
+
+    line-height: 1;
+
+    transition: .25s;
+
+    z-index: 10;
 }
 
-.back-button:hover {
-    background: #fff;
 
-    transform: translateX(-4px);
+.back-button:hover {
+    background: #ffc400;
+
+    color: #000;
+
+    transform: rotate(90deg);
 }
 
 
@@ -142,12 +226,17 @@ main {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: clamp(38px, 6vw, 65px);
+    font-size:
+        clamp(38px, 6vw, 65px);
 
     line-height: 1;
 
     letter-spacing: 1px;
+
+    text-shadow:
+        3px 3px 0 rgba(0, 0, 0, .45);
 }
+
 
 #eventYear {
     color: #ccc;
@@ -177,6 +266,7 @@ main {
         0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+
 .description-card h2 {
     margin-bottom: 14px;
 
@@ -192,6 +282,7 @@ main {
 
     letter-spacing: .5px;
 }
+
 
 .description-card p {
     color: #d0d0d0;
@@ -214,9 +305,11 @@ main {
     margin-top: 20px;
 }
 
+
 .section-header {
     margin-bottom: 25px;
 }
+
 
 .section-header h2 {
     margin-bottom: 8px;
@@ -233,6 +326,7 @@ main {
 
     letter-spacing: .5px;
 }
+
 
 .section-header p {
     color: #aaa;
@@ -286,6 +380,7 @@ main {
         border-color .2s ease,
         box-shadow .2s ease;
 }
+
 
 .date-card:hover {
     transform: translateY(-3px);
@@ -372,6 +467,7 @@ main {
     letter-spacing: 1px;
 }
 
+
 .date-info strong {
     display: block;
 
@@ -415,6 +511,7 @@ main {
 
     transition: .25s;
 }
+
 
 .drive-button:hover {
     background: #a91c20;
@@ -464,6 +561,7 @@ main {
 
     font-size: 14px;
 }
+
 
 .error {
     color: #ff8585;
@@ -519,26 +617,44 @@ footer {
     }
 
 
-    /* HEADER */
+    /* =====================================
+       HEADER
+    ===================================== */
 
     .event-header {
+        min-height: 280px;
+
         margin-bottom: 32px;
+
+        padding:
+            75px 20px
+            55px;
+
+        border-radius:
+            0 0 16px 16px;
     }
 
 
-    /* BACK */
+    /* =====================================
+       BACK BUTTON
+    ===================================== */
 
     .back-button {
-        width: 40px;
-        height: 40px;
+        top: 18px;
+        right: 18px;
 
-        margin-bottom: 25px;
+        width: 38px;
+        height: 38px;
 
-        font-size: 19px;
+        font-size: 25px;
+
+        margin-bottom: 0;
     }
 
 
-    /* TITLE */
+    /* =====================================
+       TITLE
+    ===================================== */
 
     .event-header h1 {
         font-size: 42px;
@@ -548,12 +664,15 @@ footer {
         word-break: normal;
     }
 
+
     #eventYear {
         font-size: 14px;
     }
 
 
-    /* DESCRIPTION */
+    /* =====================================
+       DESCRIPTION
+    ===================================== */
 
     .description-card {
         padding: 22px;
@@ -563,11 +682,13 @@ footer {
         margin-bottom: 40px;
     }
 
+
     .description-card h2 {
         font-size: 25px;
 
         margin-bottom: 12px;
     }
+
 
     .description-card p {
         font-size: 14px;
@@ -578,15 +699,19 @@ footer {
     }
 
 
-    /* DATES */
+    /* =====================================
+       DATES
+    ===================================== */
 
     .section-header {
         margin-bottom: 20px;
     }
 
+
     .section-header h2 {
         font-size: 27px;
     }
+
 
     .section-header p {
         font-size: 13px;
@@ -595,7 +720,9 @@ footer {
     }
 
 
-    /* DATE CARD */
+    /* =====================================
+       DATE CARD
+    ===================================== */
 
     .date-card {
         align-items: flex-start;
@@ -626,7 +753,9 @@ footer {
     }
 
 
-    /* DRIVE */
+    /* =====================================
+       DRIVE
+    ===================================== */
 
     .drive-button {
         width: 100%;
@@ -635,7 +764,9 @@ footer {
     }
 
 
-    /* FOOTER */
+    /* =====================================
+       FOOTER
+    ===================================== */
 
     footer {
         min-height: 50px;
@@ -660,28 +791,24 @@ footer {
         padding-top: 30px;
     }
 
+
     .event-header h1 {
         font-size: 36px;
     }
+
 
     .description-card {
         padding: 20px;
     }
 
+
     .description-card p {
         font-size: 13.5px;
     }
 
+
     .date-info strong {
         font-size: 14px;
-
-       .event-main-image {
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-    border-radius: 16px;
-    display: block;
-       }
     }
 
    }
