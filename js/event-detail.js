@@ -7,7 +7,9 @@ const API_URL =
 // ==========================
 
 const params =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
 
 const eventId =
     params.get("id");
@@ -17,20 +19,34 @@ const eventId =
 // ELEMENT
 // ==========================
 
+const eventHeader =
+    document.querySelector(
+        ".event-header"
+    );
+
+
 const eventName =
-    document.getElementById("eventName");
+    document.getElementById(
+        "eventName"
+    );
+
 
 const eventYear =
-    document.getElementById("eventYear");
+    document.getElementById(
+        "eventYear"
+    );
+
 
 const eventDescription =
-    document.getElementById("eventDescription");
+    document.getElementById(
+        "eventDescription"
+    );
+
 
 const dateList =
-    document.getElementById("dateList");
-
-const imageContainer =
-    document.getElementById("eventImageContainer");
+    document.getElementById(
+        "dateList"
+    );
 
 
 // ==========================
@@ -79,6 +95,10 @@ async function loadEvent() {
             await response.json();
 
 
+        // ==========================
+        // VALIDASI RESPONSE
+        // ==========================
+
         if (!data.success) {
 
             throw new Error(
@@ -92,33 +112,9 @@ async function loadEvent() {
         const event =
             data.event;
 
+
         const dates =
             data.dates || [];
-
-
-        // ==========================
-        // FOTO EVENT
-        // ==========================
-
-        if (imageContainer) {
-
-            if (event.image) {
-
-                imageContainer.innerHTML = `
-                    <img
-                        src="${event.image}"
-                        alt="${escapeHTML(event.name)}"
-                        class="event-main-image"
-                    >
-                `;
-
-            } else {
-
-                imageContainer.innerHTML = "";
-
-            }
-
-        }
 
 
         // ==========================
@@ -126,10 +122,12 @@ async function loadEvent() {
         // ==========================
 
         eventName.textContent =
-            event.name;
+            event.name || "Tanpa nama event";
+
 
         eventYear.textContent =
-            `Tahun ${event.year}`;
+            `Tahun ${event.year || "-"}`;
+
 
         eventDescription.textContent =
             event.description ||
@@ -137,10 +135,44 @@ async function loadEvent() {
 
 
         // ==========================
-        // DATES
+        // FOTO EVENT
         // ==========================
 
-        if (dates.length === 0) {
+        if (
+            event.image &&
+            event.image.trim() !== ""
+        ) {
+
+            eventHeader.style.setProperty(
+                "--event-image",
+                `url("${event.image}")`
+            );
+
+
+            eventHeader.classList.add(
+                "has-image"
+            );
+
+        } else {
+
+            eventHeader.classList.remove(
+                "has-image"
+            );
+
+            eventHeader.style.removeProperty(
+                "--event-image"
+            );
+
+        }
+
+
+        // ==========================
+        // CEK TANGGAL
+        // ==========================
+
+        if (
+            dates.length === 0
+        ) {
 
             dateList.innerHTML = `
                 <div class="empty">
@@ -149,6 +181,7 @@ async function loadEvent() {
             `;
 
             return;
+
         }
 
 
@@ -164,129 +197,218 @@ async function loadEvent() {
         );
 
 
-        dateList.innerHTML = "";
+        // ==========================
+        // KOSONGKAN LIST
+        // ==========================
+
+        dateList.innerHTML =
+            "";
 
 
         // ==========================
         // TAMPILKAN TANGGAL
         // ==========================
 
-        dates.forEach(date => {
+        dates.forEach(
+            date => {
 
-            const card =
-                document.createElement("div");
-
-            card.className =
-                "date-card";
-
-
-            const dateInfo =
-                document.createElement("div");
-
-            dateInfo.className =
-                "date-info";
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            const dateIcon =
-                document.createElement("div");
-
-            dateIcon.className =
-                "date-icon";
-
-            dateIcon.textContent =
-                "📅";
+                card.className =
+                    "date-card";
 
 
-            const info =
-                document.createElement("div");
+                // ==========================
+                // DATE INFO
+                // ==========================
+
+                const dateInfo =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            const label =
-                document.createElement("span");
-
-            label.textContent =
-                "Tanggal Kegiatan";
+                dateInfo.className =
+                    "date-info";
 
 
-            const dateText =
-                document.createElement("strong");
+                // ==========================
+                // ICON
+                // ==========================
 
-            dateText.textContent =
-                formatDate(
-                    date.event_date
+                const dateIcon =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                dateIcon.className =
+                    "date-icon";
+
+
+                // Tidak menggunakan emoji.
+                // CSS akan memberikan icon
+                // Font Awesome.
+
+
+                // ==========================
+                // INFO TEXT
+                // ==========================
+
+                const info =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                const label =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                label.textContent =
+                    "Tanggal Kegiatan";
+
+
+                const dateText =
+                    document.createElement(
+                        "strong"
+                    );
+
+
+                dateText.textContent =
+                    formatDate(
+                        date.event_date
+                    );
+
+
+                info.appendChild(
+                    label
                 );
 
 
-            info.appendChild(label);
-            info.appendChild(dateText);
-
-            dateInfo.appendChild(dateIcon);
-            dateInfo.appendChild(info);
-
-
-            // ==========================
-            // GOOGLE DRIVE
-            // ==========================
-
-            const driveButton =
-                document.createElement("a");
-
-            driveButton.href =
-                date.drive_link || "#";
-
-            driveButton.target =
-                "_blank";
-
-            driveButton.rel =
-                "noopener noreferrer";
-
-            driveButton.className =
-                "drive-button";
-
-            driveButton.textContent =
-                "📁 Buka Google Drive";
-
-
-            if (!date.drive_link) {
-
-                driveButton.removeAttribute(
-                    "target"
+                info.appendChild(
+                    dateText
                 );
 
-                driveButton.removeAttribute(
-                    "rel"
+
+                dateInfo.appendChild(
+                    dateIcon
                 );
+
+
+                dateInfo.appendChild(
+                    info
+                );
+
+
+                // ==========================
+                // GOOGLE DRIVE BUTTON
+                // ==========================
+
+                const driveButton =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                driveButton.className =
+                    "drive-button";
+
 
                 driveButton.textContent =
-                    "📁 Link belum tersedia";
+                    "📁 Buka Google Drive";
 
-                driveButton.classList.add(
-                    "disabled"
+
+                if (
+                    date.drive_link &&
+                    date.drive_link.trim() !== ""
+                ) {
+
+                    driveButton.href =
+                        date.drive_link;
+
+
+                    driveButton.target =
+                        "_blank";
+
+
+                    driveButton.rel =
+                        "noopener noreferrer";
+
+                } else {
+
+                    driveButton.href =
+                        "#";
+
+
+                    driveButton.textContent =
+                        "📁 Link belum tersedia";
+
+
+                    driveButton.classList.add(
+                        "disabled"
+                    );
+
+
+                    driveButton.addEventListener(
+                        "click",
+                        function (e) {
+
+                            e.preventDefault();
+
+                        }
+                    );
+
+                }
+
+
+                // ==========================
+                // MASUKKAN KE CARD
+                // ==========================
+
+                card.appendChild(
+                    dateInfo
+                );
+
+
+                card.appendChild(
+                    driveButton
+                );
+
+
+                dateList.appendChild(
+                    card
                 );
 
             }
-
-
-            card.appendChild(dateInfo);
-            card.appendChild(driveButton);
-
-            dateList.appendChild(card);
-
-        });
+        );
 
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Gagal memuat event:",
+            error
+        );
+
 
         eventName.textContent =
             "Gagal memuat event";
 
+
         eventYear.textContent =
             "";
 
+
         eventDescription.textContent =
             "";
+
 
         dateList.innerHTML = `
             <div class="error">
@@ -306,17 +428,35 @@ async function loadEvent() {
 // FORMAT TANGGAL
 // ==========================
 
-function formatDate(date) {
+function formatDate(
+    date
+) {
+
+    if (!date) {
+
+        return "-";
+
+    }
+
 
     return new Date(
         date + "T00:00:00"
     ).toLocaleDateString(
         "id-ID",
         {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric"
+
+            weekday:
+                "long",
+
+            day:
+                "numeric",
+
+            month:
+                "long",
+
+            year:
+                "numeric"
+
         }
     );
 
@@ -327,13 +467,37 @@ function formatDate(date) {
 // ESCAPE HTML
 // ==========================
 
-function escapeHTML(value) {
+function escapeHTML(
+    value
+) {
 
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    return String(
+        value
+    )
 
-                                 }
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+                    }
