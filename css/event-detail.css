@@ -1,12 +1,17 @@
-/* =========================
+/* =========================================
    RESET
-========================= */
+========================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* =========================================
+   BODY
+========================================= */
 
 html {
     scroll-behavior: smooth;
@@ -19,6 +24,7 @@ body {
         serif;
 
     background: #000;
+
     color: #fff;
 
     min-height: 100vh;
@@ -28,31 +34,43 @@ body {
 }
 
 
-/* =========================
+/* =========================================
+   NAVBAR
+   DISEMBUNYIKAN
+========================================= */
+
+.navbar {
+    display: none;
+}
+
+
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 main {
-    flex: 1;
-
-    width: min(1000px, 90%);
+    width: min(1000px, 88%);
 
     margin: 0 auto;
 
-    padding: 55px 0 90px;
+    padding: 55px 0 100px;
+
+    flex: 1;
 }
 
 
-/* =========================
+/* =========================================
    EVENT HEADER
-========================= */
+========================================= */
 
 .event-header {
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 
-/* TOMBOL KEMBALI */
+/* =========================================
+   BACK BUTTON
+========================================= */
 
 .back-button {
     display: inline-flex;
@@ -63,7 +81,9 @@ main {
     width: 42px;
     height: 42px;
 
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+
+    border-radius: 50%;
 
     background: #ffc400;
 
@@ -71,11 +91,9 @@ main {
 
     text-decoration: none;
 
-    border-radius: 50%;
-
     font-family: Arial, sans-serif;
 
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bold;
 
     transition: 0.25s;
@@ -84,14 +102,13 @@ main {
 .back-button:hover {
     background: #fff;
 
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 18px rgba(255, 196, 0, 0.25);
+    transform: translateX(-4px);
 }
 
 
-/* LABEL */
+/* =========================================
+   SECTION LABEL
+========================================= */
 
 .section-label {
     display: block;
@@ -102,7 +119,7 @@ main {
 
     font-family: Arial, sans-serif;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: bold;
 
@@ -110,32 +127,30 @@ main {
 }
 
 
-/* JUDUL */
+/* =========================================
+   EVENT TITLE
+========================================= */
 
 .event-header h1 {
+    margin-bottom: 10px;
+
+    color: #fff;
+
     font-family:
         Impact,
         Haettenschweiler,
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size:
-        clamp(35px, 7vw, 65px);
+    font-size: clamp(38px, 6vw, 65px);
 
     line-height: 1;
 
-    color: #fff;
-
     letter-spacing: 1px;
-
-    margin-bottom: 12px;
 }
 
-
-/* TAHUN */
-
 #eventYear {
-    color: #aaa;
+    color: #ccc;
 
     font-family: Arial, sans-serif;
 
@@ -143,26 +158,30 @@ main {
 }
 
 
-/* =========================
-   DESCRIPTION
-========================= */
+/* =========================================
+   DESCRIPTION CARD
+========================================= */
 
 .description-card {
     background: #111;
 
-    padding: 30px;
+    border: 1px solid #292929;
 
     border-radius: 18px;
 
-    border: 1px solid #2c2c2c;
+    padding: 30px;
 
     margin-bottom: 50px;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.35);
+        0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .description-card h2 {
+    margin-bottom: 14px;
+
+    color: #fff;
+
     font-family:
         Impact,
         Haettenschweiler,
@@ -171,9 +190,7 @@ main {
 
     font-size: 28px;
 
-    color: #fff;
-
-    margin-bottom: 14px;
+    letter-spacing: .5px;
 }
 
 .description-card p {
@@ -184,33 +201,37 @@ main {
     font-size: 15px;
 
     line-height: 1.8;
+
+    max-width: 800px;
 }
 
 
-/* =========================
+/* =========================================
    DATES SECTION
-========================= */
+========================================= */
 
 .dates-section {
     margin-top: 20px;
 }
 
 .section-header {
-    margin-bottom: 22px;
+    margin-bottom: 25px;
 }
 
 .section-header h2 {
+    margin-bottom: 8px;
+
+    color: #fff;
+
     font-family:
         Impact,
         Haettenschweiler,
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: 32px;
+    font-size: 30px;
 
-    color: #fff;
-
-    margin-bottom: 8px;
+    letter-spacing: .5px;
 }
 
 .section-header p {
@@ -224,9 +245,9 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    DATE LIST
-========================= */
+========================================= */
 
 .date-list {
     display: flex;
@@ -237,18 +258,18 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    DATE CARD
-========================= */
+========================================= */
 
 .date-card {
-    background: #111;
-
     min-height: 90px;
 
     padding: 18px 20px;
 
-    border: 1px solid #2d2d2d;
+    background: #111;
+
+    border: 1px solid #292929;
 
     border-radius: 15px;
 
@@ -260,22 +281,25 @@ main {
 
     gap: 20px;
 
-    transition: 0.25s;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 .date-card:hover {
     transform: translateY(-3px);
 
-    border-color: #8b1518;
+    border-color: #ffc400;
 
     box-shadow:
-        0 8px 25px rgba(139, 21, 24, 0.2);
+        0 8px 25px rgba(255, 196, 0, .12);
 }
 
 
-/* =========================
+/* =========================================
    DATE INFO
-========================= */
+========================================= */
 
 .date-info {
     display: flex;
@@ -286,7 +310,9 @@ main {
 }
 
 
-/* ICON */
+/* =========================================
+   DATE ICON
+========================================= */
 
 .date-icon {
     width: 48px;
@@ -297,16 +323,38 @@ main {
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 12px;
 
-    background: #8b1518;
+    background: #ffc400;
 
-    color: #ffc400;
+    color: #000;
 
     font-family: Arial, sans-serif;
 
+    font-size: 0;
+
+    position: relative;
+}
+
+
+/* Kalender profesional tanpa emoji */
+
+.date-icon::before {
+    content: "\f133";
+
+    font-family: "Font Awesome 6 Free";
+
+    font-weight: 900;
+
     font-size: 20px;
 }
+
+
+/* =========================================
+   DATE TEXT
+========================================= */
 
 .date-info span {
     display: block;
@@ -335,9 +383,9 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    DRIVE BUTTON
-========================= */
+========================================= */
 
 .drive-button {
     display: inline-flex;
@@ -347,7 +395,7 @@ main {
 
     min-height: 44px;
 
-    padding: 0 19px;
+    padding: 0 20px;
 
     border-radius: 10px;
 
@@ -365,22 +413,27 @@ main {
 
     white-space: nowrap;
 
-    transition: 0.25s;
+    transition: .25s;
 }
 
 .drive-button:hover {
-    background: #a91b1f;
+    background: #a91c20;
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 6px 15px rgba(139, 21, 24, 0.3);
+        0 6px 18px rgba(139, 21, 24, .3);
 }
+
+
+/* =========================================
+   DISABLED
+========================================= */
 
 .drive-button.disabled {
     background: #444;
 
-    color: #999;
+    color: #aaa;
 
     cursor: not-allowed;
 
@@ -388,16 +441,16 @@ main {
 }
 
 
-/* =========================
+/* =========================================
    LOADING / EMPTY / ERROR
-========================= */
+========================================= */
 
 .loading,
 .empty,
 .error {
     background: #111;
 
-    border: 1px solid #2d2d2d;
+    border: 1px solid #292929;
 
     border-radius: 15px;
 
@@ -405,7 +458,7 @@ main {
 
     text-align: center;
 
-    color: #999;
+    color: #aaa;
 
     font-family: Arial, sans-serif;
 
@@ -413,14 +466,14 @@ main {
 }
 
 .error {
-    color: #ff8c8c;
+    color: #ff8585;
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
    HANYA COPYRIGHT KUNING
-========================= */
+========================================= */
 
 footer {
     width: 100%;
@@ -443,7 +496,7 @@ footer {
 
     font-family: Arial, sans-serif;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: bold;
 
@@ -451,9 +504,9 @@ footer {
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 700px) {
 
@@ -469,30 +522,30 @@ footer {
     /* HEADER */
 
     .event-header {
-        margin-bottom: 30px;
+        margin-bottom: 32px;
     }
+
+
+    /* BACK */
 
     .back-button {
         width: 40px;
         height: 40px;
 
-        margin-bottom: 22px;
+        margin-bottom: 25px;
 
-        font-size: 18px;
+        font-size: 19px;
     }
 
-    .section-label {
-        font-size: 10px;
 
-        letter-spacing: 1.5px;
-    }
+    /* TITLE */
 
     .event-header h1 {
         font-size: 42px;
 
-        line-height: 1.05;
+        line-height: .95;
 
-        margin-bottom: 10px;
+        word-break: normal;
     }
 
     #eventYear {
@@ -511,7 +564,7 @@ footer {
     }
 
     .description-card h2 {
-        font-size: 24px;
+        font-size: 25px;
 
         margin-bottom: 12px;
     }
@@ -528,7 +581,7 @@ footer {
     /* DATES */
 
     .section-header {
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
 
     .section-header h2 {
@@ -551,37 +604,34 @@ footer {
 
         padding: 18px;
 
-        gap: 16px;
-
         border-radius: 14px;
+
+        gap: 16px;
     }
+
 
     .date-info {
         width: 100%;
-
-        gap: 13px;
     }
+
 
     .date-icon {
         width: 44px;
         height: 44px;
-
-        flex-shrink: 0;
-
-        border-radius: 10px;
     }
+
 
     .date-info strong {
         font-size: 15px;
     }
 
 
-    /* DRIVE BUTTON */
+    /* DRIVE */
 
     .drive-button {
         width: 100%;
 
-        min-height: 45px;
+        min-height: 44px;
     }
 
 
@@ -590,9 +640,40 @@ footer {
     footer {
         min-height: 50px;
 
-        font-size: 12px;
-
         padding: 0 15px;
+
+        font-size: 11px;
     }
 
-           }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    main {
+        width: 90%;
+
+        padding-top: 30px;
+    }
+
+    .event-header h1 {
+        font-size: 36px;
+    }
+
+    .description-card {
+        padding: 20px;
+    }
+
+    .description-card p {
+        font-size: 13.5px;
+    }
+
+    .date-info strong {
+        font-size: 14px;
+    }
+
+   }
