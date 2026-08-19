@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detail Event - IRODA</title>
+
+    <link rel="stylesheet" href="css/event-detail.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+            >
+
+            <div class="brand-text">
+                <h2>IRODA</h2>
+                <span>IKATAN REMAJA RT02</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="event.html" class="active">
+                <span>📁</span>
+                Dokumentasi
+            </a>
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout"
+        >
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+
+                <a
+                    href="event.html"
+                    class="back-button"
+                >
+                    ← Kembali ke Dokumentasi
+                </a>
+
+                <h1 id="eventName">
+                    Memuat...
+                </h1>
+
+                <p id="eventYear">
+                    -
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+
+                <div
+                    class="avatar"
+                    id="avatar"
+                >
+                    A
+                </div>
+
+                <div>
+
+                    <strong id="adminName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- EVENT DESCRIPTION -->
+
+        <section class="description-card">
+
+            <span class="section-label">
+                TENTANG KEGIATAN
+            </span>
+
+            <h2>
+                Deskripsi
+            </h2>
+
+            <p id="eventDescription">
+                Memuat deskripsi...
+            </p>
+
+        </section>
+
+
+        <!-- DATES -->
+
+        <section class="dates-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DOKUMENTASI
+                    </span>
+
+                    <h2>
+                        Tanggal Kegiatan
+                    </h2>
+
+                    <p>
+                        Pilih tanggal untuk membuka
+                        dokumentasi Google Drive.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="dateList"
+                class="date-list"
+            >
+
+                <div class="loading">
+                    Memuat tanggal...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/event-detail.js"></script>
+
+</body>
+</html>
