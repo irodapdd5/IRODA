@@ -3,15 +3,6 @@ const API_URL =
 
 
 // ==========================
-// CEK LOGIN
-// ==========================
-
-if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "login.html";
-}
-
-
-// ==========================
 // AMBIL ID EVENT
 // ==========================
 
@@ -20,41 +11,6 @@ const params =
 
 const eventId =
     params.get("id");
-
-
-// ==========================
-// DATA ADMIN
-// ==========================
-
-const adminData =
-    localStorage.getItem("admin");
-
-if (adminData) {
-
-    try {
-
-        const admin =
-            JSON.parse(adminData);
-
-        const name =
-            admin.name || "Admin";
-
-        document.getElementById(
-            "adminName"
-        ).textContent = name;
-
-        document.getElementById(
-            "avatar"
-        ).textContent =
-            name.charAt(0).toUpperCase();
-
-    } catch (error) {
-
-        console.error(error);
-
-    }
-
-}
 
 
 // ==========================
@@ -83,6 +39,9 @@ if (!eventId) {
     eventName.textContent =
         "Event tidak ditemukan";
 
+    eventYear.textContent =
+        "";
+
     eventDescription.textContent =
         "ID event tidak tersedia.";
 
@@ -109,8 +68,9 @@ async function loadEvent() {
 
         const response =
             await fetch(
-                `${API_URL}/events/${eventId}`
+                `${API_URL}/events/${encodeURIComponent(eventId)}`
             );
+
 
         const data =
             await response.json();
@@ -164,7 +124,9 @@ async function loadEvent() {
         }
 
 
-        // Urutkan berdasarkan tanggal
+        // ==========================
+        // URUTKAN TANGGAL
+        // ==========================
 
         dates.sort(
             (a, b) =>
@@ -177,6 +139,10 @@ async function loadEvent() {
         dateList.innerHTML = "";
 
 
+        // ==========================
+        // TAMPILKAN TANGGAL
+        // ==========================
+
         dates.forEach(date => {
 
             const card =
@@ -186,44 +152,95 @@ async function loadEvent() {
                 "date-card";
 
 
-            card.innerHTML = `
+            const dateInfo =
+                document.createElement("div");
 
-                <div class="date-info">
-
-                    <div class="date-icon">
-                        📅
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Tanggal Kegiatan
-                        </span>
-
-                        <strong>
-                            ${formatDate(
-                                date.event_date
-                            )}
-                        </strong>
-
-                    </div>
-
-                </div>
+            dateInfo.className =
+                "date-info";
 
 
-                <a
-                    href="${escapeAttribute(
-                        date.drive_link
-                    )}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="drive-button"
-                >
-                    📁 Buka Google Drive
-                </a>
+            const dateIcon =
+                document.createElement("div");
 
-            `;
+            dateIcon.className =
+                "date-icon";
 
+            dateIcon.textContent =
+                "📅";
+
+
+            const info =
+                document.createElement("div");
+
+
+            const label =
+                document.createElement("span");
+
+            label.textContent =
+                "Tanggal Kegiatan";
+
+
+            const dateText =
+                document.createElement("strong");
+
+            dateText.textContent =
+                formatDate(
+                    date.event_date
+                );
+
+
+            info.appendChild(label);
+            info.appendChild(dateText);
+
+            dateInfo.appendChild(dateIcon);
+            dateInfo.appendChild(info);
+
+
+            // ==========================
+            // GOOGLE DRIVE
+            // ==========================
+
+            const driveButton =
+                document.createElement("a");
+
+            driveButton.href =
+                date.drive_link || "#";
+
+            driveButton.target =
+                "_blank";
+
+            driveButton.rel =
+                "noopener noreferrer";
+
+            driveButton.className =
+                "drive-button";
+
+            driveButton.textContent =
+                "📁 Buka Google Drive";
+
+
+            if (!date.drive_link) {
+
+                driveButton.removeAttribute(
+                    "target"
+                );
+
+                driveButton.removeAttribute(
+                    "rel"
+                );
+
+                driveButton.textContent =
+                    "📁 Link belum tersedia";
+
+                driveButton.classList.add(
+                    "disabled"
+                );
+
+            }
+
+
+            card.appendChild(dateInfo);
+            card.appendChild(driveButton);
 
             dateList.appendChild(card);
 
@@ -236,6 +253,9 @@ async function loadEvent() {
 
         eventName.textContent =
             "Gagal memuat event";
+
+        eventYear.textContent =
+            "";
 
         eventDescription.textContent =
             "";
@@ -289,36 +309,3 @@ function escapeHTML(value) {
         .replaceAll("'", "&#039;");
 
 }
-
-
-function escapeAttribute(value) {
-
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-
-}
-
-
-// ==========================
-// LOGOUT
-// ==========================
-
-document
-    .getElementById("logoutButton")
-    .addEventListener("click", function () {
-
-        localStorage.removeItem(
-            "isLoggedIn"
-        );
-
-        localStorage.removeItem(
-            "admin"
-        );
-
-        window.location.href =
-            "login.html";
-
-    });
