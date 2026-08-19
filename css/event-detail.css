@@ -8,92 +8,23 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f7f5f0;
-    color: #26352f;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background: #000;
+    color: #fff;
+
     min-height: 100vh;
-}
 
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar {
-    width: 100%;
-    min-height: 76px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 14px 7%;
-
-    background: #ffffff;
-    border-bottom: 1px solid #e5e1d9;
-
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-
-/* BRAND */
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    text-decoration: none;
-    color: #26352f;
-}
-
-.brand img {
-    width: 46px;
-    height: 46px;
-
-    object-fit: contain;
-}
-
-.brand-text {
     display: flex;
     flex-direction: column;
-}
-
-.brand-text strong {
-    font-size: 22px;
-    letter-spacing: 1px;
-}
-
-.brand-text span {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: #777;
-}
-
-
-/* NAV MENU */
-
-.navbar nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.navbar nav a {
-    color: #43524b;
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    transition: 0.2s;
-}
-
-.navbar nav a:hover {
-    color: #355c4d;
 }
 
 
@@ -102,10 +33,13 @@ body {
 ========================= */
 
 main {
+    flex: 1;
+
     width: min(1000px, 90%);
+
     margin: 0 auto;
 
-    padding: 50px 0 80px;
+    padding: 55px 0 90px;
 }
 
 
@@ -117,48 +51,95 @@ main {
     margin-bottom: 35px;
 }
 
+
+/* TOMBOL KEMBALI */
+
 .back-button {
-    display: inline-block;
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
 
     margin-bottom: 28px;
 
-    color: #355c4d;
+    background: #ffc400;
+
+    color: #000;
+
     text-decoration: none;
 
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: 50%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    transition: 0.25s;
 }
 
 .back-button:hover {
-    text-decoration: underline;
+    background: #fff;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(255, 196, 0, 0.25);
 }
+
+
+/* LABEL */
 
 .section-label {
     display: block;
 
     margin-bottom: 10px;
 
-    color: #7b857f;
+    color: #ffc400;
+
+    font-family: Arial, sans-serif;
 
     font-size: 12px;
-    font-weight: 700;
 
-    letter-spacing: 1.5px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
 }
+
+
+/* JUDUL */
 
 .event-header h1 {
-    font-size: clamp(30px, 5vw, 48px);
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-    line-height: 1.15;
+    font-size:
+        clamp(35px, 7vw, 65px);
 
-    color: #26352f;
+    line-height: 1;
 
-    margin-bottom: 10px;
+    color: #fff;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
 }
 
+
+/* TAHUN */
+
 #eventYear {
-    color: #7a837e;
-    font-size: 16px;
+    color: #aaa;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
 }
 
 
@@ -167,29 +148,38 @@ main {
 ========================= */
 
 .description-card {
-    background: #ffffff;
+    background: #111;
 
     padding: 30px;
 
     border-radius: 18px;
 
-    border: 1px solid #e6e2da;
+    border: 1px solid #2c2c2c;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    margin-bottom: 50px;
 
-    margin-bottom: 45px;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
 .description-card h2 {
-    font-size: 24px;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 28px;
+
+    color: #fff;
 
     margin-bottom: 14px;
-
-    color: #26352f;
 }
 
 .description-card p {
-    color: #69736d;
+    color: #d0d0d0;
+
+    font-family: Arial, sans-serif;
 
     font-size: 15px;
 
@@ -210,17 +200,27 @@ main {
 }
 
 .section-header h2 {
-    font-size: 28px;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-    color: #26352f;
+    font-size: 32px;
+
+    color: #fff;
 
     margin-bottom: 8px;
 }
 
 .section-header p {
-    color: #7a837e;
+    color: #aaa;
+
+    font-family: Arial, sans-serif;
 
     font-size: 14px;
+
+    line-height: 1.5;
 }
 
 
@@ -230,66 +230,82 @@ main {
 
 .date-list {
     display: flex;
+
     flex-direction: column;
 
-    gap: 14px;
+    gap: 15px;
 }
 
 
-/* DATE CARD */
+/* =========================
+   DATE CARD
+========================= */
 
 .date-card {
-    background: #ffffff;
+    background: #111;
 
     min-height: 90px;
 
     padding: 18px 20px;
 
-    border: 1px solid #e6e2da;
+    border: 1px solid #2d2d2d;
 
-    border-radius: 16px;
+    border-radius: 15px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 20px;
 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: 0.25s;
 }
 
 .date-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+
+    border-color: #8b1518;
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.06);
+        0 8px 25px rgba(139, 21, 24, 0.2);
 }
 
 
-/* DATE INFO */
+/* =========================
+   DATE INFO
+========================= */
 
 .date-info {
     display: flex;
+
     align-items: center;
 
     gap: 15px;
 }
+
+
+/* ICON */
 
 .date-icon {
     width: 48px;
     height: 48px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border-radius: 12px;
 
-    background: #edf2ee;
+    background: #8b1518;
 
-    font-size: 22px;
+    color: #ffc400;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
 }
 
 .date-info span {
@@ -297,19 +313,23 @@ main {
 
     margin-bottom: 5px;
 
-    color: #8a918d;
+    color: #999;
 
-    font-size: 11px;
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
 }
 
 .date-info strong {
     display: block;
 
-    color: #26352f;
+    color: #fff;
+
+    font-family: Arial, sans-serif;
 
     font-size: 16px;
 }
@@ -325,34 +345,42 @@ main {
     align-items: center;
     justify-content: center;
 
-    min-height: 42px;
+    min-height: 44px;
 
-    padding: 0 18px;
+    padding: 0 19px;
 
     border-radius: 10px;
 
-    background: #355c4d;
+    background: #8b1518;
 
-    color: #ffffff;
+    color: #fff;
 
     text-decoration: none;
 
+    font-family: Arial, sans-serif;
+
     font-size: 13px;
-    font-weight: 600;
+
+    font-weight: bold;
 
     white-space: nowrap;
 
-    transition: 0.2s;
+    transition: 0.25s;
 }
 
 .drive-button:hover {
-    background: #29493d;
+    background: #a91b1f;
 
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(139, 21, 24, 0.3);
 }
 
 .drive-button.disabled {
-    background: #c7cbc8;
+    background: #444;
+
+    color: #999;
 
     cursor: not-allowed;
 
@@ -367,42 +395,59 @@ main {
 .loading,
 .empty,
 .error {
-    background: #ffffff;
+    background: #111;
 
-    border: 1px solid #e6e2da;
+    border: 1px solid #2d2d2d;
 
-    border-radius: 16px;
+    border-radius: 15px;
 
     padding: 30px;
 
     text-align: center;
 
-    color: #7a837e;
+    color: #999;
+
+    font-family: Arial, sans-serif;
 
     font-size: 14px;
 }
 
 .error {
-    color: #a14c4c;
+    color: #ff8c8c;
 }
 
 
 /* =========================
    FOOTER
+   HANYA COPYRIGHT KUNING
 ========================= */
 
 footer {
-    padding: 25px 20px;
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 0 20px;
+
+    background: #ffc400;
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 
     text-align: center;
 
-    border-top: 1px solid #e5e1d9;
+    font-family: Arial, sans-serif;
 
-    background: #ffffff;
+    font-size: 14px;
 
-    color: #858c87;
+    font-weight: bold;
 
-    font-size: 13px;
+    flex-shrink: 0;
 }
 
 
@@ -412,45 +457,92 @@ footer {
 
 @media (max-width: 700px) {
 
-    .navbar {
-        padding: 12px 5%;
+    main {
+        width: 88%;
 
-        align-items: flex-start;
+        padding:
+            35px 0
+            70px;
     }
 
-    .navbar nav {
-        gap: 12px;
+
+    /* HEADER */
+
+    .event-header {
+        margin-bottom: 30px;
     }
 
-    .navbar nav a {
-        font-size: 12px;
-    }
-
-    .brand img {
+    .back-button {
         width: 40px;
         height: 40px;
-    }
 
-    .brand-text strong {
+        margin-bottom: 22px;
+
         font-size: 18px;
     }
 
-    .brand-text span {
-        font-size: 8px;
+    .section-label {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .event-header h1 {
+        font-size: 42px;
+
+        line-height: 1.05;
+
+        margin-bottom: 10px;
+    }
+
+    #eventYear {
+        font-size: 14px;
     }
 
 
-    main {
-        width: 90%;
-
-        padding-top: 35px;
-    }
-
+    /* DESCRIPTION */
 
     .description-card {
         padding: 22px;
+
+        border-radius: 15px;
+
+        margin-bottom: 40px;
     }
 
+    .description-card h2 {
+        font-size: 24px;
+
+        margin-bottom: 12px;
+    }
+
+    .description-card p {
+        font-size: 14px;
+
+        line-height: 1.75;
+
+        text-align: left;
+    }
+
+
+    /* DATES */
+
+    .section-header {
+        margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+        font-size: 27px;
+    }
+
+    .section-header p {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    /* DATE CARD */
 
     .date-card {
         align-items: flex-start;
@@ -458,16 +550,49 @@ footer {
         flex-direction: column;
 
         padding: 18px;
-    }
 
+        gap: 16px;
+
+        border-radius: 14px;
+    }
 
     .date-info {
         width: 100%;
+
+        gap: 13px;
     }
 
+    .date-icon {
+        width: 44px;
+        height: 44px;
+
+        flex-shrink: 0;
+
+        border-radius: 10px;
+    }
+
+    .date-info strong {
+        font-size: 15px;
+    }
+
+
+    /* DRIVE BUTTON */
 
     .drive-button {
         width: 100%;
+
+        min-height: 45px;
     }
 
-        }
+
+    /* FOOTER */
+
+    footer {
+        min-height: 50px;
+
+        font-size: 12px;
+
+        padding: 0 15px;
+    }
+
+           }
