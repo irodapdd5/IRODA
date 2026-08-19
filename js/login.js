@@ -1,10 +1,8 @@
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
 
-
 // URL API CLOUDFLARE WORKER
 const API_URL = "https://iroda-backend.irodapdd5.workers.dev/login";
-
 
 loginForm.addEventListener("submit", async function (event) {
 
@@ -13,14 +11,12 @@ loginForm.addEventListener("submit", async function (event) {
     const name = document.getElementById("name").value.trim();
     const password = document.getElementById("password").value;
 
-
     message.textContent = "Memproses login...";
     message.style.color = "#ffc400";
 
-
     try {
 
-        const response = await fetch(`${API_URL}/login`, {
+        const response = await fetch(API_URL, {
 
             method: "POST",
 
@@ -35,24 +31,21 @@ loginForm.addEventListener("submit", async function (event) {
 
         });
 
-
         const data = await response.json();
-
 
         if (data.success) {
 
             message.textContent = "Login berhasil!";
             message.style.color = "#7CFF7C";
 
-
             // Simpan status login
             localStorage.setItem("isLoggedIn", "true");
 
+            // Simpan data admin
             localStorage.setItem(
                 "admin",
-                JSON.stringify(data.user)
+                JSON.stringify(data.admin)
             );
-
 
             // Masuk dashboard
             setTimeout(() => {
@@ -61,16 +54,13 @@ loginForm.addEventListener("submit", async function (event) {
 
             }, 500);
 
-
         } else {
 
             message.textContent =
                 data.message || "Nama atau password salah.";
 
             message.style.color = "#ffaaaa";
-
         }
-
 
     } catch (error) {
 
@@ -80,7 +70,6 @@ loginForm.addEventListener("submit", async function (event) {
             "Tidak dapat terhubung ke server.";
 
         message.style.color = "#ffaaaa";
-
     }
 
 });
