@@ -12,9 +12,20 @@
 
     <title>Detail Dokumentasi - IRODA</title>
 
+
+    <!-- CSS -->
+
     <link
         rel="stylesheet"
         href="css/event-detail.css"
+    >
+
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
 </head>
@@ -23,170 +34,178 @@
 <body>
 
 
-<!-- =========================
-     NAVBAR PUBLIC
-========================= -->
-
-<header class="navbar">
-
-    <a
-        href="index.html"
-        class="brand"
-    >
-
-        <img
-            src="assets/images/logo.png"
-            alt="Logo IRODA"
-        >
-
-        <div class="brand-text">
-
-            <strong>
-                IRODA
-            </strong>
-
-            <span>
-                IKATAN REMAJA RT02
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <nav>
-
-        <a href="index.html">
-            Beranda
-        </a>
-
-        <a href="dokumentasi.html">
-            Hasil Dokumentasi
-        </a>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =========================
-     CONTENT
-========================= -->
-
-<main>
-
-
-    <!-- HEADER EVENT -->
-
-    <section class="event-header">
-
-        <a
-            href="javascript:history.back()"
-            class="back-button"
-        >
-            ← Kembali
-        </a>
-
-
-        <span class="section-label">
-            DOKUMENTASI KEGIATAN
-        </span>
-
-
-        <h1 id="eventName">
-            Memuat...
-        </h1>
-
-
-        <p id="eventYear">
-            -
-        </p>
-
-    </section>
-
-
-
     <!-- =========================
-         DESKRIPSI
+         CONTENT
     ========================= -->
 
-    <section class="description-card">
-
-        <span class="section-label">
-            TENTANG KEGIATAN
-        </span>
+    <main>
 
 
-        <h2>
-            Deskripsi
-        </h2>
+        <!-- =========================
+             EVENT HEADER
+        ========================= -->
+
+        <section class="event-header">
 
 
-        <p id="eventDescription">
-            Memuat deskripsi...
-        </p>
+            <!-- TOMBOL KEMBALI -->
 
-    </section>
+            <a
+                href="javascript:history.back()"
+                class="back-button"
+                aria-label="Kembali"
+                title="Kembali"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </a>
 
 
-
-    <!-- =========================
-         TANGGAL
-    ========================= -->
-
-    <section class="dates-section">
-
-        <div class="section-header">
+            <!-- LABEL -->
 
             <span class="section-label">
-                DOKUMENTASI
+
+                DOKUMENTASI KEGIATAN
+
+            </span>
+
+
+            <!-- NAMA EVENT -->
+
+            <h1 id="eventName">
+
+                Memuat...
+
+            </h1>
+
+
+            <!-- TAHUN -->
+
+            <p id="eventYear">
+
+                -
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DESKRIPSI
+        ========================= -->
+
+        <section class="description-card">
+
+
+            <span class="section-label">
+
+                TENTANG KEGIATAN
+
             </span>
 
 
             <h2>
-                Tanggal Kegiatan
+
+                Deskripsi
+
             </h2>
 
 
-            <p>
-                Pilih tanggal untuk membuka
-                dokumentasi Google Drive.
+            <p id="eventDescription">
+
+                Memuat deskripsi...
+
             </p>
 
-        </div>
+
+        </section>
 
 
-        <div
-            id="dateList"
-            class="date-list"
-        >
 
-            <div class="loading">
-                Memuat tanggal...
+        <!-- =========================
+             DOKUMENTASI
+        ========================= -->
+
+        <section class="dates-section">
+
+
+            <div class="section-header">
+
+
+                <span class="section-label">
+
+                    DOKUMENTASI
+
+                </span>
+
+
+                <h2>
+
+                    Tanggal Kegiatan
+
+                </h2>
+
+
+                <p>
+
+                    Pilih tanggal untuk membuka
+                    dokumentasi Google Drive.
+
+                </p>
+
+
             </div>
 
-        </div>
-
-    </section>
-
-</main>
 
 
+            <!-- =========================
+                 LIST TANGGAL
+            ========================= -->
 
-<!-- =========================
-     FOOTER
-========================= -->
+            <div
+                id="dateList"
+                class="date-list"
+            >
 
-<footer>
+                <div class="loading">
 
-    © 2026 IRODA — Ikatan Remaja RT02
+                    Memuat tanggal...
 
-</footer>
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
 
 
 
-<script src="js/event-detail.js"></script>
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 IRODA — Ikatan Remaja RT02
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script
+        src="js/event-detail.js"
+    ></script>
+
 
 </body>
 
