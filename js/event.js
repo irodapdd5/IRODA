@@ -2,52 +2,63 @@ const API_URL =
     "https://iroda-backend.irodapdd5.workers.dev";
 
 
-// ==========================
+// =====================================================
 // CEK LOGIN
-// ==========================
+// =====================================================
 
 if (
     localStorage.getItem("isLoggedIn") !== "true"
 ) {
-
     window.location.href = "login.html";
-
 }
 
 
-// ==========================
+// =====================================================
 // DATA ADMIN
-// ==========================
+// =====================================================
 
 const adminData =
     localStorage.getItem("admin");
 
-
 if (adminData) {
 
-    const admin =
-        JSON.parse(adminData);
+    try {
 
+        const admin =
+            JSON.parse(adminData);
 
-    document.getElementById(
-        "adminName"
-    ).textContent =
-        admin.name || "Admin";
+        const adminName =
+            document.getElementById("adminName");
 
+        const avatar =
+            document.getElementById("avatar");
 
-    document.getElementById(
-        "avatar"
-    ).textContent =
-        (admin.name || "A")
-            .charAt(0)
-            .toUpperCase();
+        if (adminName) {
+            adminName.textContent =
+                admin.name || "Admin";
+        }
 
+        if (avatar) {
+            avatar.textContent =
+                (admin.name || "A")
+                    .charAt(0)
+                    .toUpperCase();
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Data admin tidak valid:",
+            error
+        );
+
+    }
 }
 
 
-// ==========================
+// =====================================================
 // ELEMENT
-// ==========================
+// =====================================================
 
 const eventModal =
     document.getElementById("eventModal");
@@ -91,81 +102,152 @@ const saveButtonText =
 const eventIdInput =
     document.getElementById("eventId");
 
+const addEventButton =
+    document.getElementById("addEventButton");
 
-// ==========================
+const closeModalButton =
+    document.getElementById("closeModal");
+
+const cancelButton =
+    document.getElementById("cancelButton");
+
+const addDateButton =
+    document.getElementById("addDateButton");
+
+
+// =====================================================
 // MODE
-// ==========================
+// =====================================================
 
 let editMode = false;
 
 let oldImage = "";
 
 
-// ==========================
-// PREVIEW FOTO BARU
-// ==========================
+// =====================================================
+// HELPER ESCAPE HTML
+// =====================================================
 
-eventImage.addEventListener(
-    "change",
-    function () {
+function escapeHTML(value) {
 
-        const file =
-            this.files[0];
-
-
-        imagePreview.innerHTML = "";
-
-
-        if (!file) {
-            return;
-        }
-
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function (e) {
-
-                imagePreview.innerHTML = `
-
-                    <img
-                        src="${e.target.result}"
-                        alt="Preview Foto Baru"
-                        style="
-                            width:100%;
-                            max-width:500px;
-                            height:260px;
-                            object-fit:cover;
-                            border-radius:12px;
-                            margin-top:12px;
-                        "
-                    >
-
-                    <small
-                        style="
-                            display:block;
-                            margin-top:6px;
-                        "
-                    >
-                        Foto baru akan menggantikan foto lama.
-                    </small>
-
-                `;
-
-            };
-
-
-        reader.readAsDataURL(file);
-
+    if (value === null || value === undefined) {
+        return "";
     }
-);
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 
-// ==========================
+// =====================================================
+// FORMAT TANGGAL
+// =====================================================
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+        return "Belum ada tanggal";
+    }
+
+    const date =
+        new Date(dateString + "T00:00:00");
+
+    if (isNaN(date.getTime())) {
+        return dateString;
+    }
+
+    return date.toLocaleDateString(
+        "id-ID",
+        {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
+}
+
+
+// =====================================================
+// PREVIEW FOTO BARU
+// =====================================================
+
+if (eventImage) {
+
+    eventImage.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            imagePreview.innerHTML = "";
+
+            if (!file) {
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+
+                formMessage.textContent =
+                    "File yang dipilih bukan gambar.";
+
+                formMessage.style.color =
+                    "#b33a3a";
+
+                this.value = "";
+
+                return;
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function (e) {
+
+                    imagePreview.innerHTML = `
+
+                        <img
+                            src="${e.target.result}"
+                            alt="Preview foto baru"
+                            style="
+                                width:100%;
+                                max-width:500px;
+                                height:260px;
+                                object-fit:cover;
+                                border-radius:12px;
+                                margin-top:12px;
+                            "
+                        >
+
+                        <small
+                            style="
+                                display:block;
+                                margin-top:6px;
+                            "
+                        >
+                            Foto baru akan digunakan sebagai foto event.
+                        </small>
+
+                    `;
+
+                };
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
+
+
+// =====================================================
 // KOMPRES FOTO
-// ==========================
+// =====================================================
 
 function compressImage(file) {
 
@@ -174,19 +256,12 @@ function compressImage(file) {
 
             if (!file) {
 
-                reject(
-                    new Error(
-                        "File foto tidak ditemukan"
-                    )
-                );
+                resolve("");
 
                 return;
             }
 
-
-            if (
-                !file.type.startsWith("image/")
-            ) {
+            if (!file.type.startsWith("image/")) {
 
                 reject(
                     new Error(
@@ -197,17 +272,14 @@ function compressImage(file) {
                 return;
             }
 
-
             const reader =
                 new FileReader();
-
 
             reader.onload =
                 function (event) {
 
                     const img =
                         new Image();
-
 
                     img.onload =
                         function () {
@@ -217,18 +289,14 @@ function compressImage(file) {
                                     "canvas"
                                 );
 
-
                             const maxWidth =
                                 1200;
-
 
                             let width =
                                 img.width;
 
-
                             let height =
                                 img.height;
-
 
                             if (
                                 width > maxWidth
@@ -244,31 +312,27 @@ function compressImage(file) {
 
                             }
 
-
                             canvas.width =
                                 width;
 
                             canvas.height =
                                 height;
 
-
                             const ctx =
                                 canvas.getContext(
                                     "2d"
                                 );
 
-
                             if (!ctx) {
 
                                 reject(
                                     new Error(
-                                        "Canvas tidak dapat dibuat"
+                                        "Canvas gagal dibuat"
                                     )
                                 );
 
                                 return;
                             }
-
 
                             ctx.drawImage(
                                 img,
@@ -277,7 +341,6 @@ function compressImage(file) {
                                 width,
                                 height
                             );
-
 
                             canvas.toBlob(
                                 function (blob) {
@@ -293,10 +356,8 @@ function compressImage(file) {
                                         return;
                                     }
 
-
                                     const readerBlob =
                                         new FileReader();
-
 
                                     readerBlob.onload =
                                         function () {
@@ -306,7 +367,6 @@ function compressImage(file) {
                                             );
 
                                         };
-
 
                                     readerBlob.onerror =
                                         function () {
@@ -319,7 +379,6 @@ function compressImage(file) {
 
                                         };
 
-
                                     readerBlob.readAsDataURL(
                                         blob
                                     );
@@ -331,24 +390,21 @@ function compressImage(file) {
 
                         };
 
-
                     img.onerror =
                         function () {
 
                             reject(
                                 new Error(
-                                    "File gambar tidak dapat dibaca"
+                                    "Gambar tidak dapat dibaca"
                                 )
                             );
 
                         };
 
-
                     img.src =
                         event.target.result;
 
                 };
-
 
             reader.onerror =
                 function () {
@@ -361,7 +417,6 @@ function compressImage(file) {
 
                 };
 
-
             reader.readAsDataURL(file);
 
         }
@@ -370,27 +425,44 @@ function compressImage(file) {
 }
 
 
-// ==========================
+// =====================================================
 // LOAD EVENTS
-// ==========================
+// =====================================================
 
 async function loadEvents() {
 
+    if (!eventList) {
+        return;
+    }
+
     eventList.innerHTML =
         '<div class="loading">Memuat event...</div>';
-
 
     try {
 
         const response =
             await fetch(
-                `${API_URL}/events`
+                `${API_URL}/events`,
+                {
+                    method: "GET"
+                }
             );
 
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+
+        }
 
         const data =
             await response.json();
 
+        console.log(
+            "GET /events:",
+            data
+        );
 
         if (!data.success) {
 
@@ -401,7 +473,6 @@ async function loadEvents() {
 
         }
 
-
         if (
             !data.data ||
             data.data.length === 0
@@ -411,12 +482,9 @@ async function loadEvents() {
                 '<div class="empty">Belum ada event.</div>';
 
             return;
-
         }
 
-
         eventList.innerHTML = "";
-
 
         data.data.forEach(
             event => {
@@ -426,10 +494,8 @@ async function loadEvents() {
                         "div"
                     );
 
-
                 card.className =
                     "event-card";
-
 
                 const dateText =
                     event.first_date
@@ -437,7 +503,6 @@ async function loadEvents() {
                             event.first_date
                         )
                         : "Belum ada tanggal";
-
 
                 card.innerHTML = `
 
@@ -452,7 +517,7 @@ async function loadEvents() {
                         </h3>
 
                         <p>
-                            ${dateText}
+                            ${escapeHTML(dateText)}
                         </p>
 
                     </div>
@@ -461,24 +526,27 @@ async function loadEvents() {
                     <div class="event-actions">
 
                         <button
+                            type="button"
                             class="view-button"
-                            onclick="viewEvent(${event.id})"
+                            onclick="viewEvent(${Number(event.id)})"
                         >
                             Lihat
                         </button>
 
 
                         <button
+                            type="button"
                             class="edit-button"
-                            onclick="editEvent(${event.id})"
+                            onclick="editEvent(${Number(event.id)})"
                         >
                             Edit
                         </button>
 
 
                         <button
+                            type="button"
                             class="delete-button"
-                            onclick="deleteEvent(${event.id})"
+                            onclick="deleteEvent(${Number(event.id)})"
                         >
                             Hapus
                         </button>
@@ -487,17 +555,17 @@ async function loadEvents() {
 
                 `;
 
-
                 eventList.appendChild(card);
 
             }
         );
 
-
     } catch (error) {
 
-        console.error(error);
-
+        console.error(
+            "LOAD EVENTS ERROR:",
+            error
+        );
 
         eventList.innerHTML = `
 
@@ -520,83 +588,79 @@ async function loadEvents() {
 }
 
 
-// ==========================
-// BUKA MODAL TAMBAH
-// ==========================
+// =====================================================
+// BUKA MODAL TAMBAH EVENT
+// =====================================================
 
-document
-    .getElementById("addEventButton")
-    .addEventListener(
-        "click",
-        function () {
+function openAddEventModal() {
 
-            editMode = false;
+    editMode = false;
 
-            oldImage = "";
+    oldImage = "";
 
+    eventForm.reset();
 
-            eventForm.reset();
+    eventIdInput.value = "";
 
+    document.getElementById("year").value =
+        new Date().getFullYear();
 
-            eventIdInput.value = "";
+    modalTitle.textContent =
+        "Tambah Event";
 
+    modalSubtitle.textContent =
+        "Buat dokumentasi kegiatan baru.";
 
-            document.getElementById(
-                "year"
-            ).value =
-                new Date().getFullYear();
+    saveButtonText.textContent =
+        "Simpan Event";
 
+    currentImage.style.display =
+        "none";
 
-            modalTitle.textContent =
-                "Tambah Event";
+    currentImagePreview.src =
+        "";
 
+    removeImage.checked =
+        false;
 
-            modalSubtitle.textContent =
-                "Buat dokumentasi kegiatan baru.";
+    imagePreview.innerHTML =
+        "";
 
+    dateList.innerHTML =
+        "";
 
-            saveButtonText.textContent =
-                "Simpan Event";
+    addDateRow();
 
+    formMessage.textContent =
+        "";
 
-            currentImage.style.display =
-                "none";
+    formMessage.style.color =
+        "";
 
-
-            currentImagePreview.src =
-                "";
-
-
-            removeImage.checked =
-                false;
-
-
-            imagePreview.innerHTML =
-                "";
-
-
-            dateList.innerHTML =
-                "";
-
-
-            addDateRow();
-
-
-            formMessage.textContent =
-                "";
-
-
-            eventModal.classList.add(
-                "show"
-            );
-
-        }
+    eventModal.classList.add(
+        "show"
     );
 
+}
 
-// ==========================
+
+// =====================================================
+// EVENT BUTTON TAMBAH
+// =====================================================
+
+if (addEventButton) {
+
+    addEventButton.addEventListener(
+        "click",
+        openAddEventModal
+    );
+
+}
+
+
+// =====================================================
 // TUTUP MODAL
-// ==========================
+// =====================================================
 
 function closeModal() {
 
@@ -607,25 +671,54 @@ function closeModal() {
 }
 
 
-document
-    .getElementById("closeModal")
-    .addEventListener(
+if (closeModalButton) {
+
+    closeModalButton.addEventListener(
         "click",
         closeModal
     );
 
+}
 
-document
-    .getElementById("cancelButton")
-    .addEventListener(
+
+if (cancelButton) {
+
+    cancelButton.addEventListener(
         "click",
         closeModal
     );
 
+}
 
-// ==========================
+
+// =====================================================
+// KLIK DI LUAR MODAL
+// =====================================================
+
+if (eventModal) {
+
+    eventModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                eventModal
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+// =====================================================
 // TAMBAH BARIS TANGGAL
-// ==========================
+// =====================================================
 
 function addDateRow(
     dateValue = "",
@@ -637,10 +730,8 @@ function addDateRow(
             "div"
         );
 
-
     row.className =
         "date-row";
-
 
     row.innerHTML = `
 
@@ -651,7 +742,6 @@ function addDateRow(
             required
         >
 
-
         <input
             type="url"
             class="drive-link"
@@ -660,61 +750,64 @@ function addDateRow(
             required
         >
 
-
         <button
             type="button"
             class="remove-date"
-            title="Hapus tanggal"
+            title="Hapus tanggal dan link"
         >
             ×
         </button>
 
     `;
 
-
-    row
-        .querySelector(".remove-date")
-        .addEventListener(
-            "click",
-            function () {
-
-                const rows =
-                    dateList.querySelectorAll(
-                        ".date-row"
-                    );
-
-
-                if (
-                    rows.length <= 1
-                ) {
-
-                    alert(
-                        "Minimal satu tanggal harus ada."
-                    );
-
-                    return;
-
-                }
-
-
-                row.remove();
-
-            }
+    const removeButton =
+        row.querySelector(
+            ".remove-date"
         );
 
+    removeButton.addEventListener(
+        "click",
+        function () {
 
-    dateList.appendChild(row);
+            const rows =
+                dateList.querySelectorAll(
+                    ".date-row"
+                );
+
+            /*
+             * BOLEH HAPUS BARIS.
+             * Tetapi minimal harus tersisa
+             * satu tanggal + link.
+             */
+
+            if (rows.length <= 1) {
+
+                alert(
+                    "Minimal satu tanggal dan link harus ada."
+                );
+
+                return;
+            }
+
+            row.remove();
+
+        }
+    );
+
+    dateList.appendChild(
+        row
+    );
 
 }
 
 
-// ==========================
+// =====================================================
 // TOMBOL TAMBAH TANGGAL
-// ==========================
+// =====================================================
 
-document
-    .getElementById("addDateButton")
-    .addEventListener(
+if (addDateButton) {
+
+    addDateButton.addEventListener(
         "click",
         function () {
 
@@ -723,28 +816,46 @@ document
         }
     );
 
+}
 
-// ==========================
+
+// =====================================================
 // EDIT EVENT
-// ==========================
+// =====================================================
 
 async function editEvent(id) {
 
     formMessage.textContent =
         "Memuat data event...";
 
+    formMessage.style.color =
+        "#28594b";
 
     try {
 
         const response =
             await fetch(
-                `${API_URL}/events/${id}`
+                `${API_URL}/events/${id}`,
+                {
+                    method: "GET"
+                }
             );
 
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+
+        }
 
         const data =
             await response.json();
 
+        console.log(
+            "GET EVENT:",
+            data
+        );
 
         if (!data.success) {
 
@@ -755,63 +866,47 @@ async function editEvent(id) {
 
         }
 
-
         const event =
             data.event;
-
 
         const dates =
             data.dates || [];
 
-
         editMode = true;
-
 
         eventIdInput.value =
             event.id;
 
-
         oldImage =
             event.image || "";
 
-
-        document.getElementById(
-            "year"
-        ).value =
+        document.getElementById("year").value =
             event.year || "";
 
-
-        document.getElementById(
-            "name"
-        ).value =
+        document.getElementById("name").value =
             event.name || "";
 
-
-        document.getElementById(
-            "description"
-        ).value =
+        document.getElementById("description").value =
             event.description || "";
-
 
         eventImage.value =
             "";
 
-
         imagePreview.innerHTML =
             "";
-
 
         removeImage.checked =
             false;
 
 
+        // ==========================
         // FOTO LAMA
+        // ==========================
 
         if (oldImage) {
 
             currentImage.style.display =
                 "block";
-
 
             currentImagePreview.src =
                 oldImage;
@@ -821,18 +916,18 @@ async function editEvent(id) {
             currentImage.style.display =
                 "none";
 
-
             currentImagePreview.src =
                 "";
 
         }
 
 
+        // ==========================
         // TANGGAL
+        // ==========================
 
         dateList.innerHTML =
             "";
-
 
         if (dates.length > 0) {
 
@@ -840,154 +935,44 @@ async function editEvent(id) {
                 date => {
 
                     addDateRow(
-                        date.event_date,
-                        date.drive_link
-                    );
+                        date.event_date || "",
+                        date.drive_link || ""
 
-                }
-            );
+                        if (
+                !eventDate ||
+                !driveLink
+            ) {
 
-        } else {
+                formMessage.textContent =
+                    "Setiap baris harus memiliki tanggal dan link Google Drive.";
 
-            addDateRow();
+                formMessage.style.color =
+                    "#b33a3a";
+
+                return;
+
+            }
+
+
+            dates.push({
+
+                event_date:
+                    eventDate,
+
+                drive_link:
+                    driveLink
+
+            });
 
         }
 
-
-        modalTitle.textContent =
-            "Edit Event";
-
-
-        modalSubtitle.textContent =
-            "Perbarui data dokumentasi kegiatan.";
-
-
-        saveButtonText.textContent =
-            "Simpan Perubahan";
-
-
-        formMessage.textContent =
-            "";
-
-
-        eventModal.classList.add(
-            "show"
-        );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        alert(
-            error.message ||
-            "Gagal memuat event."
-        );
-
-    }
-
-}
-
-
-// ==========================
-// SUBMIT EVENT
-// ==========================
-
-eventForm.addEventListener(
-    "submit",
-    async function (event) {
-
-        event.preventDefault();
-
-
-        formMessage.textContent =
-            editMode
-                ? "Menyimpan perubahan..."
-                : "Menyimpan event...";
-
-
-        formMessage.style.color =
-            "#28594b";
-
-
-        const year =
-            document.getElementById(
-                "year"
-            ).value;
-
-
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
-
-
-        const description =
-            document.getElementById(
-                "description"
-            ).value.trim();
-
-
-        // ======================
-        // TANGGAL
-        // ======================
-
-        const rows =
-            dateList.querySelectorAll(
-                ".date-row"
-            );
-
-
-        const dates = [];
-
-
-        rows.forEach(
-            row => {
-
-                const eventDate =
-                    row.querySelector(
-                        ".event-date"
-                    ).value;
-
-
-                const driveLink =
-                    row.querySelector(
-                        ".drive-link"
-                    ).value.trim();
-
-
-                if (
-                    eventDate &&
-                    driveLink
-                ) {
-
-                    dates.push({
-
-                        event_date:
-                            eventDate,
-
-                        drive_link:
-                            driveLink
-
-                    });
-
-                }
-
-            }
-        );
-
-
-        // ======================
-        // VALIDASI
-        // ======================
 
         if (
             dates.length === 0
         ) {
 
             formMessage.textContent =
-                "Minimal satu tanggal dan link Google Drive.";
+                "Minimal satu tanggal dan link harus ada.";
 
             formMessage.style.color =
                 "#b33a3a";
@@ -997,13 +982,14 @@ eventForm.addEventListener(
         }
 
 
-        // ======================
+        // ==========================
         // FOTO
-        // ======================
+        // ==========================
 
         let image =
-            oldImage;
-
+            editMode
+                ? oldImage
+                : "";
 
         const file =
             eventImage.files[0];
@@ -1015,6 +1001,9 @@ eventForm.addEventListener(
 
             try {
 
+                formMessage.textContent =
+                    "Memproses foto...";
+
                 image =
                     await compressImage(
                         file
@@ -1022,8 +1011,10 @@ eventForm.addEventListener(
 
             } catch (error) {
 
-                console.error(error);
-
+                console.error(
+                    "IMAGE ERROR:",
+                    error
+                );
 
                 formMessage.textContent =
                     "Foto tidak dapat diproses.";
@@ -1038,9 +1029,9 @@ eventForm.addEventListener(
         }
 
 
-        // ======================
-        // HAPUS FOTO LAMA
-        // ======================
+        // ==========================
+        // HAPUS FOTO
+        // ==========================
 
         if (
             editMode &&
@@ -1053,9 +1044,39 @@ eventForm.addEventListener(
         }
 
 
-        // ======================
+        // ==========================
+        // BODY
+        // ==========================
+
+        const body = {
+
+            year:
+                Number(year),
+
+            name:
+                name,
+
+            description:
+                description,
+
+            image:
+                image,
+
+            dates:
+                dates
+
+        };
+
+
+        console.log(
+            "REQUEST BODY:",
+            body
+        );
+
+
+        // ==========================
         // REQUEST
-        // ======================
+        // ==========================
 
         try {
 
@@ -1064,14 +1085,18 @@ eventForm.addEventListener(
                     ? `${API_URL}/events/${eventIdInput.value}`
                     : `${API_URL}/events`;
 
-
             const method =
                 editMode
                     ? "PUT"
                     : "POST";
 
 
-       
+            formMessage.textContent =
+                editMode
+                    ? "Menyimpan perubahan..."
+                    : "Menyimpan event...";
+
+
             const response =
                 await fetch(
                     url,
@@ -1084,22 +1109,7 @@ eventForm.addEventListener(
                         },
 
                         body:
-                            JSON.stringify({
-                                year:
-                                    Number(year),
-
-                                name:
-                                    name,
-
-                                description:
-                                    description,
-
-                                image:
-                                    image,
-
-                                dates:
-                                    dates
-                            })
+                            JSON.stringify(body)
                     }
                 );
 
@@ -1108,35 +1118,30 @@ eventForm.addEventListener(
                 await response.json();
 
 
-            // ======================
-            // HASIL RESPONSE
-            // ======================
+            console.log(
+                "SAVE RESPONSE:",
+                data
+            );
 
-            if (!data.success) {
 
-                formMessage.textContent =
+            if (!response.ok || !data.success) {
+
+                throw new Error(
                     data.message ||
-                    (
-                        editMode
-                            ? "Gagal memperbarui event."
-                            : "Gagal membuat event."
-                    );
+                    `HTTP ${response.status}`
+                );
 
-                formMessage.style.color =
-                    "#b33a3a";
-
-                return;
             }
 
 
-            // ======================
-            // BERHASIL
-            // ======================
+            // ==========================
+            // SUKSES
+            // ==========================
 
             formMessage.textContent =
                 editMode
-                    ? "Event berhasil diperbarui!"
-                    : "Event berhasil dibuat!";
+                    ? "Event berhasil diperbarui."
+                    : "Event berhasil dibuat.";
 
             formMessage.style.color =
                 "#28594b";
@@ -1150,20 +1155,20 @@ eventForm.addEventListener(
                     loadEvents();
 
                 },
-                500
+                700
             );
 
 
         } catch (error) {
 
             console.error(
-                "ERROR SIMPAN EVENT:",
+                "SAVE EVENT ERROR:",
                 error
             );
 
-
             formMessage.textContent =
-                "Tidak dapat terhubung ke server.";
+                "Gagal menyimpan event: " +
+                error.message;
 
             formMessage.style.color =
                 "#b33a3a";
@@ -1172,3 +1177,196 @@ eventForm.addEventListener(
 
     }
 );
+
+
+// =====================================================
+// LIHAT EVENT
+// =====================================================
+
+async function viewEvent(id) {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/events/${id}`
+            );
+
+        const data =
+            await response.json();
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message ||
+                "Event tidak ditemukan"
+            );
+
+        }
+
+        const event =
+            data.event;
+
+        const dates =
+            data.dates || [];
+
+
+        let message =
+            `${event.name}\n\n`;
+
+        message +=
+            `Tahun: ${event.year}\n`;
+
+        if (event.description) {
+
+            message +=
+                `\n${event.description}\n`;
+
+        }
+
+        message +=
+            "\nTanggal & Link:\n";
+
+
+        dates.forEach(
+            date => {
+
+                message +=
+                    `\n${formatDate(date.event_date)}\n`;
+
+                message +=
+                    `${date.drive_link}\n`;
+
+            }
+        );
+
+
+        alert(message);
+
+
+    } catch (error) {
+
+        console.error(
+            "VIEW EVENT ERROR:",
+            error
+        );
+
+        alert(
+            "Gagal mengambil event: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// DELETE EVENT
+// =====================================================
+
+async function deleteEvent(id) {
+
+    const yakin =
+        confirm(
+            "Yakin ingin menghapus event ini?\n\nSemua tanggal dan link di dalam event juga akan dihapus."
+        );
+
+    if (!yakin) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/events/${id}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "DELETE RESPONSE:",
+            data
+        );
+
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                `HTTP ${response.status}`
+            );
+
+        }
+
+
+        alert(
+            "Event berhasil dihapus."
+        );
+
+
+        loadEvents();
+
+
+    } catch (error) {
+
+        console.error(
+            "DELETE EVENT ERROR:",
+            error
+        );
+
+        alert(
+            "Gagal menghapus event: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// LOGOUT
+// =====================================================
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function () {
+
+            localStorage.removeItem(
+                "isLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "admin"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// LOAD AWAL
+// =====================================================
+
+loadEvents();
