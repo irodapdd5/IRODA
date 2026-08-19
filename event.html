@@ -1,130 +1,289 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Dokumentasi Event - IRODA</title>
 
-    <link rel="stylesheet" href="css/event.css">
+    <link
+        rel="stylesheet"
+        href="css/event.css"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
 </head>
+
 
 <body>
 
 <div class="layout">
 
-    <!-- SIDEBAR -->
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
     <aside class="sidebar">
 
-        <div class="brand">
-            <img src="assets/images/logo.png" alt="Logo IRODA">
 
-            <div>
+        <div class="brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+            >
+
+            <div class="brand-text">
+
                 <h2>IRODA</h2>
-                <span>IKATAN REMAJA RT02</span>
+
+                <span>
+                    IKATAN REMAJA RT02
+                </span>
+
             </div>
+
         </div>
+
 
         <nav>
 
-    <a href="dashboard.html">
-        <i class="fa-solid fa-house"></i>
-        <span>Dashboard</span>
-    </a>
+            <a href="dashboard.html">
 
-    <a href="event.html" class="active">
-        <i class="fa-solid fa-folder"></i>
-        <span>Dokumentasi</span>
-    </a>
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="event.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-folder"></i>
+
+                <span>
+                    Dokumentasi
+                </span>
+
+            </a>
 
         </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
 
 
     </aside>
 
 
-    <!-- CONTENT -->
+
+    <!-- =========================
+         CONTENT
+    ========================= -->
+
     <main class="content">
+
+
+        <!-- =========================
+             TOPBAR
+        ========================= -->
 
         <header class="topbar">
 
+
             <div>
-                <h1>Dokumentasi Event</h1>
-                <p>Kelola dokumentasi kegiatan IRODA.</p>
+
+                <h1>
+                    Dokumentasi Event
+                </h1>
+
+                <p>
+                    Kelola dokumentasi kegiatan IRODA.
+                </p>
+
             </div>
+
 
             <div class="admin">
-                <div class="avatar" id="avatar">A</div>
+
+
+                <div
+                    class="avatar"
+                    id="avatar"
+                >
+                    A
+                </div>
+
 
                 <div>
-                    <strong id="adminName">Admin</strong>
-                    <span>Administrator</span>
+
+                    <strong id="adminName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
                 </div>
+
+
             </div>
+
 
         </header>
 
 
-        <!-- EVENT HEADER -->
+
+        <!-- =========================
+             EVENT HEADER
+        ========================= -->
 
         <section class="page-header">
 
+
             <div>
-                <h2>Daftar Event</h2>
+
+                <h2>
+                    Daftar Event
+                </h2>
+
                 <p>
                     Event akan otomatis diurutkan berdasarkan tanggal kegiatan.
                 </p>
+
             </div>
 
-            <button id="addEventButton" class="primary-button">
-                + Tambah Event
+
+            <button
+                id="addEventButton"
+                class="primary-button"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                Tambah Event
+
             </button>
 
+
         </section>
 
 
-        <!-- EVENT LIST -->
 
-        <section id="eventList" class="event-list">
+        <!-- =========================
+             EVENT LIST
+        ========================= -->
+
+        <section
+            id="eventList"
+            class="event-list"
+        >
 
             <div class="loading">
+
                 Memuat event...
+
             </div>
 
         </section>
 
+
     </main>
+
 
 </div>
 
 
-<!-- MODAL -->
 
-<div id="eventModal" class="modal">
+<!-- =========================
+     MODAL TAMBAH EVENT
+========================= -->
+
+<div
+    id="eventModal"
+    class="modal"
+>
+
 
     <div class="modal-box">
 
+
+        <!-- MODAL HEADER -->
+
         <div class="modal-header">
 
+
             <div>
-                <h2>Tambah Event</h2>
-                <p>Buat dokumentasi kegiatan baru.</p>
+
+                <h2>
+                    Tambah Event
+                </h2>
+
+                <p>
+                    Buat dokumentasi kegiatan baru.
+                </p>
+
             </div>
 
-            <button id="closeModal" class="close-button">
+
+            <button
+                id="closeModal"
+                class="close-button"
+                type="button"
+            >
                 ×
             </button>
+
 
         </div>
 
 
+
+        <!-- =========================
+             FORM EVENT
+        ========================= -->
+
         <form id="eventForm">
 
+
+            <!-- TAHUN -->
+
             <div class="form-group">
+
 
                 <label for="year">
                     Tahun
                 </label>
+
 
                 <input
                     type="number"
@@ -135,14 +294,20 @@
                     required
                 >
 
+
             </div>
 
 
+
+            <!-- NAMA -->
+
             <div class="form-group">
+
 
                 <label for="name">
                     Nama Kegiatan
                 </label>
+
 
                 <input
                     type="text"
@@ -151,35 +316,57 @@
                     required
                 >
 
+
             </div>
 
-            <!-- FOTO EVENT -->
-<div class="form-group">
 
-    <label for="eventImage">
-        Foto Kegiatan
-    </label>
 
-    <input
-        type="file"
-        id="eventImage"
-        accept="image/*"
-        required
-    >
+            <!-- =========================
+                 FOTO EVENT
+            ========================= -->
 
-    <small>
-        Pilih 1 foto untuk digunakan sebagai foto utama kegiatan.
-    </small>
-
-    <div id="imagePreview" class="image-preview"></div>
-
-</div>
-            
             <div class="form-group">
+
+
+                <label for="eventImage">
+                    Foto Kegiatan
+                </label>
+
+
+                <input
+                    type="file"
+                    id="eventImage"
+                    accept="image/*"
+                    required
+                >
+
+
+                <small>
+                    Pilih 1 foto untuk digunakan sebagai foto utama kegiatan.
+                </small>
+
+
+                <div
+                    id="imagePreview"
+                    class="image-preview"
+                ></div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 DESKRIPSI
+            ========================= -->
+
+            <div class="form-group">
+
 
                 <label for="description">
                     Deskripsi
                 </label>
+
 
                 <textarea
                     id="description"
@@ -187,31 +374,52 @@
                     placeholder="Deskripsi kegiatan..."
                 ></textarea>
 
+
             </div>
 
 
+
+            <!-- =========================
+                 TANGGAL & GOOGLE DRIVE
+            ========================= -->
+
             <div class="form-group">
 
+
                 <div class="date-title">
+
 
                     <label>
                         Tanggal & Link Google Drive
                     </label>
+
 
                     <button
                         type="button"
                         id="addDateButton"
                         class="small-button"
                     >
-                        + Tambah Tanggal
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Tambah Tanggal
+
                     </button>
+
 
                 </div>
 
 
+
+                <!-- DATE LIST -->
+
                 <div id="dateList">
 
+
+                    <!-- DEFAULT DATE -->
+
                     <div class="date-row">
+
 
                         <input
                             type="date"
@@ -219,12 +427,14 @@
                             required
                         >
 
+
                         <input
                             type="url"
                             class="drive-link"
                             placeholder="https://drive.google.com/..."
                             required
                         >
+
 
                         <button
                             type="button"
@@ -234,43 +444,75 @@
                             ×
                         </button>
 
+
                     </div>
 
+
                 </div>
+
 
             </div>
 
 
+
+            <!-- =========================
+                 FORM MESSAGE
+            ========================= -->
+
             <p id="formMessage"></p>
 
 
+
+            <!-- =========================
+                 MODAL ACTIONS
+            ========================= -->
+
             <div class="modal-actions">
+
 
                 <button
                     type="button"
                     id="cancelButton"
                     class="cancel-button"
                 >
+
                     Batal
+
                 </button>
+
 
                 <button
                     type="submit"
                     class="primary-button"
                 >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
                     Simpan Event
+
                 </button>
+
 
             </div>
 
+
         </form>
 
+
     </div>
+
 
 </div>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script src="js/event.js"></script>
 
+
 </body>
+
 </html>
