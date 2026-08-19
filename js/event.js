@@ -1,3 +1,4 @@
+console.log("IRODA EVENT JS AKTIF");
 const API_URL =
     "https://iroda-backend.irodapdd5.workers.dev";
 
