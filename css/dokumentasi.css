@@ -1,260 +1,625 @@
+/* =========================================
+   RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f6f7f7;
-    color: #222;
+    background: #000;
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
+main {
+    flex: 1;
 }
 
 
-/* NAVBAR */
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar {
-    height: 75px;
+    position: relative;
 
-    background: white;
+    width: 100%;
+    height: 65px;
 
-    padding: 0 7%;
+    background: rgba(0, 0, 0, 0.95);
 
-    display: flex;
+    z-index: 100;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   NAVBAR SCROLL
+========================================= */
+
+.navbar-scroll {
+    width: 100%;
+    height: 65px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.navbar-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================
+   NAV MENU
+========================================= */
+
+.nav-menu {
+    display: inline-flex;
+
     align-items: center;
-    justify-content: space-between;
 
-    border-bottom: 1px solid #eee;
-}
+    flex-wrap: nowrap;
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    color: #173b32;
-}
-
-.brand img {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-}
-
-.brand strong {
-    display: block;
-    font-size: 20px;
-}
-
-.brand span {
-    display: block;
-    font-size: 8px;
-}
-
-.navbar nav {
-    display: flex;
     gap: 25px;
+
+    height: 65px;
+
+    width: max-content;
+
+    min-width: 100%;
+
+    padding: 0 30px;
 }
 
-.navbar nav a {
-    color: #555;
-    font-size: 14px;
+
+/* =========================================
+   NAV LINK
+========================================= */
+
+.nav-menu a {
+    display: block;
+
+    flex: 0 0 auto;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    white-space: nowrap;
+
+    padding: 5px 0;
+
+    transition: color .3s ease;
 }
 
-.navbar nav a.active {
-    color: #28594b;
-    font-weight: bold;
+.nav-menu a:hover {
+    color: #ffc400;
+}
+
+.nav-menu a.active {
+    color: #ffc400;
 }
 
 
-/* HERO */
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
-    background: #28594b;
-    color: white;
+    position: relative;
 
-    padding: 70px 7%;
+    min-height: 330px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(139, 21, 24, .55),
+            rgba(0, 0, 0, .95)
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 70px 8%;
+
+    overflow: hidden;
 }
 
-.hero span {
-    font-size: 12px;
-    letter-spacing: 2px;
-    opacity: .8;
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255, 196, 0, .10),
+            transparent 40%
+        );
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+}
+
+.hero-label {
+    display: inline-block;
+
+    color: #ffc400;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
 }
 
 .hero h1 {
-    font-size: 38px;
-    margin: 10px 0;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: .95;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        3px 3px 0 #222,
+        -1px -1px 0 #222;
 }
 
 .hero p {
-    max-width: 550px;
-    line-height: 1.6;
-    opacity: .9;
+    max-width: 620px;
+
+    font-size: 19px;
+
+    line-height: 1.65;
+
+    color: #eee;
 }
 
 
-/* DOCUMENTATION */
+/* =========================================
+   DOCUMENTATION
+========================================= */
 
 .documentation {
-    max-width: 1100px;
+    width: min(85%, 1100px);
 
-    margin: 45px auto;
+    margin: 0 auto;
 
-    padding: 0 25px;
+    padding: 65px 0 110px;
 }
 
 .section-title {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 
 .section-title h2 {
-    font-size: 25px;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 38px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
 }
 
 .section-title p {
-    color: #777;
-    margin-top: 6px;
+    color: #bbb;
+
+    font-size: 17px;
+
+    line-height: 1.6;
 }
 
 
-/* YEAR */
+/* =========================================
+   YEAR LIST
+========================================= */
 
 .year-list {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(220px, 1fr));
+        repeat(auto-fit, minmax(240px, 1fr));
 
-    gap: 18px;
+    gap: 22px;
 }
 
+
+/* =========================================
+   YEAR CARD
+========================================= */
+
 .year-card {
-    background: white;
+    position: relative;
 
-    border-radius: 15px;
+    background: #111;
 
-    padding: 25px;
+    border: 1px solid #292929;
 
-    border: 1px solid #eee;
+    border-radius: 14px;
 
-    transition: .2s;
+    padding: 28px;
+
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.year-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #8b1518;
 }
 
 .year-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 
-    border-color: #28594b;
+    border-color: #8b1518;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.07);
+        0 12px 30px rgba(0, 0, 0, .45);
 }
 
+
+/* =========================================
+   YEAR ICON
+========================================= */
+
 .year-icon {
-    font-size: 28px;
-    margin-bottom: 15px;
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #8b1518;
+
+    color: #ffc400;
+
+    font-size: 22px;
+
+    margin-bottom: 22px;
 }
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
 
 .year-card span {
     display: block;
 
-    color: #777;
+    color: #999;
+
+    font-family: Arial, sans-serif;
 
     font-size: 12px;
 
-    margin-bottom: 4px;
+    letter-spacing: .5px;
+
+    margin-bottom: 6px;
 }
 
 .year-card strong {
     display: block;
 
-    font-size: 25px;
+    color: #fff;
 
-    color: #28594b;
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
 
-    margin-bottom: 15px;
+    font-size: 34px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
 }
+
+.year-card .event-count {
+    color: #bbb;
+
+    font-size: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   YEAR BUTTON
+========================================= */
 
 .year-button {
-    display: inline-block;
+    display: inline-flex;
 
-    background: #28594b;
+    align-items: center;
 
-    color: white;
+    gap: 9px;
 
-    padding: 9px 14px;
+    background: #ffc400;
 
-    border-radius: 8px;
+    color: #000;
+
+    padding: 11px 17px;
+
+    border-radius: 25px;
+
+    font-family: Arial, sans-serif;
 
     font-size: 13px;
+
     font-weight: bold;
+
+    transition: .3s;
+}
+
+.year-button:hover {
+    background: #fff;
+
+    transform: translateY(-2px);
 }
 
 
-/* LOADING */
+/* =========================================
+   LOADING / EMPTY / ERROR
+========================================= */
 
 .loading,
 .empty,
 .error {
-    background: white;
+    background: #111;
 
-    padding: 30px;
+    border: 1px solid #292929;
 
-    border-radius: 12px;
+    padding: 35px;
+
+    border-radius: 14px;
 
     text-align: center;
 
-    color: #777;
+    color: #999;
+
+    font-family: Arial, sans-serif;
 }
 
 .error {
-    color: #a33;
+    color: #ff8b8b;
 }
 
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
+    width: 100%;
+
+    background: #8b1518;
+
+    color: #fff;
+
     text-align: center;
 
-    padding: 30px;
+    padding: 28px 20px;
 
-    color: #888;
+    font-family: Arial, sans-serif;
 
-    font-size: 12px;
+    font-size: 13px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
 }
 
 
-/* MOBILE */
+/* =========================================
+   TABLET
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
 
-    .navbar {
+    .nav-menu {
+        gap: 22px;
+
         padding: 0 20px;
     }
 
-    .navbar nav {
-        gap: 12px;
-    }
-
-    .navbar nav a {
-        font-size: 12px;
+    .nav-menu a {
+        font-size: 15px;
     }
 
     .hero {
-        padding: 50px 25px;
-    }
-
-    .hero h1 {
-        font-size: 30px;
+        padding: 60px 7%;
     }
 
     .documentation {
-        margin-top: 35px;
+        width: 88%;
     }
 
 }
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        height: 60px;
+    }
+
+    .navbar-scroll {
+        height: 60px;
+    }
+
+    .nav-menu {
+        gap: 20px;
+
+        height: 60px;
+
+        padding: 0 18px;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 320px;
+
+        padding: 55px 25px;
+    }
+
+    .hero-label {
+        font-size: 11px;
+
+        letter-spacing: 2.5px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 16px;
+
+        line-height: 1.7;
+    }
+
+
+    /* DOCUMENTATION */
+
+    .documentation {
+        width: 88%;
+
+        padding: 45px 0 80px;
+    }
+
+    .section-title {
+        margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+        font-size: 31px;
+    }
+
+    .section-title p {
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+
+    /* YEAR */
+
+    .year-list {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .year-card {
+        padding: 23px;
+    }
+
+    .year-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 20px;
+
+        margin-bottom: 18px;
+    }
+
+    .year-card strong {
+        font-size: 32px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 25px 15px;
+
+        font-size: 12px;
+    }
+
+    }
