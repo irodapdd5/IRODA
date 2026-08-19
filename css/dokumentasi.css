@@ -614,12 +614,24 @@ footer {
     }
 
 
-    /* FOOTER */
+    /* =========================================
+   FOOTER
+========================================= */
 
-    footer {
-        padding: 25px 15px;
+footer {
+    width: 100%;
 
-        font-size: 12px;
-    }
+    background: #ffc400;
+    color: #000;
 
-    }
+    text-align: center;
+
+    padding: 18px 20px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-top: 60px;
+}
