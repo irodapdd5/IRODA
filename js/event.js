@@ -7,10 +7,7 @@ const API_URL =
 // ==========================
 
 if (localStorage.getItem("isLoggedIn") !== "true") {
-
-    window.location.href =
-        "login.html";
-
+    window.location.href = "login.html";
 }
 
 
@@ -23,21 +20,15 @@ const adminData =
 
 if (adminData) {
 
-    const admin =
-        JSON.parse(adminData);
+    const admin = JSON.parse(adminData);
 
-    document.getElementById(
-        "adminName"
-    ).textContent =
+    document.getElementById("adminName").textContent =
         admin.name || "Admin";
 
-    document.getElementById(
-        "avatar"
-    ).textContent =
+    document.getElementById("avatar").textContent =
         (admin.name || "A")
             .charAt(0)
             .toUpperCase();
-
 }
 
 
@@ -46,39 +37,34 @@ if (adminData) {
 // ==========================
 
 const eventModal =
-    document.getElementById(
-        "eventModal"
-    );
+    document.getElementById("eventModal");
 
 const eventForm =
-    document.getElementById(
-        "eventForm"
-    );
+    document.getElementById("eventForm");
 
 const eventList =
-    document.getElementById(
-        "eventList"
-    );
+    document.getElementById("eventList");
 
 const dateList =
-    document.getElementById(
-        "dateList"
-    );
+    document.getElementById("dateList");
 
 const formMessage =
-    document.getElementById(
-        "formMessage"
-    );
+    document.getElementById("formMessage");
 
 const eventImage =
-    document.getElementById(
-        "eventImage"
-    );
+    document.getElementById("eventImage");
 
 const imagePreview =
-    document.getElementById(
-        "imagePreview"
-    );
+    document.getElementById("imagePreview");
+
+
+// ==========================
+// MODE EDIT
+// ==========================
+
+let editingEventId = null;
+
+let currentEventImage = null;
 
 
 // ==========================
@@ -96,8 +82,30 @@ if (eventImage) {
 
             if (!file) {
 
-                imagePreview.innerHTML =
-                    "";
+                if (currentEventImage) {
+
+                    imagePreview.innerHTML = `
+
+                        <img
+                            src="${currentEventImage}"
+                            alt="Foto Event"
+                            style="
+                                width:100%;
+                                max-width:500px;
+                                height:260px;
+                                object-fit:cover;
+                                border-radius:12px;
+                                margin-top:12px;
+                            "
+                        >
+
+                    `;
+
+                } else {
+
+                    imagePreview.innerHTML = "";
+
+                }
 
                 return;
             }
@@ -147,139 +155,197 @@ function compressImage(file) {
     return new Promise((resolve, reject) => {
 
         if (!file) {
-            reject(new Error("File foto tidak ditemukan"));
+
+            reject(
+                new Error(
+                    "File foto tidak ditemukan"
+                )
+            );
+
             return;
         }
+
 
         if (!file.type.startsWith("image/")) {
-            reject(new Error("File bukan gambar"));
+
+            reject(
+                new Error(
+                    "File bukan gambar"
+                )
+            );
+
             return;
         }
 
-        const reader = new FileReader();
 
-        reader.onload = function (event) {
+        const reader =
+            new FileReader();
 
-            const img = new Image();
 
-            img.onload = function () {
+        reader.onload =
+            function (event) {
 
-                const canvas =
-                    document.createElement("canvas");
+                const img =
+                    new Image();
 
-                const maxWidth = 1200;
 
-                let width = img.width;
-                let height = img.height;
+                img.onload =
+                    function () {
 
-                if (width > maxWidth) {
+                        const canvas =
+                            document.createElement(
+                                "canvas"
+                            );
 
-                    height =
-                        height * maxWidth / width;
 
-                    width = maxWidth;
+                        const maxWidth = 1200;
 
-                }
 
-                canvas.width = width;
-                canvas.height = height;
+                        let width =
+                            img.width;
 
-                const ctx =
-                    canvas.getContext("2d");
+                        let height =
+                            img.height;
 
-                if (!ctx) {
-                    reject(
-                        new Error(
-                            "Canvas tidak dapat dibuat"
-                        )
-                    );
-                    return;
-                }
 
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
-                );
+                        if (
+                            width > maxWidth
+                        ) {
 
-                canvas.toBlob(
-                    function (blob) {
+                            height =
+                                height *
+                                maxWidth /
+                                width;
 
-                        if (!blob) {
+                            width =
+                                maxWidth;
+
+                        }
+
+
+                        canvas.width =
+                            width;
+
+                        canvas.height =
+                            height;
+
+
+                        const ctx =
+                            canvas.getContext(
+                                "2d"
+                            );
+
+
+                        if (!ctx) {
 
                             reject(
                                 new Error(
-                                    "Foto gagal dikompres"
+                                    "Canvas tidak dapat dibuat"
                                 )
                             );
 
                             return;
                         }
 
-                        const readerBlob =
-                            new FileReader();
 
-                        readerBlob.onload =
-                            function () {
-
-                                resolve(
-                                    readerBlob.result
-                                );
-
-                            };
-
-                        readerBlob.onerror =
-                            function () {
-
-                                reject(
-                                    new Error(
-                                        "Foto gagal dibaca"
-                                    )
-                                );
-
-                            };
-
-                        readerBlob.readAsDataURL(
-                            blob
+                        ctx.drawImage(
+                            img,
+                            0,
+                            0,
+                            width,
+                            height
                         );
 
-                    },
-                    "image/jpeg",
-                    0.70
-                );
+
+                        canvas.toBlob(
+                            function (blob) {
+
+                                if (!blob) {
+
+                                    reject(
+                                        new Error(
+                                            "Foto gagal dikompres"
+                                        )
+                                    );
+
+                                    return;
+                                }
+
+
+                                const readerBlob =
+                                    new FileReader();
+
+
+                                readerBlob.onload =
+                                    function () {
+
+                                        resolve(
+                                            readerBlob.result
+                                        );
+
+                                    };
+
+
+                                readerBlob.onerror =
+                                    function () {
+
+                                        reject(
+                                            new Error(
+                                                "Foto gagal dibaca"
+                                            )
+                                        );
+
+                                    };
+
+
+                                readerBlob.readAsDataURL(
+                                    blob
+                                );
+
+                            },
+                            "image/jpeg",
+                            0.70
+                        );
+
+                    };
+
+
+                img.onerror =
+                    function () {
+
+                        reject(
+                            new Error(
+                                "File gambar tidak dapat dibaca"
+                            )
+                        );
+
+                    };
+
+
+                img.src =
+                    event.target.result;
 
             };
 
-            img.onerror = function () {
+
+        reader.onerror =
+            function () {
 
                 reject(
                     new Error(
-                        "File gambar tidak dapat dibaca"
+                        "File tidak dapat dibaca"
                     )
                 );
 
             };
 
-            img.src = event.target.result;
-
-        };
-
-        reader.onerror = function () {
-
-            reject(
-                new Error(
-                    "File tidak dapat dibaca"
-                )
-            );
-
-        };
 
         reader.readAsDataURL(file);
 
     });
-                        }
+
+}
+
 
 // ==========================
 // LOAD EVENTS
@@ -289,6 +355,7 @@ async function loadEvents() {
 
     eventList.innerHTML =
         '<div class="loading">Memuat event...</div>';
+
 
     try {
 
@@ -320,12 +387,10 @@ async function loadEvents() {
                 '<div class="empty">Belum ada event.</div>';
 
             return;
-
         }
 
 
-        eventList.innerHTML =
-            "";
+        eventList.innerHTML = "";
 
 
         data.data.forEach(
@@ -354,15 +419,11 @@ async function loadEvents() {
                     <div class="event-info">
 
                         <span class="event-year">
-                            ${escapeHTML(
-                                event.year
-                            )}
+                            ${escapeHTML(event.year)}
                         </span>
 
                         <h3>
-                            ${escapeHTML(
-                                event.name
-                            )}
+                            ${escapeHTML(event.name)}
                         </h3>
 
                         <p>
@@ -383,6 +444,14 @@ async function loadEvents() {
 
 
                         <button
+                            class="edit-button"
+                            onclick="editEvent(${event.id})"
+                        >
+                            Edit
+                        </button>
+
+
+                        <button
                             class="delete-button"
                             onclick="deleteEvent(${event.id})"
                         >
@@ -394,9 +463,7 @@ async function loadEvents() {
                 `;
 
 
-                eventList.appendChild(
-                    card
-                );
+                eventList.appendChild(card);
 
             }
         );
@@ -408,9 +475,11 @@ async function loadEvents() {
 
 
         eventList.innerHTML =
-            `<div class="empty">
+            `
+            <div class="empty">
                 Gagal memuat event.
-            </div>`;
+            </div>
+            `;
 
     }
 
@@ -422,36 +491,60 @@ async function loadEvents() {
 // ==========================
 
 document
-    .getElementById(
-        "addEventButton"
-    )
+    .getElementById("addEventButton")
     .addEventListener(
         "click",
         function () {
 
+            editingEventId = null;
+
+            currentEventImage = null;
+
+
             eventForm.reset();
 
 
-            document.getElementById(
-                "year"
-            ).value =
-                new Date()
-                    .getFullYear();
+            document.getElementById("year").value =
+                new Date().getFullYear();
 
 
-            dateList.innerHTML =
-                "";
+            dateList.innerHTML = "";
 
+            imagePreview.innerHTML = "";
 
-            imagePreview.innerHTML =
-                "";
+            formMessage.textContent = "";
 
 
             addDateRow();
 
 
-            formMessage.textContent =
-                "";
+            const modalTitle =
+                eventModal.querySelector(
+                    ".modal-header h2"
+                );
+
+
+            const modalDescription =
+                eventModal.querySelector(
+                    ".modal-header p"
+                );
+
+
+            modalTitle.textContent =
+                "Tambah Event";
+
+            modalDescription.textContent =
+                "Buat dokumentasi kegiatan baru.";
+
+
+            const submitButton =
+                eventForm.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            submitButton.textContent =
+                "Simpan Event";
 
 
             eventModal.classList.add(
@@ -472,13 +565,15 @@ function closeModal() {
         "show"
     );
 
+    editingEventId = null;
+
+    currentEventImage = null;
+
 }
 
 
 document
-    .getElementById(
-        "closeModal"
-    )
+    .getElementById("closeModal")
     .addEventListener(
         "click",
         closeModal
@@ -486,9 +581,7 @@ document
 
 
 document
-    .getElementById(
-        "cancelButton"
-    )
+    .getElementById("cancelButton")
     .addEventListener(
         "click",
         closeModal
@@ -499,7 +592,10 @@ document
 // TAMBAH BARIS TANGGAL
 // ==========================
 
-function addDateRow() {
+function addDateRow(
+    eventDate = "",
+    driveLink = ""
+) {
 
     const row =
         document.createElement(
@@ -516,6 +612,7 @@ function addDateRow() {
         <input
             type="date"
             class="event-date"
+            value="${escapeHTML(eventDate)}"
             required
         >
 
@@ -524,6 +621,7 @@ function addDateRow() {
             type="url"
             class="drive-link"
             placeholder="https://drive.google.com/..."
+            value="${escapeHTML(driveLink)}"
             required
         >
 
@@ -531,6 +629,7 @@ function addDateRow() {
         <button
             type="button"
             class="remove-date"
+            title="Hapus tanggal"
         >
             ×
         </button>
@@ -539,9 +638,7 @@ function addDateRow() {
 
 
     row
-        .querySelector(
-            ".remove-date"
-        )
+        .querySelector(".remove-date")
         .addEventListener(
             "click",
             function () {
@@ -575,13 +672,197 @@ function addDateRow() {
 
 
 document
-    .getElementById(
-        "addDateButton"
-    )
+    .getElementById("addDateButton")
     .addEventListener(
         "click",
-        addDateRow
+        function () {
+
+            addDateRow();
+
+        }
     );
+
+
+// ==========================
+// EDIT EVENT
+// ==========================
+
+async function editEvent(id) {
+
+    try {
+
+        formMessage.textContent =
+            "Memuat event...";
+
+
+        const response =
+            await fetch(
+                `${API_URL}/events/${id}`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            alert(
+                data.message ||
+                "Gagal mengambil event."
+            );
+
+            return;
+        }
+
+
+        const event =
+            data.event;
+
+
+        editingEventId =
+            id;
+
+
+        currentEventImage =
+            event.image || null;
+
+
+        // ======================
+        // DATA UTAMA
+        // ======================
+
+        document.getElementById("year").value =
+            event.year;
+
+
+        document.getElementById("name").value =
+            event.name;
+
+
+        document.getElementById("description").value =
+            event.description || "";
+
+
+        // ======================
+        // TANGGAL
+        // ======================
+
+        dateList.innerHTML = "";
+
+
+        if (
+            event.dates &&
+            event.dates.length > 0
+        ) {
+
+            event.dates.forEach(
+                date => {
+
+                    addDateRow(
+                        date.event_date,
+                        date.drive_link
+                    );
+
+                }
+            );
+
+        } else {
+
+            addDateRow();
+
+        }
+
+
+        // ======================
+        // FOTO
+        // ======================
+
+        eventImage.value = "";
+
+
+        if (event.image) {
+
+            imagePreview.innerHTML = `
+
+                <img
+                    src="${event.image}"
+                    alt="Foto Event"
+                    style="
+                        width:100%;
+                        max-width:500px;
+                        height:260px;
+                        object-fit:cover;
+                        border-radius:12px;
+                        margin-top:12px;
+                    "
+                >
+
+                <small>
+                    Pilih foto baru jika ingin mengganti foto.
+                </small>
+
+            `;
+
+        } else {
+
+            imagePreview.innerHTML = "";
+
+        }
+
+
+        // ======================
+        // JUDUL MODAL
+        // ======================
+
+        eventModal
+            .querySelector(
+                ".modal-header h2"
+            )
+            .textContent =
+                "Edit Event";
+
+
+        eventModal
+            .querySelector(
+                ".modal-header p"
+            )
+            .textContent =
+                "Ubah dokumentasi kegiatan.";
+
+
+        // ======================
+        // TOMBOL
+        // ======================
+
+        eventForm
+            .querySelector(
+                'button[type="submit"]'
+            )
+            .textContent =
+                "Simpan Perubahan";
+
+
+        formMessage.textContent = "";
+
+
+        eventModal.classList.add(
+            "show"
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Tidak dapat mengambil data event."
+        );
+
+    }
+
+}
 
 
 // ==========================
@@ -596,7 +877,9 @@ eventForm.addEventListener(
 
 
         formMessage.textContent =
-            "Menyimpan event...";
+            editingEventId
+                ? "Menyimpan perubahan..."
+                : "Menyimpan event...";
 
 
         formMessage.style.color =
@@ -604,7 +887,7 @@ eventForm.addEventListener(
 
 
         // ======================
-        // DATA EVENT
+        // DATA
         // ======================
 
         const year =
@@ -633,40 +916,48 @@ eventForm.addEventListener(
             eventImage.files[0];
 
 
-        if (!file) {
+        let image =
+            currentEventImage;
 
-            formMessage.textContent =
-                "Foto kegiatan wajib dipilih.";
 
-            formMessage.style.color =
-                "#b33a3a";
+        // Jika pilih foto baru
+        if (file) {
 
-            return;
+            try {
+
+                image =
+                    await compressImage(
+                        file
+                    );
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                formMessage.textContent =
+                    "Foto tidak dapat diproses.";
+
+                formMessage.style.color =
+                    "#b33a3a";
+
+                return;
+
+            }
 
         }
 
 
-        // ======================
-        // KOMPRES FOTO
-        // ======================
+        // Saat tambah event,
+        // foto wajib ada
 
-        let image;
-
-
-        try {
-
-            image =
-                await compressImage(
-                    file
-                );
-
-        } catch (error) {
-
-            console.error(error);
-
+        if (
+            !editingEventId &&
+            !image
+        ) {
 
             formMessage.textContent =
-                "Foto tidak dapat diproses.";
+                "Foto kegiatan wajib dipilih.";
 
             formMessage.style.color =
                 "#b33a3a";
@@ -686,8 +977,7 @@ eventForm.addEventListener(
             );
 
 
-        const dates =
-            [];
+        const dates = [];
 
 
         rows.forEach(
@@ -727,7 +1017,7 @@ eventForm.addEventListener(
 
 
         // ======================
-        // VALIDASI TANGGAL
+        // VALIDASI
         // ======================
 
         if (
@@ -746,296 +1036,7 @@ eventForm.addEventListener(
 
 
         // ======================
-        // KIRIM KE API
+        // API
         // ======================
 
-        try {
-
-            const response =
-                await fetch(
-                    `${API_URL}/events`,
-                    {
-
-                        method:
-                            "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/json"
-
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                year:
-                                    Number(
-                                        year
-                                    ),
-
-                                name:
-                                    name,
-
-                                description:
-                                    description,
-
-                                image:
-                                    image,
-
-                                dates:
-                                    dates
-
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            // ==================
-            // HASIL
-            // ==================
-
-            if (
-                !data.success
-            ) {
-
-                formMessage.textContent =
-                    data.message ||
-                    "Gagal menyimpan event.";
-
-                formMessage.style.color =
-                    "#b33a3a";
-
-                return;
-
-            }
-
-
-            formMessage.textContent =
-                "Event berhasil dibuat!";
-
-
-            formMessage.style.color =
-                "#28594b";
-
-
-            setTimeout(
-                () => {
-
-                    closeModal();
-
-                    loadEvents();
-
-                },
-                500
-            );
-
-
-        } catch (error) {
-
-            console.error(
-                error
-            );
-
-
-            formMessage.textContent =
-                "Tidak dapat terhubung ke server.";
-
-            formMessage.style.color =
-                "#b33a3a";
-
-        }
-
-    }
-);
-
-
-// ==========================
-// LIHAT EVENT
-// ==========================
-
-function viewEvent(id) {
-
-    window.location.href =
-        `event-detail.html?id=${id}`;
-
-}
-
-
-// ==========================
-// DELETE EVENT
-// ==========================
-
-async function deleteEvent(id) {
-
-    const confirmDelete =
-        confirm(
-            "Yakin ingin menghapus event ini?"
-        );
-
-
-    if (!confirmDelete) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const response =
-            await fetch(
-                `${API_URL}/events/${id}`,
-                {
-
-                    method:
-                        "DELETE"
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (
-            !data.success
-        ) {
-
-            alert(
-                data.message ||
-                "Gagal menghapus event."
-            );
-
-            return;
-
-        }
-
-
-        alert(
-            "Event berhasil dihapus."
-        );
-
-
-        loadEvents();
-
-
-    } catch (error) {
-
-        console.error(
-            error
-        );
-
-
-        alert(
-            "Tidak dapat terhubung ke server."
-        );
-
-    }
-
-}
-
-
-// ==========================
-// FORMAT TANGGAL
-// ==========================
-
-function formatDate(date) {
-
-    return new Date(
-        date + "T00:00:00"
-    ).toLocaleDateString(
-        "id-ID",
-        {
-
-            day:
-                "numeric",
-
-            month:
-                "long",
-
-            year:
-                "numeric"
-
-        }
-    );
-
-}
-
-
-// ==========================
-// ESCAPE HTML
-// ==========================
-
-function escapeHTML(value) {
-
-    return String(value)
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-// ==========================
-// LOGOUT
-// ==========================
-
-document
-    .getElementById(
-        "logoutButton"
-    )
-    .addEventListener(
-        "click",
-        function () {
-
-            localStorage.removeItem(
-                "isLoggedIn"
-            );
-
-
-            localStorage.removeItem(
-                "admin"
-            );
-
-
-            window.location.href =
-                "login.html";
-
-        }
-    );
-
-
-// ==========================
-// MULAI
-// ==========================
-
-loadEvents();
+        tr
