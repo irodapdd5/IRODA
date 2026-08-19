@@ -17,7 +17,6 @@
         href="css/event.css"
     >
 
-    <!-- FONT AWESOME -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -36,7 +35,6 @@
     ========================= -->
 
     <aside class="sidebar">
-
 
         <div class="brand">
 
@@ -100,7 +98,6 @@
 
         </button>
 
-
     </aside>
 
 
@@ -112,12 +109,9 @@
     <main class="content">
 
 
-        <!-- =========================
-             TOPBAR
-        ========================= -->
+        <!-- TOPBAR -->
 
         <header class="topbar">
-
 
             <div>
 
@@ -133,7 +127,6 @@
 
 
             <div class="admin">
-
 
                 <div
                     class="avatar"
@@ -155,9 +148,7 @@
 
                 </div>
 
-
             </div>
-
 
         </header>
 
@@ -168,7 +159,6 @@
         ========================= -->
 
         <section class="page-header">
-
 
             <div>
 
@@ -194,7 +184,6 @@
 
             </button>
 
-
         </section>
 
 
@@ -209,9 +198,7 @@
         >
 
             <div class="loading">
-
                 Memuat event...
-
             </div>
 
         </section>
@@ -219,20 +206,18 @@
 
     </main>
 
-
 </div>
 
 
 
 <!-- =========================
-     MODAL TAMBAH EVENT
+     MODAL EVENT
 ========================= -->
 
 <div
     id="eventModal"
     class="modal"
 >
-
 
     <div class="modal-box">
 
@@ -241,14 +226,13 @@
 
         <div class="modal-header">
 
-
             <div>
 
-                <h2>
+                <h2 id="modalTitle">
                     Tambah Event
                 </h2>
 
-                <p>
+                <p id="modalSubtitle">
                     Buat dokumentasi kegiatan baru.
                 </p>
 
@@ -263,51 +247,57 @@
                 ×
             </button>
 
-
         </div>
 
 
 
         <!-- =========================
-             FORM EVENT
+             FORM
         ========================= -->
 
         <form id="eventForm">
 
 
-            <!-- TAHUN -->
+            <!-- ID EVENT -->
+
+            <input
+                type="hidden"
+                id="eventId"
+                value=""
+            >
+
+
+            <!-- =========================
+                 TAHUN
+            ========================= -->
 
             <div class="form-group">
-
 
                 <label for="year">
                     Tahun
                 </label>
-
 
                 <input
                     type="number"
                     id="year"
                     min="2000"
                     max="2100"
-                    value="2026"
                     required
                 >
-
 
             </div>
 
 
 
-            <!-- NAMA -->
+            <!-- =========================
+                 NAMA
+            ========================= -->
 
             <div class="form-group">
-
 
                 <label for="name">
                     Nama Kegiatan
                 </label>
-
 
                 <input
                     type="text"
@@ -316,17 +306,15 @@
                     required
                 >
 
-
             </div>
 
 
 
             <!-- =========================
-                 FOTO EVENT
+                 FOTO
             ========================= -->
 
             <div class="form-group">
-
 
                 <label for="eventImage">
                     Foto Kegiatan
@@ -337,20 +325,66 @@
                     type="file"
                     id="eventImage"
                     accept="image/*"
-                    required
                 >
 
 
-                <small>
-                    Pilih 1 foto untuk digunakan sebagai foto utama kegiatan.
+                <small id="imageHelp">
+                    Foto bersifat opsional.
                 </small>
 
+
+                <!-- FOTO LAMA -->
+
+                <div
+                    id="currentImage"
+                    style="display:none;"
+                >
+
+                    <p>
+                        Foto saat ini:
+                    </p>
+
+
+                    <img
+                        id="currentImagePreview"
+                        src=""
+                        alt="Foto event"
+                        style="
+                            width:100%;
+                            max-width:500px;
+                            height:260px;
+                            object-fit:cover;
+                            border-radius:12px;
+                            margin-top:8px;
+                        "
+                    >
+
+
+                    <label
+                        style="
+                            display:block;
+                            margin-top:10px;
+                        "
+                    >
+
+                        <input
+                            type="checkbox"
+                            id="removeImage"
+                        >
+
+                        Hapus foto lama
+
+                    </label>
+
+                </div>
+
+
+                <!-- FOTO BARU -->
 
                 <div
                     id="imagePreview"
                     class="image-preview"
                 ></div>
-
 
             </div>
 
@@ -361,7 +395,6 @@
             ========================= -->
 
             <div class="form-group">
-
 
                 <label for="description">
                     Deskripsi
@@ -374,20 +407,17 @@
                     placeholder="Deskripsi kegiatan..."
                 ></textarea>
 
-
             </div>
 
 
 
             <!-- =========================
-                 TANGGAL & GOOGLE DRIVE
+                 TANGGAL
             ========================= -->
 
             <div class="form-group">
 
-
                 <div class="date-title">
-
 
                     <label>
                         Tanggal & Link Google Drive
@@ -406,57 +436,23 @@
 
                     </button>
 
-
                 </div>
 
 
-
-                <!-- DATE LIST -->
-
-                <div id="dateList">
+                <div id="dateList"></div>
 
 
-                    <!-- DEFAULT DATE -->
-
-                    <div class="date-row">
-
-
-                        <input
-                            type="date"
-                            class="event-date"
-                            required
-                        >
-
-
-                        <input
-                            type="url"
-                            class="drive-link"
-                            placeholder="https://drive.google.com/..."
-                            required
-                        >
-
-
-                        <button
-                            type="button"
-                            class="remove-date"
-                            title="Hapus tanggal"
-                        >
-                            ×
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-
+                <small>
+                    Minimal satu tanggal dan link harus ada.
+                    Kamu bisa mengubah, menghapus, atau menambah tanggal.
+                </small>
 
             </div>
 
 
 
             <!-- =========================
-                 FORM MESSAGE
+                 MESSAGE
             ========================= -->
 
             <p id="formMessage"></p>
@@ -464,20 +460,17 @@
 
 
             <!-- =========================
-                 MODAL ACTIONS
+                 ACTION
             ========================= -->
 
             <div class="modal-actions">
-
 
                 <button
                     type="button"
                     id="cancelButton"
                     class="cancel-button"
                 >
-
                     Batal
-
                 </button>
 
 
@@ -488,30 +481,24 @@
 
                     <i class="fa-solid fa-floppy-disk"></i>
 
-                    Simpan Event
+                    <span id="saveButtonText">
+                        Simpan Event
+                    </span>
 
                 </button>
-
 
             </div>
 
 
         </form>
 
-
     </div>
-
 
 </div>
 
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script src="js/event.js"></script>
-
 
 </body>
 
