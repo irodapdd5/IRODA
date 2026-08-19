@@ -153,5 +153,24 @@
 
 </footer>
 
+    <script>
+    const authButton = document.getElementById("authButton");
+
+    const isLoggedIn =
+        localStorage.getItem("isLoggedIn") === "true";
+
+    if (isLoggedIn) {
+
+        authButton.textContent = "Dashboard";
+        authButton.href = "dashboard.html";
+
+    } else {
+
+        authButton.textContent = "Login";
+        authButton.href = "login.html";
+
+    }
+    </script>
+    
 </body>
 </html>
