@@ -1,3 +1,29 @@
+// ==========================
+// NAVBAR LOGIN / DASHBOARD
+// ==========================
+
+const loginNav =
+    document.getElementById("loginNav");
+
+const dashboardNav =
+    document.getElementById("dashboardNav");
+
+
+// Cek status login
+if (localStorage.getItem("isLoggedIn") === "true") {
+
+    // Sudah login
+    loginNav.style.display = "none";
+    dashboardNav.style.display = "block";
+
+} else {
+
+    // Belum login
+    loginNav.style.display = "block";
+    dashboardNav.style.display = "none";
+
+}
+
 const API_URL =
     "https://iroda-backend.irodapdd5.workers.dev";
 
