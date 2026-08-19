@@ -6,10 +6,10 @@ const API_URL =
 // CEK LOGIN
 // ==========================
 
-if (localStorage.getItem("isLoggedIn") !== "true") {
-
+if (
+    localStorage.getItem("isLoggedIn") !== "true"
+) {
     window.location.href = "login.html";
-
 }
 
 
@@ -30,15 +30,22 @@ if (adminData) {
         const name =
             admin.name || "Admin";
 
-        document.getElementById("adminName")
-            .textContent = name;
 
-        document.getElementById("welcomeName")
-            .textContent = name;
+        document.getElementById(
+            "adminName"
+        ).textContent = name;
 
-        document.getElementById("avatar")
-            .textContent =
+
+        document.getElementById(
+            "welcomeName"
+        ).textContent = name;
+
+
+        document.getElementById(
+            "avatar"
+        ).textContent =
             name.charAt(0).toUpperCase();
+
 
     } catch (error) {
 
@@ -61,10 +68,14 @@ async function loadDashboard() {
     try {
 
         const response =
-            await fetch(`${API_URL}/events`);
+            await fetch(
+                `${API_URL}/events`
+            );
+
 
         const data =
             await response.json();
+
 
         if (!data.success) {
 
@@ -80,26 +91,37 @@ async function loadDashboard() {
             data.data || [];
 
 
+        // ==========================
         // TOTAL EVENT
+        // ==========================
 
         document.getElementById(
             "totalEvents"
-        ).textContent = events.length;
+        ).textContent =
+            events.length;
 
 
+        // ==========================
         // TOTAL TAHUN
+        // ==========================
 
         const years =
             new Set(
-                events.map(event => event.year)
+                events.map(
+                    event => event.year
+                )
             );
+
 
         document.getElementById(
             "totalYears"
-        ).textContent = years.size;
+        ).textContent =
+            years.size;
 
 
+        // ==========================
         // EVENT TERBARU
+        // ==========================
 
         const recentEvents =
             document.getElementById(
@@ -119,43 +141,86 @@ async function loadDashboard() {
         }
 
 
+        // ==========================
+        // URUTKAN EVENT
+        // BERDASARKAN TANGGAL AWAL
+        // ==========================
+
+        events.sort(
+            (a, b) => {
+
+                const dateA =
+                    a.first_date ||
+                    `${a.year}-01-01`;
+
+                const dateB =
+                    b.first_date ||
+                    `${b.year}-01-01`;
+
+                return dateB.localeCompare(
+                    dateA
+                );
+
+            }
+        );
+
+
         recentEvents.innerHTML = "";
 
+
+        // ==========================
+        // TAMPILKAN 5 EVENT
+        // ==========================
 
         events
             .slice(0, 5)
             .forEach(event => {
 
                 const item =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 item.className =
                     "recent-event";
+
 
                 item.innerHTML = `
 
                     <div>
 
                         <h4>
-                            ${escapeHTML(event.name)}
+                            ${escapeHTML(
+                                event.name
+                            )}
                         </h4>
 
                         <p>
-                            ${event.first_date
-                                ? formatDate(event.first_date)
-                                : "Belum ada tanggal"
+                            ${
+                                event.first_date
+                                    ? formatDate(
+                                        event.first_date
+                                    )
+                                    : "Belum ada tanggal"
                             }
                         </p>
 
                     </div>
 
+
                     <span class="year">
-                        ${event.year}
+                        ${escapeHTML(
+                            event.year
+                        )}
                     </span>
 
                 `;
 
-                recentEvents.appendChild(item);
+
+                recentEvents.appendChild(
+                    item
+                );
 
             });
 
@@ -163,6 +228,7 @@ async function loadDashboard() {
     } catch (error) {
 
         console.error(error);
+
 
         document.getElementById(
             "recentEvents"
@@ -219,22 +285,37 @@ function escapeHTML(value) {
 // LOGOUT
 // ==========================
 
-document
-    .getElementById("logoutButton")
-    .addEventListener("click", function () {
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
 
-        localStorage.removeItem(
-            "isLoggedIn"
-        );
 
-        localStorage.removeItem(
-            "admin"
-        );
+if (logoutButton) {
 
-        window.location.href =
-            "login.html";
+    logoutButton.addEventListener(
+        "click",
+        function () {
 
-    });
+            localStorage.removeItem(
+                "isLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "admin"
+            );
+
+
+            // Setelah logout
+            // kembali ke halaman utama
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+}
 
 
 // ==========================
