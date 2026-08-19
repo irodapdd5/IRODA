@@ -1072,3 +1072,103 @@ eventForm.addEventListener(
 
 
        
+            const response =
+                await fetch(
+                    url,
+                    {
+                        method: method,
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+                                year:
+                                    Number(year),
+
+                                name:
+                                    name,
+
+                                description:
+                                    description,
+
+                                image:
+                                    image,
+
+                                dates:
+                                    dates
+                            })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            // ======================
+            // HASIL RESPONSE
+            // ======================
+
+            if (!data.success) {
+
+                formMessage.textContent =
+                    data.message ||
+                    (
+                        editMode
+                            ? "Gagal memperbarui event."
+                            : "Gagal membuat event."
+                    );
+
+                formMessage.style.color =
+                    "#b33a3a";
+
+                return;
+            }
+
+
+            // ======================
+            // BERHASIL
+            // ======================
+
+            formMessage.textContent =
+                editMode
+                    ? "Event berhasil diperbarui!"
+                    : "Event berhasil dibuat!";
+
+            formMessage.style.color =
+                "#28594b";
+
+
+            setTimeout(
+                function () {
+
+                    closeModal();
+
+                    loadEvents();
+
+                },
+                500
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "ERROR SIMPAN EVENT:",
+                error
+            );
+
+
+            formMessage.textContent =
+                "Tidak dapat terhubung ke server.";
+
+            formMessage.style.color =
+                "#b33a3a";
+
+        }
+
+    }
+);
