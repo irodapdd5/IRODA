@@ -56,23 +56,22 @@ button {
 }
 
 
+
+
 /* =========================================
-   SIDEBAR
+   SIDEBAR - ICON ONLY
 ========================================= */
 
 .sidebar {
-    width: 250px;
-
+    width: 82px;
     min-height: 100vh;
 
     background: #8b1518;
-
     color: #fff;
 
-    padding: 25px 18px;
+    padding: 22px 12px;
 
     display: flex;
-
     flex-direction: column;
 
     flex-shrink: 0;
@@ -85,12 +84,10 @@ button {
 
 .brand {
     display: flex;
-
+    justify-content: center;
     align-items: center;
 
-    gap: 12px;
-
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .brand img {
@@ -98,86 +95,44 @@ button {
     height: 48px;
 
     object-fit: contain;
-
-    flex-shrink: 0;
 }
 
 .brand-text {
-    min-width: 0;
-}
-
-.brand h2 {
-    color: #fff;
-
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
-
-    font-size: 24px;
-
-    letter-spacing: 1px;
-}
-
-.brand span {
-    display: block;
-
-    margin-top: 2px;
-
-    color: rgba(255,255,255,.75);
-
-    font-size: 9px;
-
-    letter-spacing: .3px;
+    display: none;
 }
 
 
 /* =========================================
-   SIDEBAR NAV
+   NAV
 ========================================= */
 
 .sidebar nav {
-    width: 100%;
-
     display: flex;
-
     flex-direction: column;
 
-    gap: 8px;
+    gap: 12px;
 }
 
 
 /* =========================================
-   SIDEBAR MENU
+   ICON BUTTON
 ========================================= */
 
 .sidebar nav a {
+    width: 56px;
+    height: 56px;
+
+    padding: 0;
+
     display: flex;
-
     align-items: center;
+    justify-content: center;
 
-    width: 100%;
-
-    min-height: 46px;
-
-    padding: 13px 15px;
-
-    gap: 12px;
-
-    border-radius: 10px;
+    border-radius: 12px;
 
     background: transparent;
 
     color: #fff;
-
-    text-decoration: none;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 14px;
-
-    font-weight: 600;
 
     transition:
         background .2s ease,
@@ -186,43 +141,36 @@ button {
 }
 
 
-/* =========================================
-   SIDEBAR ICON
-========================================= */
+/* ICON */
 
-.sidebar nav a span {
-    width: 22px;
+.sidebar nav a i {
+    width: auto;
 
-    height: 22px;
+    font-size: 20px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    font-size: 18px;
+    text-align: center;
 }
 
 
-/* =========================================
-   SIDEBAR HOVER
-========================================= */
+/* SEMBUNYIKAN TEKS */
+
+.sidebar nav a span {
+    display: none;
+}
+
+
+/* HOVER */
 
 .sidebar nav a:hover {
-    background: rgba(0, 0, 0, .22);
+    background: rgba(0, 0, 0, .25);
 
     color: #ffc400;
 
-    transform: translateX(3px);
+    transform: translateY(-2px);
 }
 
 
-/* =========================================
-   SIDEBAR ACTIVE
-========================================= */
+/* ACTIVE */
 
 .sidebar nav a.active {
     background: #ffc400;
@@ -230,15 +178,7 @@ button {
     color: #000;
 
     box-shadow:
-        0 5px 15px rgba(0, 0, 0, .20);
-}
-
-.sidebar nav a.active:hover {
-    background: #fff;
-
-    color: #000;
-
-    transform: translateX(3px);
+        0 5px 15px rgba(0, 0, 0, .2);
 }
 
 
@@ -247,35 +187,26 @@ button {
 ========================================= */
 
 .logout {
-    width: 100%;
-
-    min-height: 46px;
+    width: 56px;
+    height: 56px;
 
     margin-top: auto;
 
-    padding: 13px 15px;
+    padding: 0;
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
-    background: rgba(0, 0, 0, .22);
+    background: rgba(0, 0, 0, .25);
 
     color: #fff;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    gap: 10px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 14px;
-
-    font-weight: 600;
+    gap: 0;
 
     transition:
         background .2s ease,
@@ -283,9 +214,22 @@ button {
         transform .2s ease;
 }
 
-.logout span {
-    font-size: 18px;
+
+/* LOGOUT ICON */
+
+.logout i {
+    width: auto;
+
+    font-size: 20px;
 }
+
+
+/* SEMBUNYIKAN TEKS LOGOUT */
+
+.logout span {
+    display: none;
+}
+
 
 .logout:hover {
     background: #ffc400;
