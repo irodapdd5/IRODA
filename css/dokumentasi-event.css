@@ -8,18 +8,22 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
+
 body {
+
     min-height: 100vh;
 
     display: flex;
     flex-direction: column;
 
     background: #000;
+
     color: #fff;
 
     font-family:
@@ -30,9 +34,11 @@ body {
     overflow-x: hidden;
 }
 
+
 main {
     flex: 1;
 }
+
 
 a {
     text-decoration: none;
@@ -41,10 +47,10 @@ a {
 
 /* =========================================
    NAVBAR
-   Sama seperti halaman utama
 ========================================= */
 
 .navbar {
+
     position: absolute;
 
     top: 0;
@@ -55,12 +61,15 @@ a {
 
     z-index: 100;
 
-    background: rgba(0, 0, 0, 0.35);
+    background:
+        rgba(0, 0, 0, 0.35);
 
     overflow: hidden;
 }
 
+
 .navbar-scroll {
+
     width: 100%;
     height: 65px;
 
@@ -74,11 +83,14 @@ a {
     -webkit-overflow-scrolling: touch;
 }
 
+
 .navbar-scroll::-webkit-scrollbar {
     display: none;
 }
 
+
 .nav-menu {
+
     display: inline-flex;
 
     align-items: center;
@@ -90,12 +102,15 @@ a {
     height: 65px;
 
     width: max-content;
+
     min-width: 100%;
 
     padding: 0 30px;
 }
 
+
 .nav-menu a {
+
     display: block;
 
     flex: 0 0 auto;
@@ -108,14 +123,12 @@ a {
 
     padding: 5px 0;
 
-    transition: color .3s ease;
+    transition:
+        color .3s ease;
 }
+
 
 .nav-menu a:hover {
-    color: #ffc400;
-}
-
-.nav-menu a.active {
     color: #ffc400;
 }
 
@@ -125,74 +138,121 @@ a {
 ========================================= */
 
 .hero {
+
     position: relative;
 
     min-height: 390px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, .15),
-            rgba(0, 0, 0, .95)
-        );
 
     display: flex;
 
     align-items: center;
 
-    padding: 100px 8% 70px;
+    padding:
+        105px 8%
+        65px;
+
+    background-image:
+        url("../assets/images/foto.jpg");
+
+    background-size: cover;
+
+    background-position: center;
 
     overflow: hidden;
 }
 
-/* aksen merah IRODA */
 
-.hero::before {
-    content: "";
+.hero-overlay {
 
     position: absolute;
 
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(139, 21, 24, .45),
-            transparent 55%
+            to bottom,
+            rgba(0, 0, 0, .25),
+            rgba(0, 0, 0, .55) 55%,
+            rgba(0, 0, 0, .98)
         );
-
-    pointer-events: none;
 }
 
+
 .hero-content {
+
     position: relative;
 
     z-index: 2;
 
-    max-width: 850px;
+    width: 100%;
+
+    max-width: 900px;
 }
 
-.hero-label {
-    display: inline-block;
 
-    margin-bottom: 15px;
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    transition:
+        color .25s ease;
+}
+
+
+.back-button:hover {
+    color: #ffc400;
+}
+
+
+.back-button i {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   HERO LABEL
+========================================= */
+
+.hero-label {
+
+    display: block;
+
+    margin-bottom: 13px;
 
     color: #ffc400;
 
     font-family: Arial, sans-serif;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: bold;
 
     letter-spacing: 2px;
 }
 
+
+/* =========================================
+   HERO TITLE
+========================================= */
+
 .hero h1 {
+
     margin: 0 0 15px;
 
     font-family:
@@ -201,27 +261,30 @@ a {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: clamp(50px, 7vw, 90px);
+    font-size:
+        clamp(52px, 7vw, 90px);
 
     line-height: .95;
 
-    color: #fff;
-
     letter-spacing: 1px;
+
+    color: #fff;
 
     text-shadow:
         3px 3px 0 #222,
         -1px -1px 0 #222;
 }
 
+
 .hero p {
-    max-width: 650px;
 
-    font-size: 20px;
-
-    line-height: 1.6;
+    max-width: 620px;
 
     color: #eee;
+
+    font-size: 19px;
+
+    line-height: 1.6;
 }
 
 
@@ -230,19 +293,46 @@ a {
 ========================================= */
 
 .events {
+
     width: min(1100px, 84%);
 
     margin: 0 auto;
 
-    padding: 60px 0 110px;
+    padding:
+        60px 0
+        120px;
 }
 
+
 .section-title {
+
     margin-bottom: 30px;
 }
 
-.section-title h2 {
+
+.section-label {
+
+    display: block;
+
     margin-bottom: 8px;
+
+    color: #ffc400;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.8px;
+}
+
+
+.section-title h2 {
+
+    margin-bottom: 8px;
+
+    color: #fff;
 
     font-family:
         Impact,
@@ -250,15 +340,17 @@ a {
         "Arial Narrow Bold",
         sans-serif;
 
-    font-size: 34px;
+    font-size: 35px;
 
-    letter-spacing: .5px;
+    font-weight: normal;
 }
 
-.section-title p {
-    color: #bbb;
 
-    font-size: 17px;
+.section-title p {
+
+    color: #aaa;
+
+    font-size: 16px;
 
     line-height: 1.6;
 }
@@ -269,11 +361,12 @@ a {
 ========================================= */
 
 .event-list {
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 18px;
+    gap: 16px;
 }
 
 
@@ -282,13 +375,17 @@ a {
 ========================================= */
 
 .event-card {
+
+    width: 100%;
+
     background: #111;
 
-    border: 1px solid #292929;
+    border:
+        1px solid #292929;
 
     border-radius: 16px;
 
-    padding: 24px 25px;
+    padding: 23px 24px;
 
     display: flex;
 
@@ -304,13 +401,17 @@ a {
         box-shadow .25s ease;
 }
 
+
 .event-card:hover {
-    transform: translateY(-3px);
+
+    transform:
+        translateY(-3px);
 
     border-color: #ffc400;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, .35);
+        0 10px 30px
+        rgba(0, 0, 0, .35);
 }
 
 
@@ -319,51 +420,66 @@ a {
 ========================================= */
 
 .event-info {
+
     flex: 1;
 
     min-width: 0;
 }
 
+
 .event-date {
-    display: inline-block;
 
-    color: #ffc400;
+    display: inline-flex;
 
-    background: rgba(255, 196, 0, .1);
+    align-items: center;
 
-    border: 1px solid rgba(255, 196, 0, .25);
+    gap: 7px;
 
-    padding: 7px 11px;
+    margin-bottom: 11px;
+
+    padding:
+        7px 11px;
 
     border-radius: 7px;
+
+    border:
+        1px solid
+        rgba(255, 196, 0, .25);
+
+    background:
+        rgba(255, 196, 0, .1);
+
+    color: #ffc400;
 
     font-family: Arial, sans-serif;
 
     font-size: 11px;
 
     font-weight: bold;
-
-    margin-bottom: 12px;
 }
+
 
 .event-info h3 {
+
+    margin-bottom: 7px;
+
     color: #fff;
 
-    font-size: 23px;
+    font-size: 22px;
 
-    margin-bottom: 8px;
-
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
+
 .event-info p {
-    color: #aaa;
-
-    font-size: 15px;
-
-    line-height: 1.6;
 
     max-width: 700px;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    line-height: 1.6;
 }
 
 
@@ -372,6 +488,7 @@ a {
 ========================================= */
 
 .view-button {
+
     flex-shrink: 0;
 
     display: inline-flex;
@@ -382,13 +499,16 @@ a {
 
     gap: 8px;
 
+    min-height: 43px;
+
+    padding:
+        11px 18px;
+
+    border-radius: 30px;
+
     background: #ffc400;
 
     color: #000;
-
-    padding: 12px 18px;
-
-    border-radius: 30px;
 
     font-family: Arial, sans-serif;
 
@@ -399,40 +519,76 @@ a {
     transition: .25s;
 }
 
+
 .view-button:hover {
+
     background: #fff;
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
+}
 
-    box-shadow:
-        0 7px 18px rgba(255, 196, 0, .2);
+
+.view-button i {
+    font-size: 12px;
 }
 
 
 /* =========================================
-   STATES
+   LOADING / EMPTY / ERROR
 ========================================= */
 
 .loading,
 .empty,
 .error {
-    background: #111;
 
-    border: 1px solid #292929;
+    width: 100%;
 
-    padding: 35px;
+    padding: 35px 25px;
 
     border-radius: 15px;
 
-    text-align: center;
+    border:
+        1px solid #292929;
+
+    background: #111;
 
     color: #aaa;
 
+    text-align: center;
+
     font-family: Arial, sans-serif;
+
+    font-size: 14px;
 }
+
+
+.loading i {
+
+    margin-right: 7px;
+
+    color: #ffc400;
+
+    animation:
+        spin 1s linear infinite;
+}
+
 
 .error {
     color: #ff9999;
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
 }
 
 
@@ -441,43 +597,45 @@ a {
 ========================================= */
 
 footer {
+
     width: 100%;
 
-    min-height: 100px;
+    min-height: 105px;
 
     background: #8b1518;
 
     display: flex;
 
+    flex-direction: column;
+
     align-items: center;
 
-    justify-content: center;
+    justify-content: flex-end;
 
-    padding: 0 20px;
+    padding-top: 25px;
 
-    color: #fff;
+    overflow: hidden;
 
     font-family: Arial, sans-serif;
 
-    font-size: 13px;
-
     text-align: center;
-
-    position: relative;
 }
 
 
-/* KUNING DI BAGIAN BAWAH */
+.footer-main {
 
-footer::after {
-    content: "© 2026 IRODA";
+    margin-bottom: 14px;
 
-    position: absolute;
+    color: #fff;
 
-    left: 0;
-    bottom: 0;
+    font-size: 13px;
+}
+
+
+.footer-copyright {
 
     width: 100%;
+
     height: 42px;
 
     display: flex;
@@ -503,21 +661,28 @@ footer::after {
 @media (max-width: 900px) {
 
     .nav-menu {
+
         gap: 22px;
 
-        padding: 0 20px;
+        padding:
+            0 20px;
     }
+
 
     .nav-menu a {
         font-size: 15px;
     }
 
+
     .hero {
+
         padding-left: 7%;
         padding-right: 7%;
     }
 
+
     .events {
+
         width: 86%;
     }
 
@@ -530,25 +695,34 @@ footer::after {
 
 @media (max-width: 650px) {
 
+
     /* NAVBAR */
 
     .navbar {
+
         height: 60px;
     }
+
 
     .navbar-scroll {
+
         height: 60px;
     }
 
+
     .nav-menu {
+
         height: 60px;
 
         gap: 20px;
 
-        padding: 0 18px;
+        padding:
+            0 18px;
     }
 
+
     .nav-menu a {
+
         font-size: 14px;
     }
 
@@ -556,52 +730,84 @@ footer::after {
     /* HERO */
 
     .hero {
+
         min-height: 350px;
 
-        padding: 100px 8% 55px;
+        padding:
+            100px 8%
+            55px;
     }
 
+
+    .back-button {
+
+        margin-bottom: 20px;
+
+        font-size: 13px;
+    }
+
+
     .hero-label {
-        font-size: 11px;
+
+        font-size: 10px;
 
         letter-spacing: 1.5px;
 
-        margin-bottom: 12px;
+        margin-bottom: 11px;
     }
 
+
     .hero h1 {
+
         font-size: 52px;
 
         line-height: 1;
     }
 
+
     .hero p {
+
         font-size: 16px;
 
         line-height: 1.65;
-
-        max-width: 100%;
     }
 
 
     /* EVENTS */
 
     .events {
+
         width: 86%;
 
-        padding: 40px 0 80px;
+        padding:
+            42px 0
+            85px;
     }
+
 
     .section-title {
-        margin-bottom: 22px;
+
+        margin-bottom: 23px;
     }
+
+
+    .section-label {
+
+        font-size: 10px;
+    }
+
 
     .section-title h2 {
-        font-size: 28px;
+
+        font-size: 29px;
+
+        margin-bottom: 7px;
     }
 
+
     .section-title p {
-        font-size: 15px;
+
+        font-size: 14px;
 
         line-height: 1.6;
     }
@@ -609,37 +815,53 @@ footer::after {
 
     /* EVENT CARD */
 
+    .event-list {
+
+        gap: 14px;
+    }
+
+
     .event-card {
-        padding: 20px;
+
+        padding: 19px;
 
         flex-direction: column;
 
         align-items: stretch;
 
-        gap: 18px;
+        gap: 17px;
 
         border-radius: 14px;
     }
 
+
     .event-card:hover {
+
         transform: none;
     }
 
+
     .event-date {
+
+        margin-bottom: 9px;
+
+        padding:
+            6px 9px;
+
         font-size: 10px;
-
-        padding: 6px 9px;
-
-        margin-bottom: 10px;
     }
 
+
     .event-info h3 {
+
         font-size: 20px;
 
         line-height: 1.35;
     }
 
+
     .event-info p {
+
         font-size: 14px;
 
         line-height: 1.6;
@@ -649,13 +871,14 @@ footer::after {
     /* BUTTON */
 
     .view-button {
+
         width: 100%;
 
-        min-height: 45px;
-
-        border-radius: 25px;
+        min-height: 44px;
 
         font-size: 13px;
+
+        border-radius: 25px;
     }
 
 
@@ -664,9 +887,11 @@ footer::after {
     .loading,
     .empty,
     .error {
-        padding: 28px 18px;
 
-        font-size: 14px;
+        padding:
+            28px 18px;
+
+        font-size: 13px;
 
         line-height: 1.5;
     }
@@ -675,15 +900,26 @@ footer::after {
     /* FOOTER */
 
     footer {
+
         min-height: 95px;
 
-        padding-bottom: 42px;
+        padding-top: 20px;
+    }
+
+
+    .footer-main {
+
+        margin-bottom: 12px;
 
         font-size: 12px;
     }
 
-    footer::after {
+
+    .footer-copyright {
+
         height: 42px;
+
+        font-size: 11px;
     }
 
    }
