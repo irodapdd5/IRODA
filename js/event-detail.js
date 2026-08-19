@@ -348,7 +348,7 @@ async function loadEvent() {
 
 
                     driveButton.textContent =
-                        "📁 Link belum tersedia";
+                        "Link belum tersedia";
 
 
                     driveButton.classList.add(
