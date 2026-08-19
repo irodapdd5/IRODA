@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - IRODA</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- LOGO + JUDUL -->
+        <div class="brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+                class="logo"
+            >
+
+            <div class="brand-text">
+                <h1>IRODA</h1>
+                <h2>IKATAN REMAJA RT02</h2>
+            </div>
+
+        </div>
+
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm">
+
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Nama"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-button">
+                Login
+            </button>
+
+            <p id="message"></p>
+
+        </form>
+
+
+        <!-- KETERANGAN -->
+        <p class="admin-info">
+            Hanya admin saja yang dapat akses login *
+        </p>
+
+    </div>
+
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>
