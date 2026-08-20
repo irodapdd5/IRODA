@@ -1,30 +1,12 @@
+const API_URL =
+    "https://iroda-backend.irodapdd5.workers.dev";
+
+
 /* =========================================
-   DATA CONTOH
+   DATA KEGIATAN DARI API
 ========================================= */
 
-const activities = {
-    "2026-08-10": [
-        {
-            title: "Rapat Persiapan HUT Kemerdekaan",
-            description: "Persiapan kegiatan HUT Kemerdekaan bersama anggota IRODA."
-        }
-    ],
-
-    "2026-08-17": [
-        {
-            title: "HUT Kemerdekaan RI",
-            description: "Kegiatan perayaan HUT Kemerdekaan bersama warga RT.02."
-        }
-    ],
-
-    "2026-08-20": [
-        {
-            title: "Evaluasi Kegiatan",
-            description: "Evaluasi kegiatan dan dokumentasi HUT Kemerdekaan."
-        }
-    ]
-
-};
+let activities = {};
 
 
 /* =========================================
@@ -105,6 +87,118 @@ function getDateKey(
 
 
 /* =========================================
+   LOAD JADWAL DARI API
+========================================= */
+
+async function loadSchedules() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/schedules`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            !response.ok ||
+            !data.success
+        ) {
+
+            throw new Error(
+                data.message ||
+                "Gagal mengambil jadwal"
+            );
+
+        }
+
+
+        /*
+         * Kosongkan data lama
+         */
+
+        activities = {};
+
+
+        /*
+         * Masukkan jadwal dari database
+         * ke format activities yang
+         * sudah digunakan kalender.
+         */
+
+        const schedules =
+            Array.isArray(data.schedules)
+                ? data.schedules
+                : [];
+
+
+        schedules.forEach(
+            schedule => {
+
+                const dateKey =
+                    schedule.schedule_date;
+
+
+                if (
+                    !activities[dateKey]
+                ) {
+
+                    activities[dateKey] = [];
+
+                }
+
+
+                activities[dateKey].push({
+
+                    title:
+                        schedule.title || "",
+
+                    description:
+                        schedule.description || "",
+
+                    schedule_time:
+                        schedule.schedule_time || "",
+
+                    location:
+                        schedule.location || ""
+
+                });
+
+            }
+        );
+
+
+        /*
+         * Setelah data API masuk,
+         * render kalender.
+         */
+
+        renderCalendar();
+
+
+    } catch (error) {
+
+        console.error(
+            "Gagal memuat jadwal:",
+            error
+        );
+
+
+        activities = {};
+
+
+        renderCalendar();
+
+    }
+
+}
+
+
+/* =========================================
    RENDER CALENDAR
 ========================================= */
 
@@ -125,14 +219,6 @@ function renderCalendar() {
         "";
 
 
-    /*
-        Hari pertama bulan.
-        JS:
-        Minggu = 0
-        Senin = 1
-        ...
-    */
-
     const firstDay =
         new Date(
             year,
@@ -140,13 +226,6 @@ function renderCalendar() {
             1
         ).getDay();
 
-
-    /*
-        Kita ingin minggu dimulai
-        dari Senin.
-
-        Minggu (0) menjadi 6.
-    */
 
     const startingDay =
         firstDay === 0
@@ -411,13 +490,6 @@ function createDay(
                 dateKey;
 
 
-            /*
-                Kalau tanggal berasal
-                dari bulan lain,
-                pindahkan kalender
-                ke bulan tersebut.
-            */
-
             if (otherMonth) {
 
                 const parts =
@@ -512,11 +584,43 @@ function showActivities(
                     )}
                 </h3>
 
-                <p>
-                    ${escapeHTML(
-                        activity.description
-                    )}
-                </p>
+                ${
+                    activity.schedule_time
+                        ? `
+                            <div class="activity-info">
+                                <i class="fa-solid fa-clock"></i>
+                                ${escapeHTML(
+                                    activity.schedule_time
+                                )}
+                            </div>
+                        `
+                        : ""
+                }
+
+                ${
+                    activity.location
+                        ? `
+                            <div class="activity-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                ${escapeHTML(
+                                    activity.location
+                                )}
+                            </div>
+                        `
+                        : ""
+                }
+
+                ${
+                    activity.description
+                        ? `
+                            <p>
+                                ${escapeHTML(
+                                    activity.description
+                                )}
+                            </p>
+                        `
+                        : ""
+                }
 
             `;
 
@@ -664,4 +768,4 @@ nextMonth.addEventListener(
    START
 ========================================= */
 
-renderCalendar();
+loadSchedules();
