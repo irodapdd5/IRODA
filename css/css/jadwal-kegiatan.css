@@ -1,0 +1,785 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+
+body {
+    background: #000;
+    color: #fff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+main {
+    flex: 1;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.schedule-header {
+
+    position: relative;
+
+    min-height: 330px;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.92)
+        ),
+        url("../assets/images/foto.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 80px 20px 60px;
+
+}
+
+
+.header-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    text-align: left;
+
+}
+
+
+.schedule-logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+
+}
+
+
+.header-label {
+
+    display: block;
+
+    color: #ffc400;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+
+.header-content h1 {
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size:
+        clamp(42px, 7vw, 72px);
+
+    line-height: 0.95;
+
+    color: #fff;
+
+    letter-spacing: 1px;
+}
+
+
+.header-content p {
+
+    margin-top: 12px;
+
+    font-size: 17px;
+
+    color: #eee;
+}
+
+
+/* =========================================
+   CLOSE
+========================================= */
+
+.close-button {
+
+    position: absolute;
+
+    top: 22px;
+    right: 25px;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffc400;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    transition: 0.2s ease;
+
+}
+
+
+.close-button:hover {
+
+    color: #fff;
+
+    transform: scale(1.1);
+
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.calendar-section,
+.activity-section {
+
+    width: min(92%, 900px);
+
+    margin: 0 auto;
+}
+
+
+.calendar-section {
+
+    padding: 50px 0 25px;
+}
+
+
+.activity-section {
+
+    padding: 25px 0 90px;
+}
+
+
+.section-label {
+
+    color: #ffc400;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   CALENDAR CARD
+========================================= */
+
+.calendar-card {
+
+    background: #111;
+
+    border: 1px solid #292929;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+}
+
+
+/* =========================================
+   CALENDAR HEADER
+========================================= */
+
+.calendar-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.month-title {
+
+    flex: 1;
+
+    text-align: center;
+}
+
+
+.month-title h2 {
+
+    font-size: 28px;
+
+    color: #fff;
+
+    font-weight: bold;
+}
+
+
+.month-button {
+
+    width: 46px;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ffc400;
+
+    color: #000;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    transition: 0.2s ease;
+
+}
+
+
+.month-button:hover {
+
+    background: #fff;
+
+    transform: scale(1.05);
+
+}
+
+
+/* =========================================
+   WEEKDAYS
+========================================= */
+
+.calendar-weekdays {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+}
+
+
+.calendar-weekdays span {
+
+    text-align: center;
+
+    color: #ffc400;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   CALENDAR GRID
+========================================= */
+
+.calendar-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 8px;
+}
+
+
+/* =========================================
+   DAY
+========================================= */
+
+.calendar-day {
+
+    min-height: 70px;
+
+    border: 1px solid #292929;
+
+    background: #080808;
+
+    border-radius: 12px;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+
+    padding: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+
+.calendar-day:hover {
+
+    border-color: #ffc400;
+
+    background: #181818;
+
+}
+
+
+/* =========================================
+   PREVIOUS / NEXT MONTH
+========================================= */
+
+.calendar-day.other-month {
+
+    color: #555;
+
+    background: #050505;
+
+}
+
+
+/* =========================================
+   TODAY
+========================================= */
+
+.calendar-day.today {
+
+    border: 2px solid #ffc400;
+
+    color: #ffc400;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   HAS ACTIVITY
+========================================= */
+
+.calendar-day.has-activity::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ffc400;
+
+    bottom: 9px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+
+/* =========================================
+   SELECTED
+========================================= */
+
+.calendar-day.selected {
+
+    background: #ffc400;
+
+    color: #000;
+
+    border-color: #ffc400;
+
+    font-weight: bold;
+}
+
+
+.calendar-day.selected::after {
+
+    background: #000;
+
+}
+
+
+/* =========================================
+   ACTIVITY
+========================================= */
+
+.selected-date-title {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+    color: #fff;
+}
+
+
+.activity-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.activity-card {
+
+    background: #111;
+
+    border-left: 5px solid #ffc400;
+
+    border-radius: 15px;
+
+    padding: 18px 20px;
+
+}
+
+
+.activity-card h3 {
+
+    color: #fff;
+
+    font-size: 20px;
+
+    margin-bottom: 6px;
+}
+
+
+.activity-card p {
+
+    color: #ccc;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+.empty-activity {
+
+    background: #111;
+
+    border: 1px solid #292929;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    color: #888;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    background: #8b1518;
+
+    text-align: center;
+
+    padding-top: 28px;
+
+    min-height: 160px;
+}
+
+
+.footer h2 {
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 32px;
+
+    margin-bottom: 12px;
+}
+
+
+.footer p {
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+
+.footer .copyright {
+
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 25px;
+
+    background: #ffc400;
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+
+    .schedule-header {
+
+        min-height: 300px;
+
+        padding: 75px 20px 45px;
+    }
+
+
+    .header-content {
+
+        gap: 12px;
+    }
+
+
+    .schedule-logo {
+
+        width: 65px;
+
+        height: 65px;
+    }
+
+
+    .header-label {
+
+        font-size: 14px;
+    }
+
+
+    .header-content h1 {
+
+        font-size: 40px;
+    }
+
+
+    .header-content p {
+
+        font-size: 14px;
+
+        line-height: 1.4;
+    }
+
+
+    .close-button {
+
+        top: 15px;
+
+        right: 18px;
+
+        font-size: 42px;
+    }
+
+
+    .calendar-section,
+    .activity-section {
+
+        width: 92%;
+    }
+
+
+    .calendar-section {
+
+        padding-top: 35px;
+    }
+
+
+    .calendar-card {
+
+        padding: 15px;
+
+        border-radius: 20px;
+    }
+
+
+    .month-title h2 {
+
+        font-size: 21px;
+    }
+
+
+    .month-button {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .calendar-weekdays {
+
+        gap: 4px;
+    }
+
+
+    .calendar-weekdays span {
+
+        font-size: 10px;
+    }
+
+
+    .calendar-grid {
+
+        gap: 4px;
+    }
+
+
+    .calendar-day {
+
+        min-height: 50px;
+
+        padding: 7px;
+
+        border-radius: 8px;
+
+        font-size: 13px;
+    }
+
+
+    .calendar-day.has-activity::after {
+
+        width: 5px;
+
+        height: 5px;
+
+        bottom: 6px;
+    }
+
+
+    .selected-date-title {
+
+        font-size: 21px;
+    }
+
+
+    .activity-card h3 {
+
+        font-size: 18px;
+    }
+
+
+    .activity-card p {
+
+        font-size: 14px;
+    }
+
+      }
