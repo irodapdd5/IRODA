@@ -812,3 +812,193 @@ TABLET
     }
 
 }
+
+/* =========================
+   CREDIT MODAL
+========================= */
+
+.credit-modal {
+    width: min(90%, 570px);
+    padding: 0;
+    border: none;
+    border-radius: 35px;
+    background: transparent;
+    overflow: visible;
+}
+
+.credit-modal::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+}
+
+
+.credit-box {
+    position: relative;
+
+    background: #ffc21a;
+
+    min-height: 460px;
+
+    padding: 35px 35px 45px;
+
+    border-radius: 35px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+
+/* =========================
+   CLOSE
+========================= */
+
+.credit-close {
+    position: absolute;
+
+    top: 18px;
+    right: 22px;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #8b1919;
+
+    font-size: 52px;
+
+    line-height: 40px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.credit-close:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.credit-header {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 5px;
+}
+
+
+.credit-header img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+}
+
+
+.credit-header h2 {
+    margin: 0;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+}
+
+
+.credit-header p {
+    margin: 0;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.credit-content {
+    margin-top: 40px;
+}
+
+
+.credit-content .developed {
+    margin: 0 0 18px;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    color: #111;
+}
+
+
+.credit-content h3 {
+    margin: 8px 0;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .credit-modal {
+        width: 90%;
+    }
+
+    .credit-box {
+        min-height: 420px;
+
+        padding: 30px 20px 35px;
+
+        border-radius: 30px;
+    }
+
+    .credit-header img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .credit-header h2 {
+        font-size: 26px;
+    }
+
+    .credit-header p {
+        font-size: 11px;
+    }
+
+    .credit-content {
+        margin-top: 35px;
+    }
+
+    .credit-content h3 {
+        font-size: 18px;
+    }
+
+}
