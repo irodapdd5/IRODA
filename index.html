@@ -412,6 +412,52 @@ creditModal.addEventListener(
     }
 );
 
+const memberButton =
+    document.getElementById("memberButton");
+
+const memberModal =
+    document.getElementById("memberModal");
+
+const closeMember =
+    document.getElementById("closeMember");
+
+
+memberButton.addEventListener(
+    "click",
+    function () {
+
+        memberModal.showModal();
+
+    }
+);
+
+
+closeMember.addEventListener(
+    "click",
+    function () {
+
+        memberModal.close();
+
+    }
+);
+
+
+// Klik area luar untuk menutup
+
+memberModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target === memberModal
+        ) {
+
+            memberModal.close();
+
+        }
+
+    }
+);
 
     </script>
     
