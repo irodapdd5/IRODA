@@ -1471,85 +1471,24 @@ if (eventForm) {
 
 
 // ======================================================
-// LIHAT EVENT
+// LIHAT DETAIL EVENT
 // ======================================================
 
-async function viewEvent(id) {
+function viewEvent(id) {
 
-    try {
-
-        const response =
-            await fetch(
-                `${API_URL}/events/${id}`
-            );
-
-        const data =
-            await response.json();
-
-        if (
-            !response.ok ||
-            !data.success
-        ) {
-
-            throw new Error(
-                data.message ||
-                "Event tidak ditemukan."
-            );
-
-        }
-
-        const event =
-            data.event;
-
-        const dates =
-            data.dates || [];
-
-        let message =
-            `${event.name}\n\n`;
-
-        message +=
-            `Tahun: ${event.year}\n\n`;
-
-        if (event.description) {
-
-            message +=
-                `${event.description}\n\n`;
-
-        }
-
-        message +=
-            "Tanggal & Link:\n";
-
-        dates.forEach(
-            function (date, index) {
-
-                message +=
-                    `${index + 1}. ${date.event_date}\n`;
-
-                message +=
-                    `   ${date.drive_link}\n`;
-
-            }
-        );
-
-        alert(message);
-
-    } catch (error) {
+    if (!id) {
 
         console.error(
-            "viewEvent error:",
-            error
+            "ID event tidak ditemukan."
         );
 
-        alert(
-            error.message ||
-            "Gagal melihat event."
-        );
-
+        return;
     }
 
-}
+    window.location.href =
+        `event-detail.html?id=${id}`;
 
+}
 
 // ======================================================
 // HAPUS EVENT
