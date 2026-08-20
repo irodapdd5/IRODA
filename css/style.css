@@ -888,18 +888,29 @@ TABLET
 ========================= */
 
 .credit-header {
+    position: relative;
+
+    width: 100%;
+
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
+
     align-items: center;
 
-    gap: 14px;
+    justify-content: center;
 
     margin-top: 5px;
+
+    text-align: center;
 }
 
-
 .credit-header img {
+    position: absolute;
+
+    left: 18%;
+    top: 0;
+
     width: 65px;
     height: 65px;
 
