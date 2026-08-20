@@ -955,24 +955,24 @@ button {
     }
 
 
-    /* =========================================
-       BRAND
-    ========================================= */
+/* =========================================
+   BRAND
+========================================= */
 
-    .brand {
-        justify-content: center;
+.brand {
+    justify-content: center;
 
-        margin-bottom: 35px;
-    }
+    margin-bottom: 35px;
+}
 
-    .brand-text {
-        display: none;
-    }
+.brand-text {
+    display: none;
+}
 
-    .brand img {
-        width: 42px;
-        height: 42px;
-    }
+.brand img {
+    width: 45px;
+    height: 45px;
+}
 
 
     /* =========================================
