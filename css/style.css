@@ -909,7 +909,7 @@ TABLET
     position: absolute;
 
     left: 18%;
-    top: 0;
+    top: -2px;
 
     width: 65px;
     height: 65px;
