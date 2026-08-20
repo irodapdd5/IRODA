@@ -1219,14 +1219,11 @@ function isValidUrl(
 
 }
 
-
 /* =========================================
    ESCAPE HTML
 ========================================= */
 
-function escapeHtml(
-    value
-) {
+function escapeHtml(value) {
 
     return String(value)
         .replace(
@@ -1241,4 +1238,44 @@ function escapeHtml(
             />/g,
             "&gt;"
         )
-        .re
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   ESCAPE ATTRIBUTE
+========================================= */
+
+function escapeAttribute(value) {
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        );
+
+}
