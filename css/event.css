@@ -925,101 +925,122 @@ button {
 
 
 /* =========================================
-   MOBILE SIDEBAR
+   MOBILE
 ========================================= */
 
-.sidebar {
-    width: 70px;
+@media (max-width: 700px) {
 
-    padding: 20px 10px;
-}
+    /* =====================================
+       SIDEBAR
+    ===================================== */
 
-.brand-text {
-    display: none;
-}
+    .sidebar {
+        width: 70px;
 
-.brand {
-    justify-content: center;
+        min-height: 100vh;
 
-    margin-bottom: 35px;
-}
-
-.brand img {
-    width: 45px;
-    height: 45px;
-}
+        padding: 20px 10px;
+    }
 
 
-/* NAV */
+    /* =====================================
+       BRAND
+    ===================================== */
 
-.sidebar nav {
-    gap: 10px;
-}
+    .brand {
+        justify-content: center;
 
-.sidebar nav a {
-    width: 50px;
-    height: 50px;
+        margin-bottom: 35px;
+    }
 
-    padding: 0;
+    .brand-text {
+        display: none;
+    }
 
-    margin: 0 auto;
-
-    justify-content: center;
-
-    border-radius: 12px;
-
-    font-size: 0;
-}
-
-.sidebar nav a span {
-    display: none;
-}
-
-.sidebar nav a i {
-    width: auto;
-
-    font-size: 19px;
-}
+    .brand img {
+        width: 45px;
+        height: 45px;
+    }
 
 
-/* =========================================
-   LOGOUT
-========================================= */
+    /* =====================================
+       SIDEBAR NAV
+    ===================================== */
 
-.logout {
-    width: 50px;
-    height: 46px;
+    .sidebar nav {
+        gap: 10px;
+    }
 
-    padding: 0;
+    .sidebar nav a {
+        width: 50px;
+        height: 50px;
 
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+        padding: 0;
 
-    border-radius: 12px;
+        margin: 0 auto;
 
-    font-size: 0;
+        justify-content: center;
 
-    gap: 0;
-}
+        border-radius: 12px;
 
-.logout span {
-    display: none;
-}
+        font-size: 0;
+    }
 
-.logout i {
-    font-size: 19px;
-}
+    .sidebar nav a span {
+        display: none;
+    }
+
+    .sidebar nav a i {
+        width: auto;
+
+        font-size: 19px;
+    }
 
 
-    /* CONTENT */
+    /* =====================================
+       LOGOUT
+    ===================================== */
+
+    .logout {
+        width: 50px;
+        height: 46px;
+
+        padding: 0;
+
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 12px;
+
+        font-size: 0;
+
+        gap: 0;
+
+        flex-shrink: 0;
+    }
+
+    .logout span {
+        display: none;
+    }
+
+    .logout i {
+        font-size: 19px;
+    }
+
+
+    /* =====================================
+       CONTENT
+    ===================================== */
 
     .content {
         padding: 20px 15px;
     }
 
 
-    /* TOPBAR */
+    /* =====================================
+       TOPBAR
+    ===================================== */
 
     .topbar {
         margin-bottom: 25px;
@@ -1034,14 +1055,18 @@ button {
     }
 
 
-    /* ADMIN HIDDEN */
+    /* =====================================
+       ADMIN
+    ===================================== */
 
     .admin {
         display: none;
     }
 
 
-    /* PAGE HEADER */
+    /* =====================================
+       PAGE HEADER
+    ===================================== */
 
     .page-header {
         align-items: flex-start;
@@ -1055,12 +1080,27 @@ button {
         font-size: 20px;
     }
 
+    .page-header p {
+        font-size: 13px;
+    }
+
     .primary-button {
         width: 100%;
     }
 
 
-    /* EVENT CARD */
+    /* =====================================
+       EVENT LIST
+    ===================================== */
+
+    .event-list {
+        gap: 12px;
+    }
+
+
+    /* =====================================
+       EVENT CARD
+    ===================================== */
 
     .event-card {
         align-items: flex-start;
@@ -1068,22 +1108,61 @@ button {
         flex-direction: column;
 
         padding: 17px;
+
+        gap: 15px;
     }
 
     .event-info {
         width: 100%;
     }
 
+    .event-info h3 {
+        font-size: 17px;
+    }
+
+    .event-info p {
+        font-size: 13px;
+    }
+
+    .event-year {
+        font-size: 11px;
+
+        padding: 5px 8px;
+    }
+
+
+    /* =====================================
+       EVENT ACTIONS
+    ===================================== */
+
     .event-actions {
         width: 100%;
+
+        gap: 8px;
     }
 
     .event-actions button {
         flex: 1;
+
+        padding: 10px 12px;
     }
 
 
-    /* MODAL */
+    /* =====================================
+       LOADING / EMPTY
+    ===================================== */
+
+    .loading,
+    .empty {
+        padding: 30px 20px;
+
+        font-size: 13px;
+    }
+
+
+    /* =====================================
+       MODAL
+    ===================================== */
 
     .modal {
         padding: 12px;
@@ -1098,32 +1177,107 @@ button {
     }
 
 
-    /* DATE */
+    /* =====================================
+       MODAL HEADER
+    ===================================== */
+
+    .modal-header {
+        gap: 10px;
+
+        margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .modal-header p {
+        font-size: 12px;
+    }
+
+
+    /* =====================================
+       FORM
+    ===================================== */
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 14px;
+
+        padding: 11px;
+    }
+
+
+    /* =====================================
+       IMAGE PREVIEW
+    ===================================== */
+
+    .image-preview img {
+        max-height: 200px;
+    }
+
+
+    /* =====================================
+       DATE TITLE
+    ===================================== */
 
     .date-title {
         align-items: flex-start;
 
         flex-direction: column;
+
+        gap: 10px;
     }
+
+    .small-button {
+        width: 100%;
+    }
+
+
+    /* =====================================
+       DATE ROW
+    ===================================== */
 
     .date-row {
         grid-template-columns: 1fr;
 
         gap: 8px;
+
+        margin-bottom: 12px;
     }
 
+
+    /* =====================================
+       REMOVE DATE
+    ===================================== */
+
     .remove-date {
+        width: 100%;
+
         height: 38px;
     }
 
 
-    /* MODAL BUTTON */
+    /* =====================================
+       MODAL ACTIONS
+    ===================================== */
 
     .modal-actions {
         flex-direction: column-reverse;
+
+        gap: 8px;
     }
 
     .modal-actions button {
         width: 100%;
     }
-    }
+
+}
