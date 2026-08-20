@@ -908,16 +908,24 @@ button {
 
     /* STATS */
 
-    .stats {
-        grid-template-columns: 1fr;
+    /* STATS */
 
-        gap: 12px;
-    }
+.stats {
+    grid-template-columns: 1fr;
 
-    .stat-card {
-        padding: 17px;
-    }
+    gap: 12px;
 
+    width: 92%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-card {
+    padding: 17px;
+
+    width: 100%;
+}
 
     /* DOCUMENTATION */
 
