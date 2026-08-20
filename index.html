@@ -233,6 +233,55 @@
         authButton.href = "login.html";
 
     }
+
+const creditButton =
+    document.getElementById("creditButton");
+
+const creditModal =
+    document.getElementById("creditModal");
+
+const closeCredit =
+    document.getElementById("closeCredit");
+
+
+creditButton.addEventListener(
+    "click",
+    function () {
+
+        creditModal.showModal();
+
+    }
+);
+
+
+closeCredit.addEventListener(
+    "click",
+    function () {
+
+        creditModal.close();
+
+    }
+);
+
+
+// Klik area luar modal untuk menutup
+
+creditModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target === creditModal
+        ) {
+
+            creditModal.close();
+
+        }
+
+    }
+);
+
+
     </script>
     
 </body>
