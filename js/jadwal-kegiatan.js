@@ -3,7 +3,6 @@
 ========================================= */
 
 const activities = {
-
     "2026-08-10": [
         {
             title: "Rapat Persiapan HUT Kemerdekaan",
