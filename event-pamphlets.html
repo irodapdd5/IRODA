@@ -14,11 +14,6 @@
 
     <link
         rel="stylesheet"
-        href="css/dashboard.css"
-    >
-
-    <link
-        rel="stylesheet"
         href="css/event-pamphlets.css"
     >
 
@@ -88,6 +83,15 @@
             </a>
 
 
+            <a href="jadwal-admin.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>Jadwal Kegiatan</span>
+
+            </a>
+
+
             <a
                 href="event-pamphlets.html"
                 class="active"
@@ -96,15 +100,6 @@
                 <i class="fa-solid fa-image"></i>
 
                 <span>Pamflet Event</span>
-
-            </a>
-
-
-            <a href="jadwal-admin.html">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-                <span>Jadwal Kegiatan</span>
 
             </a>
 
@@ -179,11 +174,49 @@
 
 
         <!-- =========================
-             PAMPHLETS
+             PAGE HEADER
         ========================= -->
 
-        <section class="documentation pamphlet-section">
+        <section class="page-header">
 
+            <div>
+
+                <span class="page-label">
+                    IRODA
+                </span>
+
+                <h2>
+                    Pamflet Event
+                </h2>
+
+                <p>
+                    Tambahkan dan kelola pamflet kegiatan
+                    yang akan ditampilkan pada halaman utama.
+                </p>
+
+            </div>
+
+
+            <button
+                id="addPamphletButton"
+                class="primary-button"
+            >
+
+                <i class="fa-solid fa-plus"></i>
+
+                Tambah Pamflet
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             PAMPHLET LIST
+        ========================= -->
+
+        <section class="pamphlet-section">
 
             <div class="section-header">
 
@@ -194,80 +227,39 @@
                     </h2>
 
                     <p>
-                        Kelola gambar pamflet event IRODA.
+                        Semua pamflet event yang tersimpan.
                     </p>
 
                 </div>
 
 
-                <button
-                    type="button"
-                    id="addPamphletButton"
-                    class="primary-button"
+                <div
+                    class="total-badge"
+                    id="totalPamphlets"
                 >
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Tambah Pamflet
-
-                </button>
+                    0 Pamflet
+                </div>
 
             </div>
 
 
-
-            <!-- =========================
-                 LOADING
-            ========================= -->
-
             <div
-                id="loading"
-                class="loading"
-            >
-                Memuat pamflet...
-            </div>
-
-
-
-            <!-- =========================
-                 EMPTY
-            ========================= -->
-
-            <div
-                id="emptyState"
-                class="empty-state"
-                style="display: none;"
+                id="pamphletList"
+                class="pamphlet-grid"
             >
 
-                <div class="empty-icon">
+                <div class="loading">
 
-                    <i class="fa-regular fa-image"></i>
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Memuat pamflet...
 
                 </div>
 
-                <h3>
-                    Belum ada pamflet
-                </h3>
-
-                <p>
-                    Tambahkan pamflet event pertama.
-                </p>
-
             </div>
 
-
-
-            <!-- =========================
-                 GRID
-            ========================= -->
-
-            <div
-                id="pamphletGrid"
-                class="pamphlet-grid"
-            ></div>
-
-
         </section>
+
 
     </main>
 
@@ -281,31 +273,32 @@
 
 <div
     id="pamphletModal"
-    class="modal-overlay"
+    class="modal"
 >
 
+    <div class="modal-overlay"></div>
 
-    <div class="pamphlet-modal">
+
+    <div class="modal-box">
 
 
         <div class="modal-header">
 
             <div>
 
+                <span class="modal-label">
+                    IRODA
+                </span>
+
                 <h2 id="modalTitle">
                     Tambah Pamflet
                 </h2>
-
-                <p>
-                    Masukkan URL gambar pamflet.
-                </p>
 
             </div>
 
 
             <button
-                type="button"
-                id="closeModalButton"
+                id="closeModal"
                 class="close-button"
             >
 
@@ -316,6 +309,8 @@
         </div>
 
 
+
+        <!-- FORM -->
 
         <form id="pamphletForm">
 
@@ -335,9 +330,14 @@
                 <input
                     type="url"
                     id="imageUrl"
+                    name="image_url"
                     placeholder="https://contoh.com/pamflet.jpg"
                     required
                 >
+
+                <small>
+                    Masukkan link gambar pamflet yang dapat diakses publik.
+                </small>
 
             </div>
 
@@ -346,13 +346,16 @@
             <!-- PREVIEW -->
 
             <div
-                id="imagePreview"
-                class="image-preview"
-                style="display: none;"
+                id="imagePreviewBox"
+                class="preview-box hidden"
             >
 
+                <span>
+                    Preview
+                </span>
+
                 <img
-                    id="previewImage"
+                    id="imagePreview"
                     src=""
                     alt="Preview Pamflet"
                 >
@@ -394,8 +397,92 @@
 
 
 
+<!-- =========================
+     CONFIRM DELETE MODAL
+========================= -->
+
+<div
+    id="deleteModal"
+    class="modal"
+>
+
+    <div class="modal-overlay"></div>
+
+
+    <div class="confirm-box">
+
+        <div class="confirm-icon">
+
+            <i class="fa-solid fa-trash"></i>
+
+        </div>
+
+
+        <h2>
+            Hapus Pamflet?
+        </h2>
+
+
+        <p>
+            Pamflet yang dihapus tidak dapat dikembalikan.
+        </p>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                id="cancelDelete"
+                class="secondary-button"
+            >
+                Batal
+            </button>
+
+
+            <button
+                type="button"
+                id="confirmDelete"
+                class="delete-button"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+                Hapus
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    id="toast"
+    class="toast"
+>
+
+    <i
+        id="toastIcon"
+        class="fa-solid fa-circle-check"
+    ></i>
+
+    <span id="toastMessage">
+        Berhasil
+    </span>
+
+</div>
+
+
+
 <script src="js/event-pamphlets.js"></script>
 
 </body>
 
-</html>
+    </html>
