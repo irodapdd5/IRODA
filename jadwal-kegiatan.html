@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Jadwal Kegiatan - IRODA</title>
+
+    <link
+        rel="stylesheet"
+        href="css/jadwal-kegiatan.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<main>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <section class="schedule-header">
+
+        <a
+            href="index.html"
+            class="close-button"
+            aria-label="Kembali ke halaman utama"
+            title="Kembali"
+        >
+            ×
+        </a>
+
+
+        <div class="header-content">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+                class="schedule-logo"
+            >
+
+
+            <div>
+
+                <span class="header-label">
+                    IRODA
+                </span>
+
+                <h1>
+                    Jadwal Kegiatan
+                </h1>
+
+                <p>
+                    Lihat jadwal kegiatan IRODA.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         KALENDER
+    ========================== -->
+
+    <section class="calendar-section">
+
+
+        <div class="section-label">
+            KALENDER KEGIATAN
+        </div>
+
+
+        <div class="calendar-card">
+
+
+            <!-- =====================
+                 CALENDAR HEADER
+            ====================== -->
+
+            <div class="calendar-header">
+
+
+                <button
+                    type="button"
+                    id="prevMonth"
+                    class="month-button"
+                    aria-label="Bulan sebelumnya"
+                >
+
+                    <i class="fa-solid fa-chevron-left"></i>
+
+                </button>
+
+
+                <div class="month-title">
+
+                    <h2 id="monthTitle">
+                        Januari 2026
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="nextMonth"
+                    class="month-button"
+                    aria-label="Bulan berikutnya"
+                >
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =====================
+                 DAYS
+            ====================== -->
+
+            <div
+                class="calendar-weekdays"
+                aria-hidden="true"
+            >
+
+                <span>Sen</span>
+                <span>Sel</span>
+                <span>Rab</span>
+                <span>Kam</span>
+                <span>Jum</span>
+                <span>Sab</span>
+                <span>Min</span>
+
+            </div>
+
+
+
+            <!-- =====================
+                 CALENDAR GRID
+            ====================== -->
+
+            <div
+                id="calendarGrid"
+                class="calendar-grid"
+                role="grid"
+                aria-label="Kalender kegiatan"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         DETAIL KEGIATAN
+    ========================== -->
+
+    <section class="activity-section">
+
+
+        <div class="section-label">
+            KEGIATAN
+        </div>
+
+
+        <div
+            id="selectedDateTitle"
+            class="selected-date-title"
+        >
+            Pilih tanggal
+        </div>
+
+
+        <div
+            id="activityList"
+            class="activity-list"
+        >
+
+            <div class="empty-activity">
+
+                Pilih tanggal pada kalender
+                untuk melihat kegiatan.
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="footer">
+
+    <h2>
+        IRODA
+    </h2>
+
+
+    <p>
+        Semangat Muda, Wujudkan Kebersamaan.
+    </p>
+
+
+    <div class="copyright">
+        © 2026 IRODA
+    </div>
+
+</footer>
+
+
+
+<script src="js/jadwal-kegiatan.js"></script>
+
+</body>
+
+</html>
