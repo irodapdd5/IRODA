@@ -149,45 +149,52 @@ main {
 
 
 /* =========================================
-   CLOSE
+   CLOSE / BACK BUTTON
 ========================================= */
 
 .close-button {
-
     position: absolute;
 
     top: 22px;
     right: 25px;
 
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    color: #ffc400;
+    border: 1px solid rgba(255, 255, 255, .35);
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, .35);
+
+    color: #fff;
 
     text-decoration: none;
 
-    font-family: Arial, sans-serif;
-
-    font-size: 48px;
+    font-size: 30px;
+    font-weight: 300;
 
     line-height: 1;
 
-    transition: 0.2s ease;
+    z-index: 10;
 
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
 }
 
 
 .close-button:hover {
+    background: #ffc400;
 
-    color: #fff;
+    color: #000;
 
-    transform: scale(1.1);
-
+    transform: scale(1.05);
 }
 
 
