@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pamflet Event - IRODA</title>
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/event-pamphlets.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+            >
+
+            <div class="brand-text">
+
+                <h2>IRODA</h2>
+
+                <span>IKATAN REMAJA RT02</span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="index.html">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>Halaman Utama</span>
+
+            </a>
+
+
+            <a href="event.html">
+
+                <i class="fa-solid fa-folder"></i>
+
+                <span>Dokumentasi</span>
+
+            </a>
+
+
+            <a
+                href="event-pamphlets.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-image"></i>
+
+                <span>Pamflet Event</span>
+
+            </a>
+
+
+            <a href="jadwal-admin.html">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <span>Jadwal Kegiatan</span>
+
+            </a>
+
+        </nav>
+
+
+        <button
+            id="logoutButton"
+            class="logout"
+        >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </button>
+
+    </aside>
+
+
+
+    <!-- =========================
+         CONTENT
+    ========================= -->
+
+    <main class="content">
+
+
+        <!-- =========================
+             TOPBAR
+        ========================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Pamflet Event</h1>
+
+                <p>
+                    Kelola pamflet kegiatan IRODA.
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+
+                <div
+                    class="avatar"
+                    id="avatar"
+                >
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong id="adminName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             PAMPHLETS
+        ========================= -->
+
+        <section class="documentation pamphlet-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Daftar Pamflet
+                    </h2>
+
+                    <p>
+                        Kelola gambar pamflet event IRODA.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="addPamphletButton"
+                    class="primary-button"
+                >
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Tambah Pamflet
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 LOADING
+            ========================= -->
+
+            <div
+                id="loading"
+                class="loading"
+            >
+                Memuat pamflet...
+            </div>
+
+
+
+            <!-- =========================
+                 EMPTY
+            ========================= -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+                style="display: none;"
+            >
+
+                <div class="empty-icon">
+
+                    <i class="fa-regular fa-image"></i>
+
+                </div>
+
+                <h3>
+                    Belum ada pamflet
+                </h3>
+
+                <p>
+                    Tambahkan pamflet event pertama.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 GRID
+            ========================= -->
+
+            <div
+                id="pamphletGrid"
+                class="pamphlet-grid"
+            ></div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    id="pamphletModal"
+    class="modal-overlay"
+>
+
+
+    <div class="pamphlet-modal">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="modalTitle">
+                    Tambah Pamflet
+                </h2>
+
+                <p>
+                    Masukkan URL gambar pamflet.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="closeModalButton"
+                class="close-button"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <form id="pamphletForm">
+
+
+            <input
+                type="hidden"
+                id="pamphletId"
+            >
+
+
+            <div class="form-group">
+
+                <label for="imageUrl">
+                    URL Gambar Pamflet
+                </label>
+
+                <input
+                    type="url"
+                    id="imageUrl"
+                    placeholder="https://contoh.com/pamflet.jpg"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- PREVIEW -->
+
+            <div
+                id="imagePreview"
+                class="image-preview"
+                style="display: none;"
+            >
+
+                <img
+                    id="previewImage"
+                    src=""
+                    alt="Preview Pamflet"
+                >
+
+            </div>
+
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="secondary-button"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="primary-button"
+                >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Simpan
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="js/event-pamphlets.js"></script>
+
+</body>
+
+</html>
