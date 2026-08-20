@@ -184,58 +184,63 @@
 
         <section class="stats">
 
+    <div class="stat-card">
 
-            <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fa-solid fa-folder"></i>
+        </div>
 
-                <div class="stat-icon">
+        <div>
+            <span>
+                Total Event
+            </span>
 
-                    <i class="fa-solid fa-folder"></i>
+            <strong id="totalEvents">
+                0
+            </strong>
+        </div>
 
-                </div>
-
-
-                <div>
-
-                    <span>
-                        Total Event
-                    </span>
-
-                    <strong id="totalEvents">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
+    </div>
 
 
+    <div class="stat-card">
 
-            <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fa-solid fa-calendar-days"></i>
+        </div>
 
-                <div class="stat-icon">
+        <div>
+            <span>
+                Total Jadwal
+            </span>
 
-                    <i class="fa-solid fa-calendar"></i>
+            <strong id="totalSchedules">
+                0
+            </strong>
+        </div>
 
-                </div>
+    </div>
 
 
-                <div>
+    <div class="stat-card">
 
-                    <span>
-                        Tahun
-                    </span>
+        <div class="stat-icon">
+            <i class="fa-solid fa-calendar"></i>
+        </div>
 
-                    <strong id="totalYears">
-                        0
-                    </strong>
+        <div>
+            <span>
+                Tahun
+            </span>
 
-                </div>
+            <strong id="totalYears">
+                0
+            </strong>
+        </div>
 
-            </div>
-
+    </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -244,49 +249,90 @@
 
         <section class="documentation">
 
+    <div class="section-header">
 
-            <div class="section-header">
+        <div>
 
-                <div>
+            <h2>
+                Event Terbaru
+            </h2>
 
-                    <h2>
-                        Event Terbaru
-                    </h2>
+            <p>
+                Dokumentasi terbaru.
+            </p>
 
-                    <p>
-                        Dokumentasi terbaru.
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="event.html"
-                    class="primary-button"
-                >
-
-                    <i class="fa-solid fa-folder-open"></i>
-
-                    Dokumentasi
-
-                </a>
-
-            </div>
+        </div>
 
 
+        <a
+            href="event.html"
+            class="primary-button"
+        >
 
-            <div id="recentEvents">
+            <i class="fa-solid fa-folder-open"></i>
 
-                <div class="loading">
+            Dokumentasi
 
-                    Memuat event...
+        </a>
 
-                </div>
-
-            </div>
+    </div>
 
 
-        </section>
+    <div id="recentEvents">
+
+        <div class="loading">
+            Memuat event...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JADWAL TERBARU
+========================= -->
+
+<section class="documentation">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Jadwal Kegiatan
+            </h2>
+
+            <p>
+                Jadwal kegiatan IRODA terbaru.
+            </p>
+
+        </div>
+
+
+        <a
+            href="jadwal-admin.html"
+            class="primary-button"
+        >
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            Jadwal Kegiatan
+
+        </a>
+
+    </div>
+
+
+    <div id="recentSchedules">
+
+        <div class="loading">
+            Memuat jadwal...
+        </div>
+
+    </div>
+
+</section>
 
 
     </main>
