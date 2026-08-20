@@ -944,6 +944,10 @@ button {
 
 @media (max-width: 800px) {
 
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+
     .sidebar {
         width: 70px;
 
@@ -951,10 +955,9 @@ button {
     }
 
 
-    .brand-text {
-        display: none;
-    }
-
+    /* =========================================
+       BRAND
+    ========================================= */
 
     .brand {
         justify-content: center;
@@ -962,6 +965,9 @@ button {
         margin-bottom: 35px;
     }
 
+    .brand-text {
+        display: none;
+    }
 
     .brand img {
         width: 42px;
@@ -969,10 +975,13 @@ button {
     }
 
 
+    /* =========================================
+       NAV
+    ========================================= */
+
     .sidebar nav {
         gap: 10px;
     }
-
 
     .sidebar nav a {
         width: 50px;
@@ -989,6 +998,9 @@ button {
         font-size: 0;
     }
 
+    .sidebar nav a span {
+        display: none;
+    }
 
     .sidebar nav a i {
         width: auto;
@@ -997,9 +1009,13 @@ button {
     }
 
 
+    /* =========================================
+       LOGOUT
+    ========================================= */
+
     .logout {
         width: 50px;
-        height: 50px;
+        height: 46px;
 
         padding: 0;
 
@@ -1011,36 +1027,48 @@ button {
         font-size: 0;
     }
 
+    .logout span {
+        display: none;
+    }
 
     .logout i {
         font-size: 19px;
     }
 
 
+    /* =========================================
+       CONTENT
+    ========================================= */
+
     .content {
         padding: 20px 15px;
     }
 
 
+    /* =========================================
+       TOPBAR
+    ========================================= */
+
     .topbar {
         margin-bottom: 25px;
     }
-
 
     .topbar h1 {
         font-size: 25px;
     }
 
-
     .topbar p {
         font-size: 13px;
     }
-
 
     .admin {
         display: none;
     }
 
+
+    /* =========================================
+       PAGE HEADER
+    ========================================= */
 
     .page-header,
     .section-header {
@@ -1051,22 +1079,28 @@ button {
         gap: 15px;
     }
 
-
     .page-header h2,
     .section-header h2 {
         font-size: 20px;
     }
 
 
+    /* =========================================
+       BUTTON
+    ========================================= */
+
     .primary-button {
         width: 100%;
     }
 
 
+    /* =========================================
+       SCHEDULE
+    ========================================= */
+
     .schedule-section {
         padding: 17px;
     }
-
 
     .table-card {
         margin-left: -17px;
@@ -1075,16 +1109,18 @@ button {
         width: calc(100% + 34px);
     }
 
-
     .schedule-table table {
         min-width: 700px;
     }
 
 
+    /* =========================================
+       MODAL
+    ========================================= */
+
     .modal {
         padding: 12px;
     }
-
 
     .modal-box {
         max-height: 94vh;
@@ -1094,19 +1130,17 @@ button {
         border-radius: 14px;
     }
 
-
     .form-row {
         grid-template-columns: 1fr;
     }
-
 
     .modal-actions {
         flex-direction: column-reverse;
     }
 
-
     .modal-actions button {
         width: 100%;
     }
 
-        }
+}
+
