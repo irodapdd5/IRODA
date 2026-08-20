@@ -106,6 +106,10 @@
     <a href="#" class="btn">
         Anggota
     </a>
+                <button type="button" id="closePageButton">
+    <i class="fa-solid fa-xmark"></i>
+    Close Page
+                </button>
 
             </div>
 
@@ -282,6 +286,15 @@ creditModal.addEventListener(
 );
 
 
+    </script>
+    <script>
+document
+    .getElementById("closePageButton")
+    .addEventListener("click", function () {
+
+        window.close();
+
+    });
     </script>
     
 </body>
