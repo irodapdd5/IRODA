@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>IRODA - Jadwal Event</title>
+
+    <link
+        rel="stylesheet"
+        href="css/jadwal-event.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <div class="navbar-scroll">
+
+            <nav class="nav-menu">
+
+                <a
+                    href="login.html"
+                    id="authButton"
+                >
+                    Login
+                </a>
+
+                <a href="index.html">
+                    Halaman Utama
+                </a>
+
+                <a
+                    href="jadwal-event.html"
+                    class="active"
+                >
+                    Jadwal Event
+                </a>
+
+                <a href="jadwal-kegiatan.html">
+                    Jadwal kegiatan
+                </a>
+
+                <a href="dokumentasi.html">
+                    Hasil dokumentasi
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Logo IRODA"
+                class="logo"
+            >
+
+            <div class="hero-title">
+
+                <h1>IRODA</h1>
+
+                <h2>
+                    IKATAN REMAJA RT02
+                </h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main>
+
+
+        <!-- =========================
+             JUDUL
+        ========================= -->
+
+        <section class="pamphlet-section">
+
+            <div class="section-header">
+
+                <h2>
+                    Pamflet Kegiatan
+                </h2>
+
+                <p>
+                    Informasi dan pamflet kegiatan IRODA RT.02
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 STATUS
+            ========================= -->
+
+            <div
+                id="pamphletStatus"
+                class="pamphlet-status"
+            >
+                Memuat pamflet...
+            </div>
+
+
+
+            <!-- =========================
+                 PAMFLET
+            ========================= -->
+
+            <div
+                id="pamphletContainer"
+                class="pamphlet-container"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <h2>IRODA</h2>
+
+        <p class="slogan">
+            Semangat Muda, Wujudkan Kebersamaan.
+        </p>
+
+
+        <div class="social">
+
+            <a
+                href="https://www.tiktok.com/@ikatanremaja.rt02?_r=1&_t=ZS-98zxFyqkbas"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                <span>
+                    @ikatanremaja.rt02
+                </span>
+
+            </a>
+
+
+            <a
+                href="https://www.instagram.com/ikatanremaja.rt02?igsh=MWN1enNiNXJneHhqZg==&igsi=MWN1enNiNXJneHhqZg=="
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <span>
+                    @ikatanremaja.rt02
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 IRODA
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // ==================================================
+        // LOGIN / DASHBOARD
+        // ==================================================
+
+        const authButton =
+            document.getElementById("authButton");
+
+
+        const isLoggedIn =
+            localStorage.getItem("isLoggedIn") === "true";
+
+
+        if (isLoggedIn) {
+
+            authButton.textContent =
+                "Dashboard";
+
+            authButton.href =
+                "dashboard.html";
+
+        } else {
+
+            authButton.textContent =
+                "Login";
+
+            authButton.href =
+                "login.html";
+
+        }
+
+
+
+        // ==================================================
+        // API APPS SCRIPT
+        // ==================================================
+
+        const PAMPHLET_API_URL =
+            "MASUKKAN_URL_APPS_SCRIPT_DI_SINI";
+
+
+
+        // ==================================================
+        // ELEMENT
+        // ==================================================
+
+        const pamphletContainer =
+            document.getElementById(
+                "pamphletContainer"
+            );
+
+
+        const pamphletStatus =
+            document.getElementById(
+                "pamphletStatus"
+            );
+
+
+
+        // ==================================================
+        // LOAD PAMFLET
+        // ==================================================
+
+        async function loadPamphlets() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        PAMPHLET_API_URL
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Gagal menghubungi server"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+
+                // ==========================
+                // CEK RESPONSE
+                // ==========================
+
+                if (
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Gagal mengambil data pamflet"
+                    );
+
+                }
+
+
+                const pamphlets =
+                    Array.isArray(
+                        data.pamphlets
+                    )
+                        ? data.pamphlets
+                        : [];
+
+
+
+                // ==========================
+                // KOSONG
+                // ==========================
+
+                if (
+                    pamphlets.length === 0
+                ) {
+
+                    pamphletStatus.textContent =
+                        "Belum ada pamflet kegiatan.";
+
+                    return;
+
+                }
+
+
+
+                // ==========================
+                // HAPUS STATUS
+                // ==========================
+
+                pamphletStatus.style.display =
+                    "none";
+
+
+
+                // ==========================
+                // TAMPILKAN PAMFLET
+                // ==========================
+
+                pamphlets.forEach(
+                    function (pamphlet) {
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+                        card.className =
+                            "pamphlet-card";
+
+
+
+                        const image =
+                            document.createElement(
+                                "img"
+                            );
+
+                        image.src =
+                            pamphlet.url;
+
+                        image.alt =
+                            pamphlet.name ||
+                            "Pamflet kegiatan IRODA";
+
+                        image.loading =
+                            "lazy";
+
+
+
+                        // ==========================
+                        // LINK GAMBAR
+                        // ==========================
+
+                        const link =
+                            document.createElement(
+                                "a"
+                            );
+
+                        link.href =
+                            pamphlet.url;
+
+                        link.target =
+                            "_blank";
+
+                        link.rel =
+                            "noopener noreferrer";
+
+
+
+                        link.appendChild(
+                            image
+                        );
+
+
+                        card.appendChild(
+                            link
+                        );
+
+
+                        pamphletContainer.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Pamflet error:",
+                    error
+                );
+
+
+                pamphletStatus.textContent =
+                    "Pamflet belum dapat dimuat.";
+
+            }
+
+        }
+
+
+
+        // ==================================================
+        // JALANKAN
+        // ==================================================
+
+        loadPamphlets();
+
+    </script>
+
+
+</body>
+
+</html>
