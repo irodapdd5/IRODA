@@ -888,33 +888,30 @@ TABLET
 ========================= */
 
 .credit-header {
-    position: relative;
+    display: grid;
 
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
+    grid-template-columns: 65px 1fr 65px;
 
     align-items: center;
 
-    justify-content: center;
+    width: 100%;
 
     margin-top: 5px;
-
-    text-align: center;
 }
 
 .credit-header img {
-    position: absolute;
-
-    left: 18%;
-    top: -2px;
-
     width: 65px;
     height: 65px;
 
     object-fit: contain;
+
+    justify-self: start;
+}
+
+.credit-header > div {
+    grid-column: 2;
+
+    text-align: center;
 }
 
 
@@ -1014,6 +1011,22 @@ TABLET
 
 }
 
+@media (max-width: 600px) {
+
+    .credit-header {
+        grid-template-columns: 55px 1fr 55px;
+    }
+
+    .credit-header img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .credit-header > div {
+        grid-column: 2;
+    }
+
+}
 
 /* =========================
    MODAL ANGGOTA
