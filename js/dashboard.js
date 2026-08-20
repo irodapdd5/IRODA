@@ -31,20 +31,28 @@ if (adminData) {
             admin.name || "Admin";
 
 
-        document.getElementById(
-            "adminName"
-        ).textContent = name;
+        const adminName =
+            document.getElementById("adminName");
+
+        const welcomeName =
+            document.getElementById("welcomeName");
+
+        const avatar =
+            document.getElementById("avatar");
 
 
-        document.getElementById(
-            "welcomeName"
-        ).textContent = name;
+        if (adminName) {
+            adminName.textContent = name;
+        }
 
+        if (welcomeName) {
+            welcomeName.textContent = name;
+        }
 
-        document.getElementById(
-            "avatar"
-        ).textContent =
-            name.charAt(0).toUpperCase();
+        if (avatar) {
+            avatar.textContent =
+                name.charAt(0).toUpperCase();
+        }
 
 
     } catch (error) {
@@ -67,86 +75,263 @@ async function loadDashboard() {
 
     try {
 
-        const response =
-            await fetch(
+        // =====================================
+        // AMBIL EVENT DAN JADWAL BERSAMAAN
+        // =====================================
+
+        const [
+            eventsResponse,
+            schedulesResponse
+        ] = await Promise.all([
+
+            fetch(
                 `${API_URL}/events`
-            );
+            ),
+
+            fetch(
+                `${API_URL}/schedules`
+            )
+
+        ]);
 
 
-        const data =
-            await response.json();
+        const eventsData =
+            await eventsResponse.json();
+
+        const schedulesData =
+            await schedulesResponse.json();
 
 
-        if (!data.success) {
+        // =====================================
+        // VALIDASI EVENT
+        // =====================================
+
+        if (
+            !eventsResponse.ok ||
+            !eventsData.success
+        ) {
 
             throw new Error(
-                data.message ||
+                eventsData.message ||
                 "Gagal mengambil event"
             );
 
         }
 
 
-        const events =
-            data.data || [];
+        // =====================================
+        // VALIDASI JADWAL
+        // =====================================
 
+        if (
+            !schedulesResponse.ok ||
+            !schedulesData.success
+        ) {
 
-        // ==========================
-        // TOTAL EVENT
-        // ==========================
-
-        document.getElementById(
-            "totalEvents"
-        ).textContent =
-            events.length;
-
-
-        // ==========================
-        // TOTAL TAHUN
-        // ==========================
-
-        const years =
-            new Set(
-                events.map(
-                    event => event.year
-                )
+            throw new Error(
+                schedulesData.message ||
+                "Gagal mengambil jadwal"
             );
 
-
-        document.getElementById(
-            "totalYears"
-        ).textContent =
-            years.size;
+        }
 
 
-        // ==========================
+        const events =
+            eventsData.data || [];
+
+
+        const schedules =
+            Array.isArray(
+                schedulesData.schedules
+            )
+                ? schedulesData.schedules
+                : [];
+
+
+        // =====================================
+        // TOTAL EVENT
+        // =====================================
+
+        const totalEvents =
+            document.getElementById(
+                "totalEvents"
+            );
+
+        if (totalEvents) {
+
+            totalEvents.textContent =
+                events.length;
+
+        }
+
+
+        // =====================================
+        // TOTAL JADWAL
+        // =====================================
+
+        const totalSchedules =
+            document.getElementById(
+                "totalSchedules"
+            );
+
+        if (totalSchedules) {
+
+            totalSchedules.textContent =
+                schedules.length;
+
+        }
+
+
+        // =====================================
+        // TOTAL TAHUN
+        // =====================================
+
+        const years =
+            new Set();
+
+
+        events.forEach(
+            event => {
+
+                if (event.year) {
+                    years.add(
+                        event.year
+                    );
+                }
+
+            }
+        );
+
+
+        schedules.forEach(
+            schedule => {
+
+                if (
+                    schedule.schedule_date
+                ) {
+
+                    const year =
+                        schedule.schedule_date
+                            .substring(0, 4);
+
+                    if (year) {
+                        years.add(year);
+                    }
+
+                }
+
+            }
+        );
+
+
+        const totalYears =
+            document.getElementById(
+                "totalYears"
+            );
+
+        if (totalYears) {
+
+            totalYears.textContent =
+                years.size;
+
+        }
+
+
+        // =====================================
         // EVENT TERBARU
-        // ==========================
+        // =====================================
+
+        renderRecentEvents(events);
+
+
+        // =====================================
+        // JADWAL TERBARU
+        // =====================================
+
+        renderRecentSchedules(
+            schedules
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Dashboard error:",
+            error
+        );
+
 
         const recentEvents =
             document.getElementById(
                 "recentEvents"
             );
 
+        const recentSchedules =
+            document.getElementById(
+                "recentSchedules"
+            );
 
-        if (events.length === 0) {
+
+        if (recentEvents) {
 
             recentEvents.innerHTML = `
                 <div class="empty">
-                    Belum ada dokumentasi event.
+                    Tidak dapat memuat data event.
                 </div>
             `;
 
-            return;
         }
 
 
-        // ==========================
-        // URUTKAN EVENT
-        // BERDASARKAN TANGGAL AWAL
-        // ==========================
+        if (recentSchedules) {
 
-        events.sort(
+            recentSchedules.innerHTML = `
+                <div class="empty">
+                    Tidak dapat memuat data jadwal.
+                </div>
+            `;
+
+        }
+
+    }
+
+}
+
+
+// ==========================
+// RENDER EVENT TERBARU
+// ==========================
+
+function renderRecentEvents(events) {
+
+    const container =
+        document.getElementById(
+            "recentEvents"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (events.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Belum ada dokumentasi event.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    // URUTKAN EVENT TERBARU
+
+    const sortedEvents =
+        [...events].sort(
             (a, b) => {
 
                 const dateA =
@@ -165,16 +350,13 @@ async function loadDashboard() {
         );
 
 
-        recentEvents.innerHTML = "";
+    container.innerHTML = "";
 
 
-        // ==========================
-        // TAMPILKAN 5 EVENT
-        // ==========================
-
-        events
-            .slice(0, 5)
-            .forEach(event => {
+    sortedEvents
+        .slice(0, 5)
+        .forEach(
+            event => {
 
                 const item =
                     document.createElement(
@@ -210,37 +392,161 @@ async function loadDashboard() {
 
 
                     <span class="year">
+
                         ${escapeHTML(
                             event.year
                         )}
+
                     </span>
 
                 `;
 
 
-                recentEvents.appendChild(
+                container.appendChild(
                     item
                 );
 
-            });
+            }
+        );
+
+}
 
 
-    } catch (error) {
+// ==========================
+// RENDER JADWAL TERBARU
+// ==========================
 
-        console.error(error);
+function renderRecentSchedules(
+    schedules
+) {
 
-
+    const container =
         document.getElementById(
-            "recentEvents"
-        ).innerHTML = `
+            "recentSchedules"
+        );
 
+
+    if (!container) {
+        return;
+    }
+
+
+    if (schedules.length === 0) {
+
+        container.innerHTML = `
             <div class="empty">
-                Tidak dapat memuat data event.
+                Belum ada jadwal kegiatan.
             </div>
-
         `;
 
+        return;
+
     }
+
+
+    // URUTKAN BERDASARKAN TANGGAL
+
+    const sortedSchedules =
+        [...schedules].sort(
+            (a, b) => {
+
+                const dateA =
+                    a.schedule_date || "";
+
+                const dateB =
+                    b.schedule_date || "";
+
+                return dateA.localeCompare(
+                    dateB
+                );
+
+            }
+        );
+
+
+    container.innerHTML = "";
+
+
+    sortedSchedules
+        .slice(0, 5)
+        .forEach(
+            schedule => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "recent-event";
+
+
+                item.innerHTML = `
+
+                    <div>
+
+                        <h4>
+                            ${escapeHTML(
+                                schedule.title
+                            )}
+                        </h4>
+
+                        <p>
+
+                            ${
+                                schedule.schedule_date
+                                    ? formatDate(
+                                        schedule.schedule_date
+                                    )
+                                    : "-"
+                            }
+
+                            ${
+                                schedule.schedule_time
+                                    ? " • " +
+                                      escapeHTML(
+                                          schedule.schedule_time
+                                      )
+                                    : ""
+                            }
+
+                            ${
+                                schedule.location
+                                    ? " • " +
+                                      escapeHTML(
+                                          schedule.location
+                                      )
+                                    : ""
+                            }
+
+                        </p>
+
+                    </div>
+
+
+                    <span class="year">
+
+                        ${
+                            schedule.schedule_date
+                                ? escapeHTML(
+                                    schedule.schedule_date
+                                        .substring(0, 4)
+                                )
+                                : "-"
+                        }
+
+                    </span>
+
+                `;
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
 
 }
 
@@ -251,9 +557,29 @@ async function loadDashboard() {
 
 function formatDate(date) {
 
-    return new Date(
-        date + "T00:00:00"
-    ).toLocaleDateString(
+    if (!date) {
+        return "-";
+    }
+
+
+    const parsedDate =
+        new Date(
+            date + "T00:00:00"
+        );
+
+
+    if (
+        isNaN(
+            parsedDate.getTime()
+        )
+    ) {
+
+        return date;
+
+    }
+
+
+    return parsedDate.toLocaleDateString(
         "id-ID",
         {
             day: "numeric",
@@ -271,12 +597,37 @@ function formatDate(date) {
 
 function escapeHTML(value) {
 
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -305,9 +656,6 @@ if (logoutButton) {
                 "admin"
             );
 
-
-            // Setelah logout
-            // kembali ke halaman utama
 
             window.location.href =
                 "index.html";
