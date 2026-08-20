@@ -949,62 +949,317 @@ button {
 
     /* BUTTON */
 
-    .primary-button {
-        width: 100%;
+/* =========================================
+MOBILE
+========================================= */
 
-        min-width: 0;
+@media (max-width: 700px) {
 
-        height: 44px;
-    }
+.sidebar {
+width: 70px;
 
-
-    /* RECENT EVENT */
-
-    .recent-event {
-        align-items: flex-start;
-
-        gap: 10px;
-    }
+padding: 20px 10px;
 
 }
 
+.brand {
+justify-content: center;
+
+margin-bottom: 35px;
+
+}
+
+.brand img {
+width: 45px;
+height: 45px;
+}
+
+.brand-text {
+display: none;
+}
+
+/* NAV */
+
+.sidebar nav {
+gap: 8px;
+}
+
+.sidebar nav a {
+justify-content: center;
+
+width: 50px;    
+height: 46px;    
+
+padding: 0;    
+
+font-size: 0;    
+
+gap: 0;
+
+}
+
+.sidebar nav a span {
+display: none;
+}
+
+.sidebar nav a i {
+width: auto;
+
+font-size: 19px;
+
+}
+
+/* LOGOUT */
+
+.logout {
+width: 50px;
+height: 46px;
+
+padding: 0;    
+
+font-size: 0;    
+
+gap: 0;
+
+}
+
+.logout span {
+display: none;
+}
+
+.logout i {
+font-size: 19px;
+}
+
+/* CONTENT */
+
+.content {
+padding: 20px 15px;
+}
+
+.topbar {
+margin-bottom: 22px;
+}
+
+.topbar h1 {
+font-size: 30px;
+}
+
+.topbar p {
+font-size: 12px;
+
+line-height: 1.5;
+
+}
+
+.admin {
+display: none;
+}
+
+/* WELCOME */
+
+.welcome {
+padding: 23px;
+
+border-radius: 14px;
+
+}
+
+.welcome h2 {
+font-size: 24px;
+
+line-height: 1.1;
+
+}
+
+.welcome p {
+font-size: 13px;
+
+line-height: 1.5;
+
+}
+
+/* STATS */
+
+.stats {
+grid-template-columns: 1fr;
+
+gap: 12px;
+
+}
+
+.stat-card {
+padding: 17px;
+}
+
+/* DOCUMENTATION */
+
+.documentation {
+padding: 18px;
+
+border-radius: 13px;
+
+}
+
+.section-header {
+align-items: flex-start;
+
+flex-direction: column;    
+
+gap: 15px;
+
+}
+
+.primary-button {
+width: 100%;
+
+min-width: 0;    
+
+height: 44px;
+
+}
+
+.recent-event {
+align-items: flex-start;
+}
+
+/* CONTENT */  
+
+.content {  
+    padding: 20px 15px;  
+}  
+
+
+/* TOPBAR */  
+
+.topbar {  
+    margin-bottom: 22px;  
+}  
+
+.topbar h1 {  
+    font-size: 30px;  
+}  
+
+.topbar p {  
+    font-size: 12px;  
+
+    line-height: 1.5;  
+}  
+
+.admin {  
+    display: none;  
+}  
+
+
+/* WELCOME */  
+
+.welcome {  
+    padding: 23px;  
+
+    border-radius: 14px;  
+}  
+
+.welcome h2 {  
+    font-size: 24px;  
+
+    line-height: 1.1;  
+}  
+
+.welcome p {  
+    font-size: 13px;  
+
+    line-height: 1.5;  
+}  
+
+
+/* STATS */  
+
+.stats {  
+    grid-template-columns: 1fr;  
+
+    gap: 12px;  
+}  
+
+.stat-card {  
+    padding: 17px;  
+}  
+
+
+/* DOCUMENTATION */  
+
+.documentation {  
+    padding: 18px;  
+
+    border-radius: 13px;  
+}  
+
+
+/* SECTION HEADER */  
+
+.section-header {  
+    align-items: flex-start;  
+
+    flex-direction: column;  
+
+    gap: 15px;  
+}  
+
+
+/* BUTTON */  
+
+.primary-button {  
+    width: 100%;  
+
+    min-width: 0;  
+
+    height: 44px;  
+}  
+
+
+/* RECENT EVENT */  
+
+.recent-event {  
+    align-items: flex-start;  
+}
+
+}
 
 /* =========================================
-   SMALL MOBILE
+SMALL MOBILE
 ========================================= */
 
 @media (max-width: 400px) {
 
-    .sidebar {
-        width: 62px;
+.sidebar {  
+    width: 62px;  
 
-        padding-left: 7px;
-        padding-right: 7px;
-    }
+    padding-left: 7px;  
+    padding-right: 7px;  
+}  
 
-    .sidebar nav a,
-    .logout {
-        width: 48px;
-    }
+.sidebar nav a,  
+.logout {  
+    width: 48px;  
+}  
 
-    .content {
-        padding: 18px 12px;
-    }
+.content {  
+    padding: 18px 12px;  
+}  
 
-    .topbar h1 {
-        font-size: 27px;
-    }
+.topbar h1 {  
+    font-size: 27px;  
+}  
 
-    .welcome {
-        padding: 20px;
-    }
+.welcome {  
+    padding: 20px;  
+}  
 
-    .welcome h2 {
-        font-size: 21px;
-    }
+.welcome h2 {  
+    font-size: 21px;  
+}  
 
-    .documentation {
-        padding: 15px;
-    }
+.documentation {  
+    padding: 15px;  
+}
 
 }
