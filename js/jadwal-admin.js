@@ -85,16 +85,19 @@ if (loginData) {
 
         if (admin.name) {
 
-            adminName.textContent =
-                admin.name;
+    adminName.textContent =
+        admin.name;
 
-            welcomeName.textContent =
-                admin.name;
+    if (welcomeName) {
+        welcomeName.textContent =
+            admin.name;
+    }
 
-            avatar.textContent =
-                admin.name
-                    .charAt(0)
-                    .toUpperCase();
+    avatar.textContent =
+        admin.name
+            .charAt(0)
+            .toUpperCase();
+
 
         }
 
