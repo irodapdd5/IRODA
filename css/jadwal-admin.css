@@ -717,6 +717,9 @@ button {
     display: flex;
 }
 
+.modal:not([hidden]) {
+    display: flex;
+}
 
 /* =========================================
    MODAL BOX
