@@ -80,24 +80,24 @@ if (loginData) {
 
     try {
 
-        const admin =
-            JSON.parse(loginData);
-
         if (admin.name) {
 
-    adminName.textContent =
-        admin.name;
+    if (adminName) {
+        adminName.textContent =
+            admin.name;
+    }
 
     if (welcomeName) {
         welcomeName.textContent =
             admin.name;
     }
 
-    avatar.textContent =
-        admin.name
-            .charAt(0)
-            .toUpperCase();
-
+    if (avatar) {
+        avatar.textContent =
+            admin.name
+                .charAt(0)
+                .toUpperCase();
+    }
 
         }
 
