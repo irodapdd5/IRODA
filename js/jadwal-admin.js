@@ -50,8 +50,6 @@ const saveButton =
 const adminName =
     document.getElementById("adminName");
 
-const welcomeName =
-    document.getElementById("welcomeName");
 
 const avatar =
     document.getElementById("avatar");
@@ -79,30 +77,37 @@ if (loginData) {
 
     try {
 
-        if (admin.name) {
+        const admin =
+            JSON.parse(loginData);
 
-    if (adminName) {
-        adminName.textContent =
-            admin.name;
-    }
 
-    if (welcomeName) {
-        welcomeName.textContent =
-            admin.name;
-    }
+        if (admin && admin.name) {
 
-    if (avatar) {
-        avatar.textContent =
-            admin.name
-                .charAt(0)
-                .toUpperCase();
-    }
+            if (adminName) {
+
+                adminName.textContent =
+                    admin.name;
+
+            }
+
+
+            if (avatar) {
+
+                avatar.textContent =
+                    admin.name
+                        .charAt(0)
+                        .toUpperCase();
+
+            }
 
         }
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Data admin tidak valid:",
+            error
+        );
 
     }
 
