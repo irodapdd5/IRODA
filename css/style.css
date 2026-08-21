@@ -1,12 +1,11 @@
-/* =========================================
-   FONT GAGALIN
-========================================= */
-
 @font-face {
-    font-family: "Gagalin";
-    src: url("../assets/fonts/Gagalin-Regular.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+    font-family: Gagalin;
+    src: url("../assets/fonts/Gagalin-Regular.otf");
+}
+
+.hero-title h1,
+.hero-title h2 {
+    font-family: Gagalin !important;
 }
 /* =========================================
 RESET
