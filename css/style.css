@@ -198,7 +198,7 @@ HERO CONTENT
     z-index: 2;
 
     left: 8%;
-    bottom: 45px;
+    bottom: 80px;
 
     width: auto;
 
@@ -623,43 +623,56 @@ TABLET
     ===================================== */
 
     .hero {
-        height: 360px;
-    }
+    height: 360px;
+}
 
-    .hero-content {
+.hero-content {
     position: absolute;
 
     left: 6%;
-    bottom: 30px;
+    bottom: 45px;
 
     width: auto;
+
+    display: flex;
+    align-items: center;
 
     gap: 10px;
 
     margin: 0;
-        }
-    
-    .logo {
-        width: 85px;
-    }
+}
 
-    .hero-title h1 {
-        font-size: 58px;
+.logo {
+    width: 85px;
+}
 
-        line-height: 0.9;
+/* =====================================
+   HERO TITLE - GAGALIN
+===================================== */
 
-        letter-spacing: 1px;
-    }
+.hero-title h1 {
+    font-family: "Gagalin", Impact, sans-serif;
 
-    .hero-title h2 {
-        font-size: 17px;
+    font-size: 58px;
 
-        line-height: 1.2;
+    line-height: 0.9;
 
-        margin-top: 9px;
+    letter-spacing: 1px;
 
-        letter-spacing: 0.5px;
-    }
+    margin: 0;
+}
+
+.hero-title h2 {
+    font-family: "Gagalin", Impact, sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.2;
+
+    margin-top: 9px;
+
+    letter-spacing: 0.5px;
+}
 
 
     /* =====================================
