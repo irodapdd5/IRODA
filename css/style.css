@@ -206,8 +206,10 @@ HERO CONTENT
 
     z-index: 2;
 
-    left: 8%;
-    bottom: 160px;
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
 
     width: auto;
 
@@ -220,6 +222,7 @@ HERO CONTENT
 
     min-width: 0;
 }
+
 
 /* =========================================
 LOGO
