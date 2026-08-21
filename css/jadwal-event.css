@@ -1,4 +1,14 @@
 /* =========================================
+   FONT GAGALIN
+========================================= */
+
+@font-face {
+    font-family: "Gagalin";
+    src: url("../assets/fonts/Gagalin-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+/* =========================================
    RESET
 ========================================= */
 
@@ -198,24 +208,25 @@ main {
 ========================================= */
 
 .hero-content {
-
-    position: relative;
+    position: absolute;
 
     z-index: 2;
 
-    width: 75%;
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    width: auto;
 
     display: flex;
-
     align-items: center;
 
-    justify-content: center;
+    gap: 20px;
 
-    gap: 25px;
+    margin: 0;
 
-    margin-top: 40px;
-
-    min-width: 0;
+    min-width: max-content;
 }
 
 
@@ -224,7 +235,6 @@ main {
 ========================================= */
 
 .logo {
-
     width: 130px;
 
     height: auto;
@@ -240,7 +250,6 @@ main {
 ========================================= */
 
 .hero-title {
-
     text-align: left;
 
     min-width: 0;
@@ -248,17 +257,11 @@ main {
 
 
 .hero-title h1 {
-
     margin: 0;
 
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+    font-family: "Gagalin", sans-serif;
 
-    font-size:
-        clamp(70px, 9vw, 120px);
+    font-size: clamp(70px, 9vw, 120px);
 
     line-height: 0.85;
 
@@ -273,23 +276,18 @@ main {
 
 
 .hero-title h2 {
-
     margin-top: 15px;
 
-    font-family:
-        Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold",
-        sans-serif;
+    font-family: "Gagalin", sans-serif;
 
-    font-size:
-        clamp(20px, 2.8vw, 38px);
+    font-size: clamp(20px, 2.8vw, 38px);
+
+    line-height: 1;
 
     color: #fff;
 
     letter-spacing: 1px;
 }
-
 
 /* =========================================
    PAMPHLET SECTION
@@ -684,50 +682,85 @@ main {
 
 
 
-    /* HERO */
+/* =====================================
+   HERO - MOBILE
+===================================== */
 
-    .hero {
-        height: 360px;
-    }
-
-
-    .hero-content {
-
-        width: 92%;
-
-        gap: 12px;
-
-        margin-top: 45px;
-    }
+.hero {
+    height: 360px;
+}
 
 
-    .logo {
-        width: 85px;
-    }
+.hero-content {
+    position: absolute;
+
+    left: 6%;
+    bottom: 35px;
+
+    transform: none;
+
+    width: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+
+    min-width: 0;
+
+    max-width: 94%;
+}
 
 
-    .hero-title h1 {
+.logo {
+    width: 75px;
 
-        font-size: 58px;
+    height: auto;
 
-        line-height: 0.9;
-
-        letter-spacing: 1px;
-    }
-
-
-    .hero-title h2 {
-
-        font-size: 17px;
-
-        line-height: 1.2;
-
-        margin-top: 9px;
-
-        letter-spacing: 0.5px;
-    }
+    flex-shrink: 0;
+}
 
 
+/* =====================================
+   HERO TITLE - GAGALIN
+===================================== */
+
+.hero-title {
+    min-width: 0;
+
+    text-align: left;
+}
+
+
+.hero-title h1 {
+    font-family: "Gagalin", sans-serif;
+
+    font-size: 58px;
+
+    line-height: 0.9;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+.hero-title h2 {
+    font-family: "Gagalin", sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.1;
+
+    margin-top: 9px;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
 
     /* PAMPHLET */
 
