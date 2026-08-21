@@ -1,4 +1,14 @@
 /* =========================================
+   FONT GAGALIN
+========================================= */
+
+@font-face {
+    font-family: "Gagalin";
+    src: url("../assets/fonts/Gagalin-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+/* =========================================
 RESET
 ========================================= */
 
