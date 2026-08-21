@@ -750,6 +750,8 @@ if (logoutButton) {
                 "login"
             );
 
+            localStorage.removeItem("isLoggedIn");
+
             window.location.href =
                 "login.html";
 
