@@ -1,4 +1,3 @@
-console.log("JADWAL ADMIN JS BERHASIL DIMUAT");
 const API_URL =
     "https://iroda-backend.irodapdd5.workers.dev";
 
@@ -17,9 +16,6 @@ const scheduleModal =
 
 const closeModal =
     document.getElementById("closeModal");
-
-const cancelButton =
-    document.getElementById("cancelButton");
 
 const scheduleForm =
     document.getElementById("scheduleForm");
@@ -430,12 +426,6 @@ function closeScheduleModal() {
 
 
 closeModal.addEventListener(
-    "click",
-    closeScheduleModal
-);
-
-
-cancelButton.addEventListener(
     "click",
     closeScheduleModal
 );
