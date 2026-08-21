@@ -211,14 +211,18 @@ HERO CONTENT
 
     transform: translateX(-50%);
 
-    width: auto;
-
     display: flex;
     align-items: center;
 
     gap: 20px;
 
     margin: 0;
+
+    width: max-content;
+}
+
+.hero-title {
+    text-align: center;
 
     min-width: 0;
 }
