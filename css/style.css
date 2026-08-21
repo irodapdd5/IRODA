@@ -1,3 +1,7 @@
+/* =========================================
+   FONT GAGALIN
+========================================= */
+
 @font-face {
     font-family: Gagalin;
     src: url("../assets/fonts/Gagalin-Regular.otf");
@@ -7,6 +11,7 @@
 .hero-title h2 {
     font-family: Gagalin !important;
 }
+
 /* =========================================
 RESET
 ========================================= */
@@ -224,12 +229,86 @@ HERO CONTENT
 
     min-width: 0;
 
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    position: relative;
+
+    height: 400px;
+
+    background-image:
+        url("../assets/images/foto.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   HERO OVERLAY
+========================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.25) 45%,
+            rgba(0, 0, 0, 0.95) 100%
+        );
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: auto;
+    min-width: 0;
+
+    margin: 0;
+}
+
+
+.hero-title {
+    position: relative;
+
+    text-align: center;
+
+    min-width: 0;
+
     width: max-content;
 }
 
 
 /* =========================================
-LOGO
+   LOGO
 ========================================= */
 
 .logo {
@@ -249,7 +328,6 @@ LOGO
 }
 
 
-
 /* =========================================
    HERO TITLE
 ========================================= */
@@ -257,7 +335,8 @@ LOGO
 .hero-title h1 {
     margin: 0;
 
-    font-family: "Gagalin", sans-serif !important;
+    font-family: Gagalin !important;
+
     font-weight: 400;
 
     font-size: clamp(70px, 9vw, 120px);
@@ -273,10 +352,12 @@ LOGO
         -1px -1px 0 #222;
 }
 
+
 .hero-title h2 {
     margin-top: 15px;
 
-    font-family: "Gagalin", sans-serif !important;
+    font-family: Gagalin !important;
+
     font-weight: 400;
 
     font-size: clamp(20px, 2.8vw, 38px);
@@ -625,10 +706,13 @@ TABLET
     }
 
 
-    /* =====================================
-       HERO
-    ===================================== */
-.hero {
+    /* =========================================
+   HERO MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
         height: 360px;
     }
 
@@ -674,7 +758,7 @@ TABLET
     }
 
     .hero-title h1 {
-        font-family: "Gagalin", sans-serif !important;
+        font-family: Gagalin !important;
 
         font-size: 58px;
 
@@ -684,7 +768,7 @@ TABLET
     }
 
     .hero-title h2 {
-        font-family: "Gagalin", sans-serif !important;
+        font-family: Gagalin !important;
 
         font-size: 17px;
 
