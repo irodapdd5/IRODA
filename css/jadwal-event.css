@@ -701,151 +701,103 @@ main {
 
 
 
-   /* =========================================
-   HERO
+   
+
+./* =========================================
+   HERO MOBILE
 ========================================= */
 
 .hero {
-    position: relative;
-
-    height: 400px;
-
-    background-image:
-        url("../assets/images/foto.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    overflow: hidden;
+    height: 360px;
 }
 
 
 /* =========================================
-   HERO OVERLAY
-========================================= */
-
-.hero-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.25) 45%,
-            rgba(0, 0, 0, 0.95) 100%
-        );
-}
-
-
-/* =========================================
-   HERO CONTENT
+   HERO CONTENT MOBILE
 ========================================= */
 
 .hero-content {
     position: absolute;
 
-    z-index: 2;
+    left: 6%;
+    bottom: 55px;
 
-    left: 50%;
-    bottom: 0;
+    transform: none;
 
-    transform: translateX(-50%);
+    width: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   LOGO MOBILE
+========================================= */
+
+.logo {
+    position: static;
+
+    width: 75px;
+
+    height: auto;
+
+    flex-shrink: 0;
+
+    transform: none;
+}
+
+
+/* =========================================
+   HERO TITLE MOBILE
+========================================= */
+
+.hero-title {
+    text-align: left;
 
     width: auto;
 
     min-width: 0;
-
-    margin: 0;
 }
 
-
-.hero-title {
-    position: relative;
-
-    text-align: center;
-
-    min-width: 0;
-
-    width: max-content;
-}
-
-
-/* =========================================
-   LOGO
-========================================= */
-
-.logo {
-    position: absolute;
-
-    width: 130px;
-
-    height: auto;
-
-    object-fit: contain;
-
-    right: calc(100% + 20px);
-
-    top: 50%;
-
-    transform: translateY(-50%);
-}
-
-
-/* =========================================
-   HERO TITLE
-========================================= */
 
 .hero-title h1 {
-    margin: 0;
-
     font-family:
         "Gagalin",
         sans-serif !important;
 
-    font-weight: 400;
+    font-size: 58px;
 
-    font-size:
-        clamp(70px, 9vw, 120px);
+    line-height: 0.9;
 
-    line-height: 0.85;
+    letter-spacing: 1px;
 
-    color: #fff;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-        3px 3px 0 #222,
-        -1px -1px 0 #222;
+    white-space: nowrap;
 }
 
 
 .hero-title h2 {
-    margin-top: 15px;
-
     font-family:
         "Gagalin",
         sans-serif !important;
 
-    font-weight: 400;
+    font-size: 17px;
 
-    font-size:
-        clamp(20px, 2.8vw, 38px);
+    line-height: 1.1;
 
-    line-height: 1;
+    margin-top: 9px;
 
-    color: #fff;
+    letter-spacing: 0.5px;
 
-    letter-spacing: 1px;
-}
+    white-space: nowrap;
+   }
    
     /* PAMPHLET */
 
