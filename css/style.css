@@ -227,57 +227,48 @@ flex-shrink: 0;
 
 }
 
+
+
 /* =========================================
-HERO TITLE
+   HERO TITLE
 ========================================= */
 
 .hero-title {
-text-align: left;
+    text-align: left;
 
-min-width: 0;
-
+    min-width: 0;
 }
 
 .hero-title h1 {
-margin: 0;
+    margin: 0;
 
-font-family:  
-    Impact,  
-    Haettenschweiler,  
-    "Arial Narrow Bold",  
-    sans-serif;  
+    font-family: "Gagalin", sans-serif;
 
-font-size:  
-    clamp(70px, 9vw, 120px);  
+    font-size: clamp(70px, 9vw, 120px);
 
-line-height: 0.85;  
+    line-height: 0.85;
 
-color: #fff;  
+    color: #fff;
 
-letter-spacing: 2px;  
+    letter-spacing: 2px;
 
-text-shadow:  
-    3px 3px 0 #222,  
-    -1px -1px 0 #222;
-
+    text-shadow:
+        3px 3px 0 #222,
+        -1px -1px 0 #222;
 }
 
 .hero-title h2 {
-margin-top: 15px;
+    margin-top: 15px;
 
-font-family:  
-    Impact,  
-    Haettenschweiler,  
-    "Arial Narrow Bold",  
-    sans-serif;  
+    font-family: "Gagalin", sans-serif;
 
-font-size:  
-    clamp(20px, 2.8vw, 38px);  
+    font-size: clamp(20px, 2.8vw, 38px);
 
-color: #fff;  
+    line-height: 1;
 
-letter-spacing: 1px;
+    color: #fff;
 
+    letter-spacing: 1px;
 }
 
 /* =========================================
@@ -651,23 +642,21 @@ TABLET
 ===================================== */
 
 .hero-title h1 {
-    font-family: "Gagalin", Impact, sans-serif;
+    font-family: "Gagalin", sans-serif;
 
     font-size: 58px;
 
     line-height: 0.9;
 
     letter-spacing: 1px;
-
-    margin: 0;
 }
 
 .hero-title h2 {
-    font-family: "Gagalin", Impact, sans-serif;
+    font-family: "Gagalin", sans-serif;
 
     font-size: 17px;
 
-    line-height: 1.2;
+    line-height: 1.1;
 
     margin-top: 9px;
 
