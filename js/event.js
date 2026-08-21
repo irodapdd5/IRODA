@@ -1574,11 +1574,11 @@ if (logoutButton) {
         function () {
 
             localStorage.removeItem(
-                "isLoggedIn"
+                "admin"
             );
 
             localStorage.removeItem(
-                "admin"
+                "login"
             );
 
             localStorage.removeItem("isLoggedIn");
