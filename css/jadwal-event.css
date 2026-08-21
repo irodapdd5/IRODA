@@ -157,6 +157,8 @@ main {
 
 
 
+
+
     /* =========================================
    HERO
 ========================================= */
@@ -164,7 +166,7 @@ main {
 .hero {
     position: relative;
 
-    height: 430px;
+    height: 400px;
 
     background-image:
         url("../assets/images/foto.jpg");
@@ -204,7 +206,6 @@ main {
 
 /* =========================================
    HERO CONTENT
-   DESKTOP
 ========================================= */
 
 .hero-content {
@@ -224,10 +225,6 @@ main {
     margin: 0;
 }
 
-
-/* =========================================
-   HERO TITLE
-========================================= */
 
 .hero-title {
     position: relative;
@@ -262,7 +259,7 @@ main {
 
 
 /* =========================================
-   HERO TITLE - GAGALIN
+   HERO TITLE
 ========================================= */
 
 .hero-title h1 {
@@ -307,6 +304,7 @@ main {
 
     letter-spacing: 1px;
 }
+
 /* =========================================
    PAMPHLET SECTION
 ========================================= */
@@ -702,91 +700,153 @@ main {
 
 
 
-/* =====================================
-   HERO - MOBILE
-===================================== */
+
+   /* =========================================
+   HERO
+========================================= */
 
 .hero {
-    height: 360px;
-}
+    position: relative;
 
+    height: 400px;
 
-.hero-content {
-    position: absolute;
+    background-image:
+        url("../assets/images/foto.jpg");
 
-    left: 6%;
-    bottom: 55px;
+    background-size: cover;
 
-    transform: none;
-
-    width: auto;
+    background-position: center;
 
     display: flex;
 
     align-items: center;
 
-    gap: 10px;
+    justify-content: center;
 
-    margin: 0;
-
-    min-width: 0;
-
-    max-width: 94%;
+    overflow: hidden;
 }
 
 
-.logo {
-    position: static;
+/* =========================================
+   HERO OVERLAY
+========================================= */
 
-    width: 75px;
+.hero-overlay {
+    position: absolute;
 
-    height: auto;
+    inset: 0;
 
-    flex-shrink: 0;
-
-    transform: none;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.25) 45%,
+            rgba(0, 0, 0, 0.95) 100%
+        );
 }
 
 
-.hero-title {
-    text-align: left;
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
 
     width: auto;
 
     min-width: 0;
+
+    margin: 0;
 }
 
 
+.hero-title {
+    position: relative;
+
+    text-align: center;
+
+    min-width: 0;
+
+    width: max-content;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    position: absolute;
+
+    width: 130px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    right: calc(100% + 20px);
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* =========================================
+   HERO TITLE
+========================================= */
+
 .hero-title h1 {
+    margin: 0;
+
     font-family:
         "Gagalin",
         sans-serif !important;
 
-    font-size: 58px;
+    font-weight: 400;
 
-    line-height: 0.9;
+    font-size:
+        clamp(70px, 9vw, 120px);
 
-    letter-spacing: 1px;
+    line-height: 0.85;
 
-    white-space: nowrap;
+    color: #fff;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        3px 3px 0 #222,
+        -1px -1px 0 #222;
 }
 
 
 .hero-title h2 {
+    margin-top: 15px;
+
     font-family:
         "Gagalin",
         sans-serif !important;
 
-    font-size: 17px;
+    font-weight: 400;
 
-    line-height: 1.1;
+    font-size:
+        clamp(20px, 2.8vw, 38px);
 
-    margin-top: 9px;
+    line-height: 1;
 
-    letter-spacing: 0.5px;
+    color: #fff;
 
-    white-space: nowrap;
+    letter-spacing: 1px;
 }
+   
     /* PAMPHLET */
 
     .pamphlet-section {
