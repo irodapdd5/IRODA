@@ -2,15 +2,54 @@
 // AUTH GUARD
 // ==========================================
 
-const isLoggedIn =
-    localStorage.getItem("isLoggedIn") === "true";
+(function () {
 
-const adminData =
-    localStorage.getItem("admin");
+    const isLoggedIn =
+        localStorage.getItem("isLoggedIn") === "true";
+
+    const adminData =
+        localStorage.getItem("admin");
 
 
-if (!isLoggedIn || !adminData) {
+    // ==========================================
+    // CEK LOGIN
+    // ==========================================
 
-    window.location.replace("login.html");
+    if (!isLoggedIn || !adminData) {
 
-}
+        window.location.replace("login.html");
+
+        return;
+
+    }
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+
+    if (logoutButton) {
+
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                // Hapus semua data login
+                localStorage.removeItem("admin");
+                localStorage.removeItem("login");
+                localStorage.removeItem("isLoggedIn");
+
+
+                // Kembali ke halaman login
+                window.location.replace("login.html");
+
+            }
+        );
+
+    }
+
+})();
