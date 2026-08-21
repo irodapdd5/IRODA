@@ -1562,34 +1562,41 @@ async function deleteEvent(id) {
 // LOGOUT
 // ======================================================
 
-const logoutButton =
-    document.getElementById(
-        "logoutButton"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-if (logoutButton) {
+        const logoutButton =
+            document.getElementById("logoutButton");
 
-    logoutButton.addEventListener(
-        "click",
-        function () {
-
-            localStorage.removeItem(
-                "admin"
+        if (!logoutButton) {
+            console.error(
+                "Tombol logout tidak ditemukan."
             );
-
-            localStorage.removeItem(
-                "login"
-            );
-
-            localStorage.removeItem("isLoggedIn");
-
-            window.location.href =
-                "login.html";
-
+            return;
         }
-    );
 
-}
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                console.log(
+                    "LOGOUT DIKLIK"
+                );
+
+                // Hapus semua status login
+                localStorage.clear();
+
+                // Pindah ke halaman login
+                window.location.replace(
+                    "login.html"
+                );
+
+            }
+        );
+
+    }
+);
 
 
 // ======================================================
