@@ -1581,6 +1581,8 @@ if (logoutButton) {
                 "admin"
             );
 
+            localStorage.removeItem("isLoggedIn");
+
             window.location.href =
                 "login.html";
 
