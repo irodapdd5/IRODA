@@ -1558,45 +1558,7 @@ async function deleteEvent(id) {
 }
 
 
-// ======================================================
-// LOGOUT
-// ======================================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const logoutButton =
-            document.getElementById("logoutButton");
-
-        if (!logoutButton) {
-            console.error(
-                "Tombol logout tidak ditemukan."
-            );
-            return;
-        }
-
-        logoutButton.addEventListener(
-            "click",
-            function () {
-
-                console.log(
-                    "LOGOUT DIKLIK"
-                );
-
-                // Hapus semua status login
-                localStorage.clear();
-
-                // Pindah ke halaman login
-                window.location.replace(
-                    "login.html"
-                );
-
-            }
-        );
-
-    }
-);
 
 
 // ======================================================
