@@ -785,25 +785,45 @@ button {
    CLOSE
 ========================================= */
 
-.close-button {
+.close-modal {
     border: none;
 
     background: transparent;
 
     color: #aaa;
 
-    font-size: 30px;
+    font-size: 32px;
 
     line-height: 1;
 
-    padding: 0 5px;
+    padding: 0;
 
-    transition: color .2s;
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
 }
 
 
-.close-button:hover {
+.close-modal:hover {
     color: #ffc400;
+
+    transform: scale(1.1);
+}
+
+
+.close-modal:focus {
+    outline: none;
+
+    background: transparent;
 }
 
 
