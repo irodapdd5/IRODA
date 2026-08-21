@@ -126,7 +126,6 @@ async function loadSchedules() {
         </div>
     `;
 
-
     try {
 
         const response =
@@ -134,10 +133,12 @@ async function loadSchedules() {
                 `${API_URL}/schedules`
             );
 
+        console.log("STATUS API:", response.status);
 
         const data =
             await response.json();
 
+        console.log("DATA API:", data);
 
         if (!response.ok || !data.success) {
 
@@ -148,29 +149,32 @@ async function loadSchedules() {
 
         }
 
-
         schedules =
             Array.isArray(data.schedules)
                 ? data.schedules
                 : [];
 
+        console.log("SCHEDULES:", schedules);
 
         renderSchedules();
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "ERROR LOAD SCHEDULE:",
+            error
+        );
 
         scheduleTable.innerHTML = `
             <div class="empty">
-                Gagal memuat jadwal.
+                Gagal memuat jadwal.<br>
+                ${error.message}
             </div>
         `;
 
     }
 
 }
-
 
 // ==========================================
 // RENDER
