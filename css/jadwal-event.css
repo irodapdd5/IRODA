@@ -156,12 +156,12 @@ main {
 }
 
 
-/* =========================================
+
+    /* =========================================
    HERO
 ========================================= */
 
 .hero {
-
     position: relative;
 
     height: 430px;
@@ -188,7 +188,6 @@ main {
 ========================================= */
 
 .hero-overlay {
-
     position: absolute;
 
     inset: 0;
@@ -205,6 +204,7 @@ main {
 
 /* =========================================
    HERO CONTENT
+   DESKTOP
 ========================================= */
 
 .hero-content {
@@ -213,35 +213,15 @@ main {
     z-index: 2;
 
     left: 50%;
-    bottom: 25px;
+    bottom: 0;
 
     transform: translateX(-50%);
 
     width: auto;
 
-    display: flex;
-    align-items: center;
-
-    gap: 20px;
+    min-width: 0;
 
     margin: 0;
-
-    min-width: max-content;
-}
-
-
-/* =========================================
-   LOGO
-========================================= */
-
-.logo {
-    width: 130px;
-
-    height: auto;
-
-    object-fit: contain;
-
-    flex-shrink: 0;
 }
 
 
@@ -250,18 +230,52 @@ main {
 ========================================= */
 
 .hero-title {
-    text-align: left;
+    position: relative;
+
+    text-align: center;
 
     min-width: 0;
+
+    width: max-content;
 }
 
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    position: absolute;
+
+    width: 130px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    right: calc(100% + 20px);
+
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* =========================================
+   HERO TITLE - GAGALIN
+========================================= */
 
 .hero-title h1 {
     margin: 0;
 
-    font-family: "Gagalin", sans-serif;
+    font-family:
+        "Gagalin",
+        sans-serif !important;
 
-    font-size: clamp(70px, 9vw, 120px);
+    font-weight: 400;
+
+    font-size:
+        clamp(70px, 9vw, 120px);
 
     line-height: 0.85;
 
@@ -278,9 +292,14 @@ main {
 .hero-title h2 {
     margin-top: 15px;
 
-    font-family: "Gagalin", sans-serif;
+    font-family:
+        "Gagalin",
+        sans-serif !important;
 
-    font-size: clamp(20px, 2.8vw, 38px);
+    font-weight: 400;
+
+    font-size:
+        clamp(20px, 2.8vw, 38px);
 
     line-height: 1;
 
@@ -288,7 +307,6 @@ main {
 
     letter-spacing: 1px;
 }
-
 /* =========================================
    PAMPHLET SECTION
 ========================================= */
@@ -682,6 +700,8 @@ main {
 
 
 
+
+
 /* =====================================
    HERO - MOBILE
 ===================================== */
@@ -695,7 +715,7 @@ main {
     position: absolute;
 
     left: 6%;
-    bottom: 35px;
+    bottom: 55px;
 
     transform: none;
 
@@ -716,27 +736,31 @@ main {
 
 
 .logo {
+    position: static;
+
     width: 75px;
 
     height: auto;
 
     flex-shrink: 0;
+
+    transform: none;
 }
 
 
-/* =====================================
-   HERO TITLE - GAGALIN
-===================================== */
-
 .hero-title {
-    min-width: 0;
-
     text-align: left;
+
+    width: auto;
+
+    min-width: 0;
 }
 
 
 .hero-title h1 {
-    font-family: "Gagalin", sans-serif;
+    font-family:
+        "Gagalin",
+        sans-serif !important;
 
     font-size: 58px;
 
@@ -749,7 +773,9 @@ main {
 
 
 .hero-title h2 {
-    font-family: "Gagalin", sans-serif;
+    font-family:
+        "Gagalin",
+        sans-serif !important;
 
     font-size: 17px;
 
@@ -761,7 +787,6 @@ main {
 
     white-space: nowrap;
 }
-
     /* PAMPHLET */
 
     .pamphlet-section {
